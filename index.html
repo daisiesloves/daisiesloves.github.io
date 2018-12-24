@@ -359,6 +359,46 @@ height:50vh;
     
     
     <article class="index-post">
+        <a class="abstract-title" href="/2018/12/24/Keepalived高可用IPVS健康状态检测/">
+            
+                <span>Keepalived高可用IPVS健康状态检测</span>
+        </a>
+        <div class="abstract-content">
+            测试环境  
+nodesrv1: 192.168.6.86, nodesrv2: 192.168.6.88
+realsrv1: 192.168.6.80, realsrv2: 192.168.6.82
+cleint: 192.168.6.68
+vip: 192.168.6.99
+1.nodesrv端安装及配置
+nodesrv[1,2]
+    yum install keepalived -y
+    yum install ipvsadm -y
+2.nodesrv1配置文件,nodesrv2修改对应IP地址
+vi /etc/keepalived/keepalived.conf
+! Co...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/12/24</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class="abstract-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="keepalived">keepalived</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href="/2018/12/24/Markdown简单用法/">
             
                 <span>Markdown简单用法</span>
@@ -697,9 +737,20 @@ MIME:Multipurpose Internet Mail Extensions
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 3
+        Total : 4
         </div>
         <!-- search  -->
         
@@ -712,6 +763,11 @@ MIME:Multipurpose Internet Mail Extensions
     
     <div class="archive-year"> 2018 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/24</span><a class="archive-post-title" href="/2018/12/24/Keepalived高可用IPVS健康状态检测/">Keepalived高可用IPVS健康状态检测</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -735,9 +791,11 @@ MIME:Multipurpose Internet Mail Extensions
     
         <span class="sidebar-tag-name" data-tags="Test"><span class="iconfont-archer">&#xe606;</span>Test</span>
     
-        <span class="sidebar-tag-name" data-tags="markdown"><span class="iconfont-archer">&#xe606;</span>markdown</span>
-    
         <span class="sidebar-tag-name" data-tags="httpd"><span class="iconfont-archer">&#xe606;</span>httpd</span>
+    
+        <span class="sidebar-tag-name" data-tags="keepalived"><span class="iconfont-archer">&#xe606;</span>keepalived</span>
+    
+        <span class="sidebar-tag-name" data-tags="markdown"><span class="iconfont-archer">&#xe606;</span>markdown</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
