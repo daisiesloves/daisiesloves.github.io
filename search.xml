@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[Test]]></title>
     <url>%2F2022%2F07%2F13%2FTest%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[]]></content>
   </entry>
   <entry>
     <title><![CDATA[Nginx反向代理Tomcat负载均衡+redis实现session共享]]></title>
