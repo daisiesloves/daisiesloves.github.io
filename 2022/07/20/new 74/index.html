@@ -22,7 +22,7 @@
     <meta name="description" content="">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Nginx反向代理Tomcat负载均衡+redis实现session共享 · zhen&#39;s blog</title>
+    <title>live2d · zhen&#39;s blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -232,7 +232,7 @@
                 <a href="/">zhen&#39;s blog.</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">Nginx反向代理Tomcat负载均衡+redis实现session共享</a>
+                <a href="#" class="post-name">live2d</a>
             </div>
     </div>
     
@@ -262,7 +262,7 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            Nginx反向代理Tomcat负载均衡+redis实现session共享
+            live2d
             <!-- 404 -->
             
         </h1>
@@ -281,18 +281,18 @@ height:50vh;
                 
                     <div class="post-intro-tags">
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="tomcat">tomcat</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="live2d">live2d</a>
     
 </div>
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">1.2k</span>阅读时长: <span class="post-count reading-time">6 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">35</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
                     <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2019/01/05</span>
+                    <span class="post-intro-time">2022/07/20</span>
                     
                     <span id="busuanzi_container_page_pv" class="busuanzi-pv">
                         <span class="iconfont-archer">&#xe602;</span>
@@ -416,171 +416,16 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <p>测试环境</p>
-<pre><code>tomcatsrvs:node01srv: 192.168.6.80, node02srv: 192.168.6.82
-mastersrv:nginxsrv: 192.168.6.88
-redisrv: 192.168.6.86
+        <h1 id="live2d"><a href="#live2d" class="headerlink" title="live2d"></a>live2d</h1><p>live2d:<br>  enable: true<br>  scriptFrom: local<br>  pluginRootPath: live2dw/<br>  pluginJsPath: lib/<br>  pluginModelPath: assets/<br>  tagMode: false<br>  log: false<br>  model:<br>    use: live2d-widget-model-hijiki<br>  display:<br>    position: right<br>    width: 150<br>    height: 300<br>  mobile:<br>    show: true<br>  react:<br>    opacity: 0.7</p>
 
-cat /etc/hosts
-192.168.6.80 node01.lboy.com
-192.168.6.82 node02.lboy.com
-192.168.6.86 node06.lboy.com
-192.168.6.88 master.lboy.com, www.lboy.com
-</code></pre><p>1.安装配置前端nginxsrv</p>
-<pre><code>(1)修改nginx主配置文件
-yum install nginx -y
-vi /etc/nginx/nginx.conf #删除主配置文件默认的虚拟主机
-listen 80;
-
-#测试代理
-    vi /etc/nginx/conf.d/www.conf
-    server {
-        listen 80 default_server;
-        server_name www.lboy.com;
-        location / {
-            proxy_pass http://192.168.6.80:8080; #使用IP地址,访问默认的tomcat虚拟主机;当有多个虚拟主机时,应使用域名解析
-            #proxy_pass http://node01.lboy.com:8080; #&quot;node01.lboy.com&quot;确保主机名正常解析
-        }
-    }
-
-    systemctl start nginx
-
-    http://www.lboy.com/ #浏览器测试正常访问tomcat默认虚拟主机
-    TomcatA.magedu.com
-    Session ID     C83F0DB65F70CFDBDE0EEC8EB0B376CE
-    Created on     1531556340022
-
-(2)添加nginx代理配置
-vi /etc/nginx/conf.d/www.conf
-upstream tcsrvs {
-    #ip_hash; #&apos;ip_hash&apos;会话绑定实现负载均衡,此方法粗糙建议使用cookie会话绑定
-    server node01.lboy.com:8080;
-    server node02.lboy.com:8080;
-}
-
-server {
-    listen 80 default_server;
-    server_name www.lboy.com;
-    location / {
-        proxy_pass http://tcsrvs;
-    }
-}
-
-注意:nginx反向代理后端tomcat服务器时,域名已经解析成IP地址;访问tomcat时,是通过IP地址进行访问,所以会访问到tomcat的默认虚拟主机,需要修改默认虚拟主机配置
-</code></pre><p>2.后端tomcatsrvs节点,node01srv&amp;node02srv安装配置</p>
-<pre><code>(1)node01srv
-yum install java-1.8.0-openjdk-devel
-yum install tomcat tomcat-lib tomcat-admin-webapps tomcat-webapps
-
-mkdir -pv /data/webapps/ROOT/{classes,lib,META-INF,WEB-INF}
-vi /data/webapps/ROOT/index.jsp
-&lt;%@ page language=&quot;java&quot; %&gt;            
-&lt;html&gt;
-    &lt;head&gt;&lt;title&gt;TomcatA&lt;/title&gt;&lt;/head&gt;
-    &lt;body&gt;
-        &lt;h1&gt;&lt;font color=&quot;red&quot;&gt;TomcatA.magedu.com&lt;/font&gt;&lt;/h1&gt;
-        &lt;table align=&quot;centre&quot; border=&quot;1&quot;&gt;    
-            &lt;tr&gt;
-                &lt;td&gt;Session ID&lt;/td&gt;
-            &lt;% session.setAttribute(&quot;magedu.com&quot;,&quot;magedu.com&quot;); %&gt;
-                &lt;td&gt;&lt;%= session.getId() %&gt;&lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;tr&gt;
-                &lt;td&gt;Created on&lt;/td&gt;
-                &lt;td&gt;&lt;%= session.getCreationTime() %&gt;&lt;/td&gt;
-            &lt;/tr&gt;
-        &lt;/table&gt;
-    &lt;/body&gt;
-&lt;/html&gt;
-
-cp /etc/tomcat/server.xml{,.bak}
-vi /etc/tomcat/server.xml
-&lt;Engine name=&quot;Catalina&quot; defaultHost=&quot;node01.lboy.com&quot;&gt; #修改默认虚拟主机
-
-&lt;Host name=&quot;node01.lboy.com&quot; appBase=&quot;/data/webapps&quot; unpackWAR=&quot;true&quot; autoDeploy=&quot;true&quot;&gt;
-    &lt;Valve className=&quot;org.apache.catalina.valves.AccessLogValve&quot; directory=&quot;logs&quot;
-        prefix=&quot;node01_access_log.&quot; suffix=&quot;.log&quot;
-        pattern=&quot;%h %l %u %t &amp;quot;%r&amp;quot; %s %b&quot; /&gt;
-&lt;/Host&gt;
-
-(2)node02srv
-yum install java-1.8.0-openjdk-devel
-yum install tomcat tomcat-lib tomcat-admin-webapps tomcat-webapps
-scp -rp 192.168.6.80:/data/ /
-
-~#vi /data/webapps/ROOT/index.jsp
-&lt;%@ page language=&quot;java&quot; %&gt;
-&lt;html&gt;
-    &lt;head&gt;&lt;title&gt;TomcatB&lt;/title&gt;&lt;/head&gt;
-    &lt;body&gt;
-        &lt;h1&gt;&lt;font color=&quot;blue&quot;&gt;TomcatB.magedu.com&lt;/font&gt;&lt;/h1&gt;
-        &lt;table align=&quot;centre&quot; border=&quot;1&quot;&gt;
-                &lt;tr&gt;
-                    &lt;td&gt;Session ID&lt;/td&gt;
-                &lt;% session.setAttribute(&quot;magedu.com&quot;,&quot;magedu.com&quot;); %&gt;
-                    &lt;td&gt;&lt;%= session.getId() %&gt;&lt;/td&gt;
-                &lt;/tr&gt;
-                &lt;tr&gt;
-                    &lt;td&gt;Created on&lt;/td&gt;
-                    &lt;td&gt;&lt;%= session.getCreationTime() %&gt;&lt;/td&gt;
-                &lt;/tr&gt;
-        &lt;/table&gt;
-    &lt;/body&gt;
-&lt;/html&gt;
-
-scp 192.168.6.80:/etc/tomcat/{server.xml,tomcat-users.xml} /etc/tomcat/
-vi /etc/tomcat/server.xml
-&lt;Engine name=&quot;Catalina&quot; defaultHost=&quot;node02.lboy.com&quot;&gt; #修改默认虚拟主机
-
-&lt;Host name=&quot;node02.lboy.com&quot; appBase=&quot;/data/webapps&quot; unpackWAR=&quot;true&quot; autoDeploy=&quot;true&quot;&gt;
-    &lt;Context path=&quot;/appt&quot; docBase=&quot;/data/otherapps/myapp&quot; reloadable=&quot;&quot;/&gt;
-    &lt;Valve className=&quot;org.apache.catalina.valves.AccessLogValve&quot; directory=&quot;logs&quot;
-           prefix=&quot;node01_access_log.&quot; suffix=&quot;.log&quot;
-           pattern=&quot;%h %l %u %t &amp;quot;%r&amp;quot; %s %b&quot; /&gt;
-&lt;/Host&gt;
-
-systemctl start tomcat
-</code></pre><p>3.安装配置redisrv实现session共享</p>
-<pre><code>(1)安装配置redisrv
-yum -y install redis    
-cp /etc/redis.conf{,.bak}
-vi /etc/redis.conf
-#bind 127.0.0.1 #redis默认只允许本地访问,注释bind 127.0.0.1允许所有的IP访问redis
-bind 192.168.6.80 192.168.6.82 #指定可以访问的IP
-#protected-mode yes #在redis3.2之后,redis增加了protected-mode,在这个模式下,即使注释掉了bind 127.0.0.1,再访问redisd时候还是报错
-protected-mode no
-daemonize yes
-#daemonize no
-
-(2)拷贝以下三个jar文件至各tomcat节点类库文件目录/usr/share/tomcat/lib -&gt; /usr/share/java/tomcat
-~# tree tomcat8-redis-session-manager
-tomcat8-redis-session-manager/
-├── commons-pool2-2.2.jar
-├── jedis-2.5.2.jar
-└── tomcat-redis-session-manager-2.0.0.jar
-
-(3)编辑各tomcat节点context.xml文件,添加以下内容配置redis服务
-vi /etc/tomcat/context.xml
-&lt;Valve className=&quot;com.orangefunction.tomcat.redissessions.RedisSessionHandlerValve&quot; /&gt;       
-&lt;Manager className=&quot;com.orangefunction.tomcat.redissessions.RedisSessionManager&quot;
-host=&quot;192.168.6.86&quot; #redisrv,IP地址
-port=&quot;6379&quot;
-database=&quot;0&quot;
-maxInactiveInterval=&quot;60&quot;/&gt;
-
-启动redis服务,重新启动所有tomcat,启动nginx,刷新nginx页面,两台tomcat页面可以看到sessionid值不变,关闭某台tomcat,nginx中sessionid不变,说明session是共享的.
-
-参考博文
-    https://www.cnblogs.com/mrlinfeng/p/6146866.html
-</code></pre>
     </article>
     <!-- license  -->
     
         <div class="license-wrapper">
             <p>原文作者：<a href="http://yoursite.com">Zhangzhen</a>
-            </p><p>原文链接：<a href="http://yoursite.com/2019/01/05/Nginx反向代理Tomcat负载均衡-redis实现session共享/">http://yoursite.com/2019/01/05/Nginx反向代理Tomcat负载均衡-redis实现session共享/</a>
-            </p><p>发表日期：<a href="http://yoursite.com/2019/01/05/Nginx反向代理Tomcat负载均衡-redis实现session共享/">January 5th 2019, 12:19:50 pm</a>
-            </p><p>更新日期：<a href="http://yoursite.com/2019/01/05/Nginx反向代理Tomcat负载均衡-redis实现session共享/">January 5th 2019, 12:21:49 pm</a>
+            </p><p>原文链接：<a href="http://yoursite.com/2022/07/20/new 74/">http://yoursite.com/2022/07/20/new 74/</a>
+            </p><p>发表日期：<a href="http://yoursite.com/2022/07/20/new 74/">July 20th 2022, 5:13:57 pm</a>
+            </p><p>更新日期：<a href="http://yoursite.com/2022/07/20/new 74/">July 20th 2022, 5:13:57 pm</a>
             </p><p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -588,17 +433,12 @@ maxInactiveInterval=&quot;60&quot;/&gt;
     <ul class="post-paginator">
         <li class="next">
             
-                <div class="nextSlogan">Next Post</div>
-                <a href="/2022/07/13/Test/" title="Test">
-                    <div class="nextTitle">Test</div>
-                </a>
-            
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href="/2018/12/25/Keepalived实现高可用Nginx服务/" title="Keepalived实现高可用Nginx服务">
-                    <div class="prevTitle">Keepalived实现高可用Nginx服务</div>
+                <a href="/2022/07/13/Test/" title="Test">
+                    <div class="prevTitle">Test</div>
                 </a>
             
         </li>
@@ -737,7 +577,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#live2d"><span class="toc-number">1.</span> <span class="toc-text">live2d</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
