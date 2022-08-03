@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>Hexo • Posts by &#34;httpd&#34; tag</title>
+        <link>http://yoursite.com</link>
+        <description></description>
+        <language></language>
+        <pubDate>Sun, 23 Dec 2018 18:44:33 +0800</pubDate>
+        <lastBuildDate>Sun, 23 Dec 2018 18:44:33 +0800</lastBuildDate>
+        <category>Test</category>
+        <category>httpd</category>
+        <category>keepalived</category>
+        <category>markdown</category>
+        <category>tomcat</category>
+        <category>live2d</category>
+        <item>
+            <guid isPermalink="true">http://yoursite.com/2018/12/23/Httpd%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
+            <title>Httpd基础知识</title>
+            <link>http://yoursite.com/2018/12/23/Httpd%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
+            <category>httpd</category>
+            <pubDate>Sun, 23 Dec 2018 18:44:33 +0800</pubDate>
+            <description><![CDATA[ &lt;link rel=&#34;stylesheet&#34; class=&#34;aplayer-secondary-style-marker&#34; href=&#34;\assets\css\APlayer.min.css&#34;&gt;&lt;script src=&#34;\assets\js\APlayer.min.js&#34; class=&#34;aplayer-secondary-script-marker&#34;&gt;&lt;/script&gt;&lt;script class=&#34;meting-secondary-script-marker&#34; src=&#34;\assets\js\Meting.min.js&#34;&gt;&lt;/script&gt;&lt;h3 id=&#34;http相关术语&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#http相关术语&#34;&gt;#&lt;/a&gt; HTTP 相关术语&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;http:Hyper Text Transfer Protocol, 80/tcp
+html:Hyper Text Markup Language 超文本标记语言,编程语言
+MIME:Multipurpose Internet Mail Extensions
+	多用途互联网邮件扩展 /etc/mime.types
+格式:major/minor
+	text/plain
+	text/html
+	text/css
+	image/jpeg
+	image/png
+	video/mp4
+	application/javascript
+
+参考:http://www.w3school.com.cn/media/media_mimeref.asp
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;http工作机制&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#http工作机制&#34;&gt;#&lt;/a&gt; HTTP 工作机制&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;http请求:http request
+http响应:http response
+1次http事务:请求&amp;lt;--&amp;gt;响应
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;web资源web-resource&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#web资源web-resource&#34;&gt;#&lt;/a&gt; Web 资源 (web resource)&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;单个网页由多个资源构成,打开一个页面,会有多个资源展示出来,但是每个资源都要单独请求。因此,一个&amp;quot;Web 页面&amp;quot;通常并不是单个资源,而是一组资源的集合.
+
+1.静态文件:无需服务端做出额外处理.
+	文件后缀:.jpg, .html, .txt, .js, .css, .mp3, .avi
+2.动态文件:服务端执行程序,返回执行的结果.
+	文件后缀:.asp, .php, .jsp
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;提高http连接性能&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#提高http连接性能&#34;&gt;#&lt;/a&gt; 提高 HTTP 连接性能&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;并行连接:通过多条TCP连接发起并发的HTTP请求 
+持久连接:keep-alive长连接,重用TCP连接,以消除连接和关闭的时延,以事务个数和时间来决定是否关闭连接
+管道化连接:通过共享TCP连接发起并发的HTTP请求
+复用的连接:交替传送请求和响应报文(实验阶段)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;uri&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#uri&#34;&gt;#&lt;/a&gt; URI&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;URI:Uniform Resource Identifier,统一资源标识,分为URL和URN
+	URN: Uniform Resource Naming,统一资源命名
+	URL: Uniform Resorce Locator,统一资源定位符,用于描述某服务器某特定资源位置
+两者区别:URN如同一个人的名称,而URL代表一个人的住址；换言之,URN定义某事物的身份,而URL提供查找该事物的方法；URN仅用于命名,而不指定地址 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;url组成&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#url组成&#34;&gt;#&lt;/a&gt; URL 组成&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;scheme&amp;gt;://&amp;lt;user&amp;gt;:&amp;lt;password&amp;gt;@&amp;lt;host&amp;gt;:&amp;lt;port&amp;gt;/&amp;lt;path&amp;gt;;&amp;lt;params&amp;gt;?&amp;lt;query&amp;gt;#&amp;lt;frag&amp;gt;   
+schame:方案,访问服务器以获取资源时要使用哪种协议
+user:用户,某些方案访问资源时需要的用户名
+password:密码,用户对应的密码,中间用:分隔
+Host:主机,资源宿主服务器的主机名或IP地址         
+port:端口,资源宿主服务器正在监听的端口号,很多方案有默认端口号
+path:路径,服务器资源的本地名,由一个/将其与前面的URL组件分隔
+params:参数,指定输入的参数,参数为名/值对,多个参数,用;分隔
+query:查询,传递参数给程序,如数据库,用？分隔,多个查询用&amp;amp;分隔
+frag:片段,一小片或一部分资源的名字,此组件在客户端使用,用#分隔
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;网站访问量&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#网站访问量&#34;&gt;#&lt;/a&gt; 网站访问量&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;IP(独立IP):即Internet Protocol,指独立IP数.一天内来自相同客户机IP地址只计算一次,记录远程客户机IP地址的计算机访问网站的次数,是衡量网站流量的重要指标.
+PV(访问量):即Page View,页面浏览量或点击量,用户每次刷新即被计算次,PV反映的是浏览某网站的页面数,PV与来访者的数量成正比,PV并不是页面的来访者数量,而是网站被访问的页面数量.
+UV(独立访客):即Unique Visitor,访问网站的一台电脑为一个访客,一天内相同的客户端只被计算一次,可以理解成访问某网站的电脑的数量,网站判断来访电脑的身份是通过来访电脑的cookies实现的,如果更换了IP后但不清除cookies,再访问相同网站,该网站的统计中UV数是不变的.
+
+网站统计:http://www.alexa.cn/rank/&lt;/code&gt;&lt;/pre&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>

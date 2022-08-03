@@ -1,0 +1,18 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "Hexo • All posts by \"markdown\" tag",
+    "description": null,
+    "home_page_url": "http://yoursite.com",
+    "items": [
+        {
+            "id": "http://yoursite.com/2018/12/24/Markdown%E7%AE%80%E5%8D%95%E7%94%A8%E6%B3%95/",
+            "url": "http://yoursite.com/2018/12/24/Markdown%E7%AE%80%E5%8D%95%E7%94%A8%E6%B3%95/",
+            "title": "Markdown简单用法",
+            "date_published": "2018-12-24T11:22:21.000Z",
+            "content_html": "<link rel=\"stylesheet\" class=\"aplayer-secondary-style-marker\" href=\"\\assets\\css\\APlayer.min.css\"><script src=\"\\assets\\js\\APlayer.min.js\" class=\"aplayer-secondary-script-marker\"></script><script class=\"meting-secondary-script-marker\" src=\"\\assets\\js\\Meting.min.js\"></script><p>Markdown 基本语法</p>\n<pre><code>markdown是一种纯文本格式的标记语言。通过简单的标记语法,它可以使普通文本内容具有一定的格式.\n</code></pre>\n<p>标题</p>\n<pre><code># 这是一级标题\n## 这是二级标题\n### 这是三级标题\n#### 这是四级标题\n##### 这是五级标题\n###### 这是六级标题\n</code></pre>\n<p>字体</p>\n<pre><code>斜体 要倾斜的文字左右分别用一个*号包起来\n\t\n\t*这是倾斜的文字*\n\n加粗 要加粗的文字左右分别用两个*号包起来\n\t\n\t**这是加粗的文字**\n\t\n斜体加粗 要倾斜和加粗的文字左右分别用三个*号包起来\n\n\t***这是斜体加粗的文字***\n\t\n删除线 要加删除线的文字左右分别用两个~~号包起来\n\n\t~~这是加删除线的文字~~\n</code></pre>\n<p>分割线</p>\n<pre><code>三个或者三个以上的 - 或者 * 都可以\n\t---\n\t----\n\t***\n\t*****\n</code></pre>\n<p>超链接</p>\n<pre><code>[超链接名](超链接地址 &quot;超链接title&quot;) title可加可不加\n\n\t[百度](http://baidu.com)\n</code></pre>\n<p>列表</p>\n<pre><code>无序列表\n\t语法:无序列表用 - + * 任何一种都可以\n\t\n\t- 列表内容\n\t+ 列表内容\n\t* 列表内容\n\n\t注意:- + * 跟内容之间都要有一个空格\n\n有序列表\n\t语法:数字加点\n\t\n\t1.列表内容\n\t2.列表内容\n\t3.列表内容\n\n\t注意：序号跟内容之间要有空格\n\n列表嵌套\n\t上一级和下一级之间敲三个空格即可\n</code></pre>\n<p>代码</p>\n<pre><code>单行代码:代码之间分别用一个反引号包起来\n\t`代码内容`\n\n代码块:代码之间分别用三个反引号包起来,且两边的反引号单独占一行\t\n\t(```)\n\t  代码...\n\t  代码...\n\t  代码...\n\t(```)\n\t\n注意:为了防止转译,前后三个反引号处加了小括号,实际是没有的.这里只是用来演示,实际中去掉两边小括号即可.\n</code></pre>\n",
+            "tags": [
+                "markdown"
+            ]
+        }
+    ]
+}

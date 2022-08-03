@@ -1,64 +1,716 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[live2d]]></title>
-    <url>%2F2022%2F07%2F20%2Fnew%2074%2F</url>
-    <content type="text"><![CDATA[live2dlive2d: enable: true scriptFrom: local pluginRootPath: live2dw/ pluginJsPath: lib/ pluginModelPath: assets/ tagMode: false log: false model: use: live2d-widget-model-hijiki display: position: right width: 150 height: 300 mobile: show: true react: opacity: 0.7]]></content>
+    <title>Hello Word</title>
+    <url>/2018/12/23/Hello%20Word/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="前言"><a class="markdownIt-Anchor" href="#前言">#</a> 前言</h1>
+<p>微凉<br>
+高桐深密间幽篁，乳燕声希夏日长。<br>
+独坐水亭风满袖，世间清景是微凉。</p>
+]]></content>
       <tags>
-        <tag>live2d</tag>
+        <tag>Test</tag>
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Test]]></title>
-    <url>%2F2022%2F07%2F13%2FTest%2F</url>
-    <content type="text"><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title><![CDATA[Nginx反向代理Tomcat负载均衡+redis实现session共享]]></title>
-    <url>%2F2019%2F01%2F05%2FNginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86Tomcat%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1-redis%E5%AE%9E%E7%8E%B0session%E5%85%B1%E4%BA%AB%2F</url>
-    <content type="text"><![CDATA[测试环境 tomcatsrvs:node01srv: 192.168.6.80, node02srv: 192.168.6.82 mastersrv:nginxsrv: 192.168.6.88 redisrv: 192.168.6.86 cat /etc/hosts 192.168.6.80 node01.lboy.com 192.168.6.82 node02.lboy.com 192.168.6.86 node06.lboy.com 192.168.6.88 master.lboy.com, www.lboy.com 1.安装配置前端nginxsrv (1)修改nginx主配置文件 yum install nginx -y vi /etc/nginx/nginx.conf #删除主配置文件默认的虚拟主机 listen 80; #测试代理 vi /etc/nginx/conf.d/www.conf server { listen 80 default_server; server_name www.lboy.com; location / { proxy_pass http://192.168.6.80:8080; #使用IP地址,访问默认的tomcat虚拟主机;当有多个虚拟主机时,应使用域名解析 #proxy_pass http://node01.lboy.com:8080; #&quot;node01.lboy.com&quot;确保主机名正常解析 } } systemctl start nginx http://www.lboy.com/ #浏览器测试正常访问tomcat默认虚拟主机 TomcatA.magedu.com Session ID C83F0DB65F70CFDBDE0EEC8EB0B376CE Created on 1531556340022 (2)添加nginx代理配置 vi /etc/nginx/conf.d/www.conf upstream tcsrvs { #ip_hash; #&apos;ip_hash&apos;会话绑定实现负载均衡,此方法粗糙建议使用cookie会话绑定 server node01.lboy.com:8080; server node02.lboy.com:8080; } server { listen 80 default_server; server_name www.lboy.com; location / { proxy_pass http://tcsrvs; } } 注意:nginx反向代理后端tomcat服务器时,域名已经解析成IP地址;访问tomcat时,是通过IP地址进行访问,所以会访问到tomcat的默认虚拟主机,需要修改默认虚拟主机配置 2.后端tomcatsrvs节点,node01srv&amp;node02srv安装配置 (1)node01srv yum install java-1.8.0-openjdk-devel yum install tomcat tomcat-lib tomcat-admin-webapps tomcat-webapps mkdir -pv /data/webapps/ROOT/{classes,lib,META-INF,WEB-INF} vi /data/webapps/ROOT/index.jsp &lt;%@ page language=&quot;java&quot; %&gt; &lt;html&gt; &lt;head&gt;&lt;title&gt;TomcatA&lt;/title&gt;&lt;/head&gt; &lt;body&gt; &lt;h1&gt;&lt;font color=&quot;red&quot;&gt;TomcatA.magedu.com&lt;/font&gt;&lt;/h1&gt; &lt;table align=&quot;centre&quot; border=&quot;1&quot;&gt; &lt;tr&gt; &lt;td&gt;Session ID&lt;/td&gt; &lt;% session.setAttribute(&quot;magedu.com&quot;,&quot;magedu.com&quot;); %&gt; &lt;td&gt;&lt;%= session.getId() %&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Created on&lt;/td&gt; &lt;td&gt;&lt;%= session.getCreationTime() %&gt;&lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/body&gt; &lt;/html&gt; cp /etc/tomcat/server.xml{,.bak} vi /etc/tomcat/server.xml &lt;Engine name=&quot;Catalina&quot; defaultHost=&quot;node01.lboy.com&quot;&gt; #修改默认虚拟主机 &lt;Host name=&quot;node01.lboy.com&quot; appBase=&quot;/data/webapps&quot; unpackWAR=&quot;true&quot; autoDeploy=&quot;true&quot;&gt; &lt;Valve className=&quot;org.apache.catalina.valves.AccessLogValve&quot; directory=&quot;logs&quot; prefix=&quot;node01_access_log.&quot; suffix=&quot;.log&quot; pattern=&quot;%h %l %u %t &amp;quot;%r&amp;quot; %s %b&quot; /&gt; &lt;/Host&gt; (2)node02srv yum install java-1.8.0-openjdk-devel yum install tomcat tomcat-lib tomcat-admin-webapps tomcat-webapps scp -rp 192.168.6.80:/data/ / ~#vi /data/webapps/ROOT/index.jsp &lt;%@ page language=&quot;java&quot; %&gt; &lt;html&gt; &lt;head&gt;&lt;title&gt;TomcatB&lt;/title&gt;&lt;/head&gt; &lt;body&gt; &lt;h1&gt;&lt;font color=&quot;blue&quot;&gt;TomcatB.magedu.com&lt;/font&gt;&lt;/h1&gt; &lt;table align=&quot;centre&quot; border=&quot;1&quot;&gt; &lt;tr&gt; &lt;td&gt;Session ID&lt;/td&gt; &lt;% session.setAttribute(&quot;magedu.com&quot;,&quot;magedu.com&quot;); %&gt; &lt;td&gt;&lt;%= session.getId() %&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Created on&lt;/td&gt; &lt;td&gt;&lt;%= session.getCreationTime() %&gt;&lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/body&gt; &lt;/html&gt; scp 192.168.6.80:/etc/tomcat/{server.xml,tomcat-users.xml} /etc/tomcat/ vi /etc/tomcat/server.xml &lt;Engine name=&quot;Catalina&quot; defaultHost=&quot;node02.lboy.com&quot;&gt; #修改默认虚拟主机 &lt;Host name=&quot;node02.lboy.com&quot; appBase=&quot;/data/webapps&quot; unpackWAR=&quot;true&quot; autoDeploy=&quot;true&quot;&gt; &lt;Context path=&quot;/appt&quot; docBase=&quot;/data/otherapps/myapp&quot; reloadable=&quot;&quot;/&gt; &lt;Valve className=&quot;org.apache.catalina.valves.AccessLogValve&quot; directory=&quot;logs&quot; prefix=&quot;node01_access_log.&quot; suffix=&quot;.log&quot; pattern=&quot;%h %l %u %t &amp;quot;%r&amp;quot; %s %b&quot; /&gt; &lt;/Host&gt; systemctl start tomcat 3.安装配置redisrv实现session共享 (1)安装配置redisrv yum -y install redis cp /etc/redis.conf{,.bak} vi /etc/redis.conf #bind 127.0.0.1 #redis默认只允许本地访问,注释bind 127.0.0.1允许所有的IP访问redis bind 192.168.6.80 192.168.6.82 #指定可以访问的IP #protected-mode yes #在redis3.2之后,redis增加了protected-mode,在这个模式下,即使注释掉了bind 127.0.0.1,再访问redisd时候还是报错 protected-mode no daemonize yes #daemonize no (2)拷贝以下三个jar文件至各tomcat节点类库文件目录/usr/share/tomcat/lib -&gt; /usr/share/java/tomcat ~# tree tomcat8-redis-session-manager tomcat8-redis-session-manager/ ├── commons-pool2-2.2.jar ├── jedis-2.5.2.jar └── tomcat-redis-session-manager-2.0.0.jar (3)编辑各tomcat节点context.xml文件,添加以下内容配置redis服务 vi /etc/tomcat/context.xml &lt;Valve className=&quot;com.orangefunction.tomcat.redissessions.RedisSessionHandlerValve&quot; /&gt; &lt;Manager className=&quot;com.orangefunction.tomcat.redissessions.RedisSessionManager&quot; host=&quot;192.168.6.86&quot; #redisrv,IP地址 port=&quot;6379&quot; database=&quot;0&quot; maxInactiveInterval=&quot;60&quot;/&gt; 启动redis服务,重新启动所有tomcat,启动nginx,刷新nginx页面,两台tomcat页面可以看到sessionid值不变,关闭某台tomcat,nginx中sessionid不变,说明session是共享的. 参考博文 https://www.cnblogs.com/mrlinfeng/p/6146866.html]]></content>
-      <tags>
-        <tag>tomcat</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Keepalived实现高可用Nginx服务]]></title>
-    <url>%2F2018%2F12%2F25%2FKeepalived%E5%AE%9E%E7%8E%B0%E9%AB%98%E5%8F%AF%E7%94%A8Nginx%E6%9C%8D%E5%8A%A1%2F</url>
-    <content type="text"><![CDATA[测试环境: websrvs:realsrv1: 192.168.6.80, realsrv2: 192.168.6.82 keepsrvs:nodesrv1: 192.168.6.86, nodesrv2: 192.168.6.88 cleint: 192.168.6.68 vip: 192.168.6.99 实验目的: 当主节点nodesrv1上反向代理服务nginx异常不可用,主节点自身调度优先级别降低并释放vip转移给节点nodesrv2 1.在2台节点服务器分别安装nginx nodesrv[1,2] ~# yum install psmisc -y #&apos;killall&apos;命令程序包 yum install nginx -y systemctl start nginx systemctl enable nginx (1)编辑nginx配置文件,实现代理 vi /etc/nginx/conf.d/www.conf upstream websrvs { server 192.168.6.80:80; server 192.168.6.82:80; } server { listen 80 default_server; server_name nodesrv1.lboy.com; root /usr/share/nginx/html; location /{ proxy_pass http://websrvs; } } (2)编辑nginx主配置文件,删除默认server vi /etc/nginx/nginx.conf server { listen 80; server_name localhost; ... } (3)在nodesrv2上同样配置nginx scp /etc/nginx/conf.d/www.conf root@192.168.6.88:/etc/nginx/conf.d/www.conf vi /etc/nginx/conf.d/www.conf server_name nodesrv2.lboy.com; ... 2.修改keepalived配置文件示例如下 ~# systemctl stop keepalived #nodesrv1配置文件 ~# man 5 keepalived.conf vi /etc/keepalived/keepalived.cfg ! Configuration File for keepalived global_defs { notification_email { root@localhost } notification_email_from keepalived@localhost smtp_server 127.0.0.1 smtp_connect_timeout 30 router_id nodesrv1 vrrp_mcast_group4 224.0.100.89 vrrp_skip_check_adv_addr vrrp_strict vrrp_garp_interval 0 vrrp_gna_interval 0 vrrp_iptables #不添加iptables规则 } vrrp_script chk_nginx { script &quot;killall -0 nginx &amp;&amp; exit 0 || exit 1&quot; interval 1 #检测时间间隔 weight -5 #权重降级 fall 2 rise 1 } vrrp_instance VI_1 { state MASTER interface ens33 virtual_router_id 16 priority 100 advert_int 1 authentication { auth_type PASS auth_pass 516f97b2 } virtual_ipaddress { 192.168.6.99/24 dev ens33 } track_interface { ens33 } track_script { chk_nginx #调用脚本名称,与上定义的脚本名称相同 } notify_master &quot;/etc/keepalived/notify.sh master&quot; notify_backup &quot;/etc/keepalived/notify.sh backup&quot; #nginx异常终止时,主节点降为从节点,并传递参数执行脚本,尝试启动nginx notify_fault &quot;/etc/keepalived/notify.sh fault&quot; } #vrrp_instance VI_2 { # state MASTER # interface ens33 # virtual_router_id 26 # priority 98 # advert_int 1 # authentication { # auth_type PASS # auth_pass 0uuOpPPp # } # virtual_ipaddress { # 192.168.6.98/24 dev ens33 # } #} #nodesrv2配置文件 vi /etc/keepalived/keepalived.cfg ... vrrp_instance VI_1 { state BACKUP interface ens33 virtual_router_id 16 priority 98 advert_int 1 authentication { auth_type PASS auth_pass 516f97b2 } virtual_ipaddress { 192.168.6.99/24 dev ens33 } track_interface { ens33 } track_script { chk_nginx } notify_master &quot;/etc/keepalived/notify.sh master&quot; notify_backup &quot;/etc/keepalived/notify.sh backup&quot; notify_fault &quot;/etc/keepalived/notify.sh fault&quot; } #vrrp_instance VI_2 { # state MASTER # interface ens33 # virtual_router_id 26 # priority 100 # advert_int 1 # authentication { # auth_type PASS # auth_pass 0uuOpPPp # } # virtual_ipaddress { # 192.168.6.98/24 dev ens33 # } #} 3.启动服务测试 systemctl start keepalived systemctl status keepalived cleint访问测试 ~# while true; do curl 192.168.6.99; sleep 1; done #停止nodesrv1上的nginx服务,在nodesrv2上抓包观察VIP地址流动 nodesrv1 ~# systemctl sotp nginx nodesrv2 ~# tcpdump -i ens33 -nn host 224.0.100.89 #调适keepalived脚本 注意: vrrp_script chk_ndown { script &quot;/bin/bash -c &apos;[[ -f /etc/keepalived/down ]]&apos; &amp;&amp; exit 1 || exit 0&quot; #&apos;/etc/keepalived/down&apos;,文件存在时,权重降级 interval 1 weight -10 } #[[ -f /etc/keepalived/down ]],要特别地作为bash的参数的运行 track_script { #chk_nginx chk_ndown }]]></content>
-      <tags>
-        <tag>keepalived</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Keepalived高可用IPVS健康状态检测]]></title>
-    <url>%2F2018%2F12%2F24%2FKeepalived%E9%AB%98%E5%8F%AF%E7%94%A8IPVS%E5%81%A5%E5%BA%B7%E7%8A%B6%E6%80%81%E6%A3%80%E6%B5%8B%2F</url>
-    <content type="text"><![CDATA[测试环境 nodesrv1: 192.168.6.86, nodesrv2: 192.168.6.88 realsrv1: 192.168.6.80, realsrv2: 192.168.6.82 cleint: 192.168.6.68 vip: 192.168.6.99 1.nodesrv端安装及配置 nodesrv[1,2] yum install keepalived -y yum install ipvsadm -y 2.nodesrv1配置文件,nodesrv2修改对应IP地址 vi /etc/keepalived/keepalived.conf ! Configuration File for keepalived global_defs { notification_email { root@localhost } notification_email_from keepalived@localhost smtp_server 127.0.0.1 smtp_connect_timeout 30 router_id nodesrv1 vrrp_mcast_group4 224.0.100.89 vrrp_skip_check_adv_addr vrrp_strict vrrp_garp_interval 0 vrrp_gna_interval 0 } vrrp_instance VI_1 { state MASTER interface ens33 virtual_router_id 16 priority 100 advert_int 1 authentication { auth_type PASS auth_pass 516f97b2 } virtual_ipaddress { 192.168.6.99/24 dev ens33 } track_interface { ens33 } notify_master &quot;/etc/keepalived/notify.sh master&quot; notify_backup &quot;/etc/keepalived/notify.sh backup&quot; notify_fault &quot;/etc/keepalived/notify.sh fault&quot; } vrrp_instance VI_2 { state BACKUP interface ens33 virtual_router_id 26 priority 98 advert_int 1 authentication { auth_type PASS auth_pass 0uuOpPPp } virtual_ipaddress { 192.168.6.98/24 dev ens33 } } virtual_server 192.168.6.99 80 { delay_loop 2 lb_algo rr lb_kind DR # persistence_timeout 50 protocol TCP sorry_server 127.0.0.1 80 #定义sorry-server real_server 192.168.6.80 80 { weight 1 HTTP_GET { url { path / status_code 200 } connect_timeout 2 #连接超时时长 nb_get_retry 3 #超时重试数次 delay_before_retry 1 #每次重试时间间隔 } } real_server 192.168.6.82 80 { weight 1 HTTP_GET { url { path / status_code 200 } connect_timeout 2 nb_get_retry 3 delay_before_retry 1 } } } 3.realsrv[1,2]运行配置脚本 ~# sh lvs_dr_rs.sh start vi lvs_dr_rs.sh #!/bin/bash #Author:wangxiaochun #Date:2017-08-13 vip=192.168.6.99 mask=&apos;255.255.255.255&apos; dev=lo:1 rpm -q httpd &amp;&gt; /dev/null || yum -y install httpd &amp;&gt;/dev/null service httpd start &amp;&gt; /dev/null &amp;&amp; echo &quot;The httpd Server is Ready!&quot; echo &quot;&lt;h1&gt;`hostname`&lt;/h1&gt;&quot; &gt; /var/www/html/index.html case $1 in start) echo 1 &gt; /proc/sys/net/ipv4/conf/all/arp_ignore echo 1 &gt; /proc/sys/net/ipv4/conf/lo/arp_ignore echo 2 &gt; /proc/sys/net/ipv4/conf/all/arp_announce echo 2 &gt; /proc/sys/net/ipv4/conf/lo/arp_announce ifconfig $dev $vip netmask $mask #broadcast $vip up #route add -host $vip dev $dev echo &quot;The RS Server is Ready!&quot; ;; stop) ifconfig $dev down echo 0 &gt; /proc/sys/net/ipv4/conf/all/arp_ignore echo 0 &gt; /proc/sys/net/ipv4/conf/lo/arp_ignore echo 0 &gt; /proc/sys/net/ipv4/conf/all/arp_announce echo 0 &gt; /proc/sys/net/ipv4/conf/lo/arp_announce echo &quot;The RS Server is Canceled!&quot; ;; *) echo &quot;Usage: $(basename $0) start|stop&quot; exit 1 ;; esac 4.配置sorry-server nodesrv[1,2] yum install httpd -y echo &apos;sorry server nodesrv[1,2]&apos; &gt;/www/html/index.html systemctl start httpd 5.cleint测试集群环境,注意防火墙规则 ~# while true; do curl 192.168.6.99; sleep 1; done]]></content>
-      <tags>
-        <tag>keepalived</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Markdown简单用法]]></title>
-    <url>%2F2018%2F12%2F24%2FMarkdown%E7%AE%80%E5%8D%95%E7%94%A8%E6%B3%95%2F</url>
-    <content type="text"><![CDATA[Markdown基本语法 markdown是一种纯文本格式的标记语言。通过简单的标记语法,它可以使普通文本内容具有一定的格式. 标题 # 这是一级标题 ## 这是二级标题 ### 这是三级标题 #### 这是四级标题 ##### 这是五级标题 ###### 这是六级标题 字体 斜体 要倾斜的文字左右分别用一个*号包起来 *这是倾斜的文字* 加粗 要加粗的文字左右分别用两个*号包起来 **这是加粗的文字** 斜体加粗 要倾斜和加粗的文字左右分别用三个*号包起来 ***这是斜体加粗的文字*** 删除线 要加删除线的文字左右分别用两个~~号包起来 ~~这是加删除线的文字~~ 分割线 三个或者三个以上的 - 或者 * 都可以 --- ---- *** ***** 超链接 [超链接名](超链接地址 &quot;超链接title&quot;) title可加可不加 [百度](http://baidu.com) 列表 无序列表 语法:无序列表用 - + * 任何一种都可以 - 列表内容 + 列表内容 * 列表内容 注意:- + * 跟内容之间都要有一个空格 有序列表 语法:数字加点 1.列表内容 2.列表内容 3.列表内容 注意：序号跟内容之间要有空格 列表嵌套 上一级和下一级之间敲三个空格即可 代码 单行代码:代码之间分别用一个反引号包起来 `代码内容` 代码块:代码之间分别用三个反引号包起来,且两边的反引号单独占一行 (```) 代码... 代码... 代码... (```) 注意:为了防止转译,前后三个反引号处加了小括号,实际是没有的.这里只是用来演示,实际中去掉两边小括号即可.]]></content>
-      <tags>
-        <tag>markdown</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Httpd基础知识]]></title>
-    <url>%2F2018%2F12%2F23%2FHttpd%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%2F</url>
-    <content type="text"><![CDATA[HTTP相关术语http:Hyper Text Transfer Protocol, 80/tcp html:Hyper Text Markup Language 超文本标记语言,编程语言 MIME:Multipurpose Internet Mail Extensions 多用途互联网邮件扩展 /etc/mime.types 格式:major/minor text/plain text/html text/css image/jpeg image/png video/mp4 application/javascript 参考:http://www.w3school.com.cn/media/media_mimeref.asp HTTP工作机制http请求:http request http响应:http response 1次http事务:请求&lt;--&gt;响应 Web资源(web resource)单个网页由多个资源构成,打开一个页面,会有多个资源展示出来,但是每个资源都要单独请求。因此,一个&quot;Web 页面&quot;通常并不是单个资源,而是一组资源的集合. 1.静态文件:无需服务端做出额外处理. 文件后缀:.jpg, .html, .txt, .js, .css, .mp3, .avi 2.动态文件:服务端执行程序,返回执行的结果. 文件后缀:.asp, .php, .jsp 提高HTTP连接性能并行连接:通过多条TCP连接发起并发的HTTP请求 持久连接:keep-alive长连接,重用TCP连接,以消除连接和关闭的时延,以事务个数和时间来决定是否关闭连接 管道化连接:通过共享TCP连接发起并发的HTTP请求 复用的连接:交替传送请求和响应报文(实验阶段) URIURI:Uniform Resource Identifier,统一资源标识,分为URL和URN URN: Uniform Resource Naming,统一资源命名 URL: Uniform Resorce Locator,统一资源定位符,用于描述某服务器某特定资源位置 两者区别:URN如同一个人的名称,而URL代表一个人的住址；换言之,URN定义某事物的身份,而URL提供查找该事物的方法；URN仅用于命名,而不指定地址 URL组成&lt;scheme&gt;://&lt;user&gt;:&lt;password&gt;@&lt;host&gt;:&lt;port&gt;/&lt;path&gt;;&lt;params&gt;?&lt;query&gt;#&lt;frag&gt; schame:方案,访问服务器以获取资源时要使用哪种协议 user:用户,某些方案访问资源时需要的用户名 password:密码,用户对应的密码,中间用:分隔 Host:主机,资源宿主服务器的主机名或IP地址 port:端口,资源宿主服务器正在监听的端口号,很多方案有默认端口号 path:路径,服务器资源的本地名,由一个/将其与前面的URL组件分隔 params:参数,指定输入的参数,参数为名/值对,多个参数,用;分隔 query:查询,传递参数给程序,如数据库,用？分隔,多个查询用&amp;分隔 frag:片段,一小片或一部分资源的名字,此组件在客户端使用,用#分隔 网站访问量IP(独立IP):即Internet Protocol,指独立IP数.一天内来自相同客户机IP地址只计算一次,记录远程客户机IP地址的计算机访问网站的次数,是衡量网站流量的重要指标. PV(访问量):即Page View,页面浏览量或点击量,用户每次刷新即被计算次,PV反映的是浏览某网站的页面数,PV与来访者的数量成正比,PV并不是页面的来访者数量,而是网站被访问的页面数量. UV(独立访客):即Unique Visitor,访问网站的一台电脑为一个访客,一天内相同的客户端只被计算一次,可以理解成访问某网站的电脑的数量,网站判断来访电脑的身份是通过来访电脑的cookies实现的,如果更换了IP后但不清除cookies,再访问相同网站,该网站的统计中UV数是不变的. 网站统计:http://www.alexa.cn/rank/]]></content>
+    <title>Httpd基础知识</title>
+    <url>/2018/12/23/Httpd%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h3 id="http相关术语"><a class="markdownIt-Anchor" href="#http相关术语">#</a> HTTP 相关术语</h3>
+<pre><code>http:Hyper Text Transfer Protocol, 80/tcp
+html:Hyper Text Markup Language 超文本标记语言,编程语言
+MIME:Multipurpose Internet Mail Extensions
+	多用途互联网邮件扩展 /etc/mime.types
+格式:major/minor
+	text/plain
+	text/html
+	text/css
+	image/jpeg
+	image/png
+	video/mp4
+	application/javascript
+
+参考:http://www.w3school.com.cn/media/media_mimeref.asp
+</code></pre>
+<h3 id="http工作机制"><a class="markdownIt-Anchor" href="#http工作机制">#</a> HTTP 工作机制</h3>
+<pre><code>http请求:http request
+http响应:http response
+1次http事务:请求&lt;--&gt;响应
+</code></pre>
+<h3 id="web资源web-resource"><a class="markdownIt-Anchor" href="#web资源web-resource">#</a> Web 资源 (web resource)</h3>
+<pre><code>单个网页由多个资源构成,打开一个页面,会有多个资源展示出来,但是每个资源都要单独请求。因此,一个&quot;Web 页面&quot;通常并不是单个资源,而是一组资源的集合.
+
+1.静态文件:无需服务端做出额外处理.
+	文件后缀:.jpg, .html, .txt, .js, .css, .mp3, .avi
+2.动态文件:服务端执行程序,返回执行的结果.
+	文件后缀:.asp, .php, .jsp
+</code></pre>
+<h3 id="提高http连接性能"><a class="markdownIt-Anchor" href="#提高http连接性能">#</a> 提高 HTTP 连接性能</h3>
+<pre><code>并行连接:通过多条TCP连接发起并发的HTTP请求 
+持久连接:keep-alive长连接,重用TCP连接,以消除连接和关闭的时延,以事务个数和时间来决定是否关闭连接
+管道化连接:通过共享TCP连接发起并发的HTTP请求
+复用的连接:交替传送请求和响应报文(实验阶段)
+</code></pre>
+<h3 id="uri"><a class="markdownIt-Anchor" href="#uri">#</a> URI</h3>
+<pre><code>URI:Uniform Resource Identifier,统一资源标识,分为URL和URN
+	URN: Uniform Resource Naming,统一资源命名
+	URL: Uniform Resorce Locator,统一资源定位符,用于描述某服务器某特定资源位置
+两者区别:URN如同一个人的名称,而URL代表一个人的住址；换言之,URN定义某事物的身份,而URL提供查找该事物的方法；URN仅用于命名,而不指定地址 
+</code></pre>
+<h3 id="url组成"><a class="markdownIt-Anchor" href="#url组成">#</a> URL 组成</h3>
+<pre><code>&lt;scheme&gt;://&lt;user&gt;:&lt;password&gt;@&lt;host&gt;:&lt;port&gt;/&lt;path&gt;;&lt;params&gt;?&lt;query&gt;#&lt;frag&gt;   
+schame:方案,访问服务器以获取资源时要使用哪种协议
+user:用户,某些方案访问资源时需要的用户名
+password:密码,用户对应的密码,中间用:分隔
+Host:主机,资源宿主服务器的主机名或IP地址         
+port:端口,资源宿主服务器正在监听的端口号,很多方案有默认端口号
+path:路径,服务器资源的本地名,由一个/将其与前面的URL组件分隔
+params:参数,指定输入的参数,参数为名/值对,多个参数,用;分隔
+query:查询,传递参数给程序,如数据库,用？分隔,多个查询用&amp;分隔
+frag:片段,一小片或一部分资源的名字,此组件在客户端使用,用#分隔
+</code></pre>
+<h3 id="网站访问量"><a class="markdownIt-Anchor" href="#网站访问量">#</a> 网站访问量</h3>
+<pre><code>IP(独立IP):即Internet Protocol,指独立IP数.一天内来自相同客户机IP地址只计算一次,记录远程客户机IP地址的计算机访问网站的次数,是衡量网站流量的重要指标.
+PV(访问量):即Page View,页面浏览量或点击量,用户每次刷新即被计算次,PV反映的是浏览某网站的页面数,PV与来访者的数量成正比,PV并不是页面的来访者数量,而是网站被访问的页面数量.
+UV(独立访客):即Unique Visitor,访问网站的一台电脑为一个访客,一天内相同的客户端只被计算一次,可以理解成访问某网站的电脑的数量,网站判断来访电脑的身份是通过来访电脑的cookies实现的,如果更换了IP后但不清除cookies,再访问相同网站,该网站的统计中UV数是不变的.
+
+网站统计:http://www.alexa.cn/rank/</code></pre>
+]]></content>
       <tags>
         <tag>httpd</tag>
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Hello Word]]></title>
-    <url>%2F2018%2F12%2F23%2FHello%20Word%2F</url>
-    <content type="text"><![CDATA[前言微凉高桐深密间幽篁，乳燕声希夏日长。独坐水亭风满袖，世间清景是微凉。]]></content>
+    <title>Keepalived实现高可用Nginx服务</title>
+    <url>/2018/12/25/Keepalived%E5%AE%9E%E7%8E%B0%E9%AB%98%E5%8F%AF%E7%94%A8Nginx%E6%9C%8D%E5%8A%A1/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>测试环境:</p>
+<pre><code>websrvs:realsrv1: 192.168.6.80, realsrv2: 192.168.6.82
+keepsrvs:nodesrv1: 192.168.6.86, nodesrv2: 192.168.6.88
+cleint: 192.168.6.68
+vip: 192.168.6.99
+</code></pre>
+<p>实验目的:</p>
+<pre><code>当主节点nodesrv1上反向代理服务nginx异常不可用,主节点自身调度优先级别降低并释放vip转移给节点nodesrv2
+</code></pre>
+<p>1. 在 2 台节点服务器分别安装 nginx</p>
+<pre><code>nodesrv[1,2]
+	~# yum install psmisc -y #'killall'命令程序包
+	yum install nginx -y
+	systemctl start nginx
+	systemctl enable nginx
+
+(1)编辑nginx配置文件,实现代理
+	vi /etc/nginx/conf.d/www.conf
+	upstream websrvs &#123;
+		server 192.168.6.80:80;
+		server 192.168.6.82:80;
+	&#125;
+
+	server &#123;
+		listen 80 default_server;
+		server_name nodesrv1.lboy.com;
+		root /usr/share/nginx/html;
+		location /&#123;
+			proxy_pass http://websrvs;
+		&#125;
+	&#125;
+
+(2)编辑nginx主配置文件,删除默认server
+	vi /etc/nginx/nginx.conf
+		server &#123;
+			listen       80;
+			server_name  localhost;
+			...
+	&#125;
+
+(3)在nodesrv2上同样配置nginx
+	scp /etc/nginx/conf.d/www.conf root@192.168.6.88:/etc/nginx/conf.d/www.conf
+	vi /etc/nginx/conf.d/www.conf
+	server_name nodesrv2.lboy.com;
+	...
+</code></pre>
+<p>2. 修改 keepalived 配置文件示例如下<br>
+～# systemctl stop keepalived</p>
+<pre><code>#nodesrv1配置文件
+~# man 5 keepalived.conf
+vi /etc/keepalived/keepalived.cfg
+! Configuration File for keepalived
+
+global_defs &#123;
+	notification_email &#123;
+		root@localhost
+&#125;
+	notification_email_from keepalived@localhost
+	smtp_server 127.0.0.1
+	smtp_connect_timeout 30
+	router_id nodesrv1
+	vrrp_mcast_group4 224.0.100.89
+	vrrp_skip_check_adv_addr
+	vrrp_strict
+	vrrp_garp_interval 0
+	vrrp_gna_interval 0
+	vrrp_iptables #不添加iptables规则
+&#125;
+
+vrrp_script chk_nginx &#123;
+	script &quot;killall -0 nginx &amp;&amp; exit 0 || exit 1&quot;
+	interval 1 #检测时间间隔
+	weight -5  #权重降级
+	fall 2
+	rise 1
+&#125;
+
+vrrp_instance VI_1 &#123;
+	state MASTER
+	interface ens33
+	virtual_router_id 16
+	priority 100
+	advert_int 1
+	authentication &#123;
+		auth_type PASS
+		auth_pass 516f97b2
+	&#125;
+	virtual_ipaddress &#123;
+	192.168.6.99/24 dev ens33
+	&#125;
+	track_interface &#123;
+		ens33
+	&#125;
+
+	track_script &#123;
+		chk_nginx #调用脚本名称,与上定义的脚本名称相同
+	&#125;
+	notify_master &quot;/etc/keepalived/notify.sh master&quot;
+	notify_backup &quot;/etc/keepalived/notify.sh backup&quot; #nginx异常终止时,主节点降为从节点,并传递参数执行脚本,尝试启动nginx
+	notify_fault &quot;/etc/keepalived/notify.sh fault&quot;
+&#125;
+
+#vrrp_instance VI_2 &#123;
+#	state MASTER
+#	interface ens33
+#	virtual_router_id 26
+#	priority 98
+#	advert_int 1
+#	authentication &#123;
+#		auth_type PASS
+#		auth_pass 0uuOpPPp
+#	&#125;
+#	virtual_ipaddress &#123;
+#		192.168.6.98/24 dev ens33
+#	&#125;
+#&#125;
+
+#nodesrv2配置文件
+
+vi /etc/keepalived/keepalived.cfg
+...
+vrrp_instance VI_1 &#123;
+	state BACKUP
+	interface ens33
+	virtual_router_id 16
+	priority 98
+	advert_int 1
+	authentication &#123;
+		auth_type PASS
+		auth_pass 516f97b2
+	&#125;
+	virtual_ipaddress &#123;
+		192.168.6.99/24 dev ens33
+	&#125;
+	track_interface &#123;
+		ens33
+	&#125;
+	track_script &#123;
+		chk_nginx
+	&#125;
+	notify_master &quot;/etc/keepalived/notify.sh master&quot;
+	notify_backup &quot;/etc/keepalived/notify.sh backup&quot;
+	notify_fault &quot;/etc/keepalived/notify.sh fault&quot;
+&#125;
+
+#vrrp_instance VI_2 &#123;
+#	state MASTER
+#	interface ens33
+#	virtual_router_id 26
+#	priority 100
+#	advert_int 1
+#	authentication &#123;
+#		auth_type PASS
+#		auth_pass 0uuOpPPp
+#	&#125;
+#	virtual_ipaddress &#123;
+#		192.168.6.98/24 dev ens33
+#	&#125;
+#&#125;
+</code></pre>
+<p>3. 启动服务测试<br>
+ systemctl start keepalived<br>
+systemctl status keepalived</p>
+<pre><code>cleint访问测试
+~# while true; do curl 192.168.6.99; sleep 1; done
+</code></pre>
+<p>#停止 nodesrv1 上的 nginx 服务，在 nodesrv2 上抓包观察 VIP 地址流动</p>
+<pre><code>nodesrv1
+~# systemctl sotp nginx
+
+nodesrv2
+~# tcpdump -i ens33 -nn host 224.0.100.89
+</code></pre>
+<p>#调适 keepalived 脚本</p>
+<pre><code>注意:
+	vrrp_script chk_ndown &#123;
+		script &quot;/bin/bash -c '[[ -f /etc/keepalived/down ]]' &amp;&amp; exit 1 || exit 0&quot; #'/etc/keepalived/down',文件存在时,权重降级
+		interval 1
+		weight -10
+	&#125;
+
+	#[[ -f /etc/keepalived/down ]],要特别地作为bash的参数的运行
+
+	track_script &#123;
+		#chk_nginx
+		chk_ndown
+	&#125;</code></pre>
+]]></content>
       <tags>
-        <tag>Test</tag>
+        <tag>keepalived</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Keepalived高可用IPVS健康状态检测</title>
+    <url>/2018/12/24/Keepalived%E9%AB%98%E5%8F%AF%E7%94%A8IPVS%E5%81%A5%E5%BA%B7%E7%8A%B6%E6%80%81%E6%A3%80%E6%B5%8B/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>测试环境</p>
+<pre><code>nodesrv1: 192.168.6.86, nodesrv2: 192.168.6.88
+realsrv1: 192.168.6.80, realsrv2: 192.168.6.82
+cleint: 192.168.6.68
+vip: 192.168.6.99
+</code></pre>
+<p>1.nodesrv 端安装及配置</p>
+<pre><code>nodesrv[1,2]
+	yum install keepalived -y
+	yum install ipvsadm -y
+</code></pre>
+<p>2.nodesrv1 配置文件，nodesrv2 修改对应 IP 地址</p>
+<pre><code>vi /etc/keepalived/keepalived.conf
+! Configuration File for keepalived
+
+global_defs &#123;
+	notification_email &#123;
+	root@localhost
+	&#125;
+	notification_email_from keepalived@localhost
+	smtp_server 127.0.0.1
+	smtp_connect_timeout 30
+	router_id nodesrv1
+	vrrp_mcast_group4 224.0.100.89
+	vrrp_skip_check_adv_addr
+	vrrp_strict
+	vrrp_garp_interval 0
+	vrrp_gna_interval 0
+&#125;
+
+vrrp_instance VI_1 &#123;
+	state MASTER
+	interface ens33
+	virtual_router_id 16
+	priority 100
+	advert_int 1
+	authentication &#123;
+		auth_type PASS
+		auth_pass 516f97b2
+	&#125;
+	virtual_ipaddress &#123;
+	192.168.6.99/24 dev ens33
+	&#125;
+	track_interface &#123;
+	ens33
+	&#125;
+	notify_master &quot;/etc/keepalived/notify.sh master&quot;
+	notify_backup &quot;/etc/keepalived/notify.sh backup&quot;
+	notify_fault &quot;/etc/keepalived/notify.sh fault&quot;   
+&#125;
+
+vrrp_instance VI_2 &#123;
+	state BACKUP
+	interface ens33
+	virtual_router_id 26
+	priority 98
+	advert_int 1
+	authentication &#123;
+		auth_type PASS
+		auth_pass 0uuOpPPp
+	&#125;
+	virtual_ipaddress &#123;
+		192.168.6.98/24 dev ens33
+	&#125;
+&#125;
+
+virtual_server 192.168.6.99 80 &#123;
+	delay_loop 2
+	lb_algo rr
+	lb_kind DR
+	# persistence_timeout 50
+	protocol TCP
+
+	sorry_server 127.0.0.1 80 #定义sorry-server
+
+	real_server 192.168.6.80 80 &#123;
+		weight 1
+		HTTP_GET &#123;
+			url &#123;
+			path /
+			status_code 200
+			&#125;
+			connect_timeout 2	 #连接超时时长
+			nb_get_retry 3		 #超时重试数次
+			delay_before_retry 1 #每次重试时间间隔
+		&#125;
+	&#125;
+	real_server 192.168.6.82 80 &#123;
+		weight 1
+		HTTP_GET &#123;
+			url &#123;
+			path /
+			status_code 200
+			&#125;
+			connect_timeout 2
+			nb_get_retry 3
+			delay_before_retry 1
+		&#125;
+	&#125;
+&#125;
+</code></pre>
+<p>3.realsrv [1,2] 运行配置脚本<br>
+～# sh lvs_dr_rs.sh start</p>
+<pre><code>vi lvs_dr_rs.sh
+#!/bin/bash
+#Author:wangxiaochun
+#Date:2017-08-13
+vip=192.168.6.99
+mask='255.255.255.255'
+dev=lo:1
+rpm -q httpd &amp;&gt; /dev/null || yum -y install httpd &amp;&gt;/dev/null
+service httpd start &amp;&gt; /dev/null &amp;&amp; echo &quot;The httpd Server is Ready!&quot;
+echo &quot;&lt;h1&gt;`hostname`&lt;/h1&gt;&quot; &gt; /var/www/html/index.html
+
+case $1 in
+start)
+	echo 1 &gt; /proc/sys/net/ipv4/conf/all/arp_ignore
+	echo 1 &gt; /proc/sys/net/ipv4/conf/lo/arp_ignore
+	echo 2 &gt; /proc/sys/net/ipv4/conf/all/arp_announce
+	echo 2 &gt; /proc/sys/net/ipv4/conf/lo/arp_announce
+	ifconfig $dev $vip netmask $mask #broadcast $vip up
+	#route add -host $vip dev $dev
+	echo &quot;The RS Server is Ready!&quot;
+	;;
+stop)
+	ifconfig $dev down
+	echo 0 &gt; /proc/sys/net/ipv4/conf/all/arp_ignore
+	echo 0 &gt; /proc/sys/net/ipv4/conf/lo/arp_ignore
+	echo 0 &gt; /proc/sys/net/ipv4/conf/all/arp_announce
+	echo 0 &gt; /proc/sys/net/ipv4/conf/lo/arp_announce
+	echo &quot;The RS Server is Canceled!&quot;
+	;;
+*) 
+	echo &quot;Usage: $(basename $0) start|stop&quot;
+	exit 1
+	;;
+esac
+</code></pre>
+<p>4. 配置 sorry-server</p>
+<pre><code>nodesrv[1,2]
+	yum install httpd -y
+	echo 'sorry server nodesrv[1,2]' &gt;/www/html/index.html
+	systemctl start httpd
+</code></pre>
+<p>5.cleint 测试集群环境，注意防火墙规则</p>
+<pre><code>~# while true; do curl 192.168.6.99; sleep 1; done
+</code></pre>
+]]></content>
+      <tags>
+        <tag>keepalived</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Markdown简单用法</title>
+    <url>/2018/12/24/Markdown%E7%AE%80%E5%8D%95%E7%94%A8%E6%B3%95/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>Markdown 基本语法</p>
+<pre><code>markdown是一种纯文本格式的标记语言。通过简单的标记语法,它可以使普通文本内容具有一定的格式.
+</code></pre>
+<p>标题</p>
+<pre><code># 这是一级标题
+## 这是二级标题
+### 这是三级标题
+#### 这是四级标题
+##### 这是五级标题
+###### 这是六级标题
+</code></pre>
+<p>字体</p>
+<pre><code>斜体 要倾斜的文字左右分别用一个*号包起来
+	
+	*这是倾斜的文字*
+
+加粗 要加粗的文字左右分别用两个*号包起来
+	
+	**这是加粗的文字**
+	
+斜体加粗 要倾斜和加粗的文字左右分别用三个*号包起来
+
+	***这是斜体加粗的文字***
+	
+删除线 要加删除线的文字左右分别用两个~~号包起来
+
+	~~这是加删除线的文字~~
+</code></pre>
+<p>分割线</p>
+<pre><code>三个或者三个以上的 - 或者 * 都可以
+	---
+	----
+	***
+	*****
+</code></pre>
+<p>超链接</p>
+<pre><code>[超链接名](超链接地址 &quot;超链接title&quot;) title可加可不加
+
+	[百度](http://baidu.com)
+</code></pre>
+<p>列表</p>
+<pre><code>无序列表
+	语法:无序列表用 - + * 任何一种都可以
+	
+	- 列表内容
+	+ 列表内容
+	* 列表内容
+
+	注意:- + * 跟内容之间都要有一个空格
+
+有序列表
+	语法:数字加点
+	
+	1.列表内容
+	2.列表内容
+	3.列表内容
+
+	注意：序号跟内容之间要有空格
+
+列表嵌套
+	上一级和下一级之间敲三个空格即可
+</code></pre>
+<p>代码</p>
+<pre><code>单行代码:代码之间分别用一个反引号包起来
+	`代码内容`
+
+代码块:代码之间分别用三个反引号包起来,且两边的反引号单独占一行	
+	(```)
+	  代码...
+	  代码...
+	  代码...
+	(```)
+	
+注意:为了防止转译,前后三个反引号处加了小括号,实际是没有的.这里只是用来演示,实际中去掉两边小括号即可.
+</code></pre>
+]]></content>
+      <tags>
+        <tag>markdown</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Nginx反向代理Tomcat负载均衡+redis实现session共享</title>
+    <url>/2019/01/05/Nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86Tomcat%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1-redis%E5%AE%9E%E7%8E%B0session%E5%85%B1%E4%BA%AB/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>测试环境</p>
+<pre><code>tomcatsrvs:node01srv: 192.168.6.80, node02srv: 192.168.6.82
+mastersrv:nginxsrv: 192.168.6.88
+redisrv: 192.168.6.86
+
+cat /etc/hosts
+192.168.6.80 node01.lboy.com
+192.168.6.82 node02.lboy.com
+192.168.6.86 node06.lboy.com
+192.168.6.88 master.lboy.com, www.lboy.com
+</code></pre>
+<p>1. 安装配置前端 nginxsrv</p>
+<pre><code>(1)修改nginx主配置文件
+yum install nginx -y
+vi /etc/nginx/nginx.conf #删除主配置文件默认的虚拟主机
+listen 80;
+
+#测试代理
+	vi /etc/nginx/conf.d/www.conf
+	server &#123;
+		listen 80 default_server;
+		server_name www.lboy.com;
+		location / &#123;
+			proxy_pass http://192.168.6.80:8080; #使用IP地址,访问默认的tomcat虚拟主机;当有多个虚拟主机时,应使用域名解析
+			#proxy_pass http://node01.lboy.com:8080; #&quot;node01.lboy.com&quot;确保主机名正常解析
+		&#125;
+	&#125;
+
+	systemctl start nginx
+
+	http://www.lboy.com/ #浏览器测试正常访问tomcat默认虚拟主机
+	TomcatA.magedu.com
+	Session ID 	C83F0DB65F70CFDBDE0EEC8EB0B376CE
+	Created on 	1531556340022
+
+(2)添加nginx代理配置
+vi /etc/nginx/conf.d/www.conf
+upstream tcsrvs &#123;
+	#ip_hash; #'ip_hash'会话绑定实现负载均衡,此方法粗糙建议使用cookie会话绑定
+	server node01.lboy.com:8080;
+	server node02.lboy.com:8080;
+&#125;
+
+server &#123;
+	listen 80 default_server;
+	server_name www.lboy.com;
+	location / &#123;
+		proxy_pass http://tcsrvs;
+	&#125;
+&#125;
+
+注意:nginx反向代理后端tomcat服务器时,域名已经解析成IP地址;访问tomcat时,是通过IP地址进行访问,所以会访问到tomcat的默认虚拟主机,需要修改默认虚拟主机配置
+</code></pre>
+<p>2. 后端 tomcatsrvs 节点，node01srv&amp;node02srv 安装配置</p>
+<pre><code>(1)node01srv
+yum install java-1.8.0-openjdk-devel
+yum install tomcat tomcat-lib tomcat-admin-webapps tomcat-webapps
+
+mkdir -pv /data/webapps/ROOT/&#123;classes,lib,META-INF,WEB-INF&#125;
+vi /data/webapps/ROOT/index.jsp
+&lt;%@ page language=&quot;java&quot; %&gt;			
+&lt;html&gt;
+	&lt;head&gt;&lt;title&gt;TomcatA&lt;/title&gt;&lt;/head&gt;
+	&lt;body&gt;
+		&lt;h1&gt;&lt;font color=&quot;red&quot;&gt;TomcatA.magedu.com&lt;/font&gt;&lt;/h1&gt;
+		&lt;table align=&quot;centre&quot; border=&quot;1&quot;&gt;	
+			&lt;tr&gt;
+				&lt;td&gt;Session ID&lt;/td&gt;
+			&lt;% session.setAttribute(&quot;magedu.com&quot;,&quot;magedu.com&quot;); %&gt;
+				&lt;td&gt;&lt;%= session.getId() %&gt;&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+				&lt;td&gt;Created on&lt;/td&gt;
+				&lt;td&gt;&lt;%= session.getCreationTime() %&gt;&lt;/td&gt;
+			&lt;/tr&gt;
+		&lt;/table&gt;
+	&lt;/body&gt;
+&lt;/html&gt;
+
+cp /etc/tomcat/server.xml&#123;,.bak&#125;
+vi /etc/tomcat/server.xml
+&lt;Engine name=&quot;Catalina&quot; defaultHost=&quot;node01.lboy.com&quot;&gt; #修改默认虚拟主机
+
+&lt;Host name=&quot;node01.lboy.com&quot; appBase=&quot;/data/webapps&quot; unpackWAR=&quot;true&quot; autoDeploy=&quot;true&quot;&gt;
+	&lt;Valve className=&quot;org.apache.catalina.valves.AccessLogValve&quot; directory=&quot;logs&quot;
+		prefix=&quot;node01_access_log.&quot; suffix=&quot;.log&quot;
+		pattern=&quot;%h %l %u %t &amp;quot;%r&amp;quot; %s %b&quot; /&gt;
+&lt;/Host&gt;
+
+(2)node02srv
+yum install java-1.8.0-openjdk-devel
+yum install tomcat tomcat-lib tomcat-admin-webapps tomcat-webapps
+scp -rp 192.168.6.80:/data/ /
+
+~#vi /data/webapps/ROOT/index.jsp
+&lt;%@ page language=&quot;java&quot; %&gt;
+&lt;html&gt;
+	&lt;head&gt;&lt;title&gt;TomcatB&lt;/title&gt;&lt;/head&gt;
+	&lt;body&gt;
+		&lt;h1&gt;&lt;font color=&quot;blue&quot;&gt;TomcatB.magedu.com&lt;/font&gt;&lt;/h1&gt;
+		&lt;table align=&quot;centre&quot; border=&quot;1&quot;&gt;
+				&lt;tr&gt;
+					&lt;td&gt;Session ID&lt;/td&gt;
+				&lt;% session.setAttribute(&quot;magedu.com&quot;,&quot;magedu.com&quot;); %&gt;
+					&lt;td&gt;&lt;%= session.getId() %&gt;&lt;/td&gt;
+				&lt;/tr&gt;
+				&lt;tr&gt;
+					&lt;td&gt;Created on&lt;/td&gt;
+					&lt;td&gt;&lt;%= session.getCreationTime() %&gt;&lt;/td&gt;
+				&lt;/tr&gt;
+		&lt;/table&gt;
+	&lt;/body&gt;
+&lt;/html&gt;
+
+scp 192.168.6.80:/etc/tomcat/&#123;server.xml,tomcat-users.xml&#125; /etc/tomcat/
+vi /etc/tomcat/server.xml
+&lt;Engine name=&quot;Catalina&quot; defaultHost=&quot;node02.lboy.com&quot;&gt; #修改默认虚拟主机
+
+&lt;Host name=&quot;node02.lboy.com&quot; appBase=&quot;/data/webapps&quot; unpackWAR=&quot;true&quot; autoDeploy=&quot;true&quot;&gt;
+	&lt;Context path=&quot;/appt&quot; docBase=&quot;/data/otherapps/myapp&quot; reloadable=&quot;&quot;/&gt;
+	&lt;Valve className=&quot;org.apache.catalina.valves.AccessLogValve&quot; directory=&quot;logs&quot;
+		   prefix=&quot;node01_access_log.&quot; suffix=&quot;.log&quot;
+		   pattern=&quot;%h %l %u %t &amp;quot;%r&amp;quot; %s %b&quot; /&gt;
+&lt;/Host&gt;
+
+systemctl start tomcat
+</code></pre>
+<p>3. 安装配置 redisrv 实现 session 共享</p>
+<pre><code>(1)安装配置redisrv
+yum -y install redis	
+cp /etc/redis.conf&#123;,.bak&#125;
+vi /etc/redis.conf
+#bind 127.0.0.1 #redis默认只允许本地访问,注释bind 127.0.0.1允许所有的IP访问redis
+bind 192.168.6.80 192.168.6.82 #指定可以访问的IP
+#protected-mode yes #在redis3.2之后,redis增加了protected-mode,在这个模式下,即使注释掉了bind 127.0.0.1,再访问redisd时候还是报错
+protected-mode no
+daemonize yes
+#daemonize no
+
+(2)拷贝以下三个jar文件至各tomcat节点类库文件目录/usr/share/tomcat/lib -&gt; /usr/share/java/tomcat
+~# tree tomcat8-redis-session-manager
+tomcat8-redis-session-manager/
+├── commons-pool2-2.2.jar
+├── jedis-2.5.2.jar
+└── tomcat-redis-session-manager-2.0.0.jar
+
+(3)编辑各tomcat节点context.xml文件,添加以下内容配置redis服务
+vi /etc/tomcat/context.xml
+&lt;Valve className=&quot;com.orangefunction.tomcat.redissessions.RedisSessionHandlerValve&quot; /&gt;       
+&lt;Manager className=&quot;com.orangefunction.tomcat.redissessions.RedisSessionManager&quot;
+host=&quot;192.168.6.86&quot; #redisrv,IP地址
+port=&quot;6379&quot;
+database=&quot;0&quot;
+maxInactiveInterval=&quot;60&quot;/&gt;
+
+启动redis服务,重新启动所有tomcat,启动nginx,刷新nginx页面,两台tomcat页面可以看到sessionid值不变,关闭某台tomcat,nginx中sessionid不变,说明session是共享的.
+
+参考博文
+	https://www.cnblogs.com/mrlinfeng/p/6146866.html
+</code></pre>
+]]></content>
+      <tags>
+        <tag>tomcat</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Test</title>
+    <url>/2022/07/13/Test/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p><img src="D:%5COthers%5Chead05_%E5%89%AF%E6%9C%AC.jpg" alt="head05_副本"></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>live2d</title>
+    <url>/2022/07/20/new%2074/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="live2d"><a class="markdownIt-Anchor" href="#live2d">#</a> live2d</h1>
+<p>live2d:<br>
+enable: true<br>
+scriptFrom: local<br>
+pluginRootPath: live2dw/<br>
+pluginJsPath: lib/<br>
+pluginModelPath: assets/<br>
+tagMode: false<br>
+log: false<br>
+model:<br>
+use: live2d-widget-model-hijiki<br>
+display:<br>
+position: right<br>
+width: 150<br>
+height: 300<br>
+mobile:<br>
+show: true<br>
+react:<br>
+opacity: 0.7</p>
+]]></content>
+      <tags>
+        <tag>live2d</tag>
       </tags>
   </entry>
 </search>

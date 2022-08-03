@@ -1,1055 +1,651 @@
+
+
+
+
 <!DOCTYPE html>
 <html lang="">
-    <!-- title -->
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="Hexo" href="http://yoursite.com/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="Hexo" href="http://yoursite.com/atom.xml" />
+<link rel="alternate" type="application/json" title="Hexo" href="http://yoursite.com/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="keepalived" />
+
+
+<link rel="canonical" href="http://yoursite.com/2018/12/25/Keepalived%E5%AE%9E%E7%8E%B0%E9%AB%98%E5%8F%AF%E7%94%A8Nginx%E6%9C%8D%E5%8A%A1/">
 
 
 
-
-<!-- keywords -->
-
-
-
-
-<head><meta name="generator" content="Hexo 3.8.0">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="author" content="Zhangzhen">
-    <meta name="renderer" content="webkit">
-    <meta name="copyright" content="Zhangzhen">
-    
-    <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
-    
-    <meta name="description" content="">
-    <meta http-equiv="Cache-control" content="no-cache">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Keepalived实现高可用Nginx服务 · zhen&#39;s blog</title>
-    <style type="text/css">
-    @font-face {
-        font-family: 'Oswald-Regular';
-        src: url("/font/Oswald-Regular.ttf");
-    }
-
-    body {
-        margin: 0;
-    }
-
-    header,
-    footer,
-    .back-top,
-    .sidebar,
-    .container,
-    .site-intro-meta,
-    .toc-wrapper {
-        display: none;
-    }
-
-    .site-intro {
-        position: relative;
-        z-index: 3;
-        width: 100%;
-        /* height: 50vh; */
-        overflow: hidden;
-    }
-
-    .site-intro-placeholder {
-        position: absolute;
-        z-index: -2;
-        top: 0;
-        left: 0;
-        width: calc(100% + 300px);
-        height: 100%;
-        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
-        background-position: center center;
-        transform: translate3d(-226px, 0, 0);
-        animation: gradient-move 2.5s ease-out 0s infinite;
-    }
-
-    @keyframes gradient-move {
-        0% {
-            transform: translate3d(-226px, 0, 0);
-        }
-        100% {
-            transform: translate3d(0, 0, 0);
-        }
-    }
-
-</style>
-
-    <link rel="preload" href="/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="stylesheet" href="/css/mobile.css?v=20180824" media="(max-width: 980px)">
-    
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    
-    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
-/* This file is meant as a standalone workflow for
-- testing support for link[rel=preload]
-- enabling async CSS loading in browsers that do not support rel=preload
-- applying rel preload css once loaded, whether supported or not.
-*/ -->
-<script>
-(function( w ){
-	"use strict";
-	// rel=preload support test
-	if( !w.loadCSS ){
-		w.loadCSS = function(){};
-	}
-	// define on the loadCSS obj
-	var rp = loadCSS.relpreload = {};
-	// rel=preload feature support test
-	// runs once and returns a function for compat purposes
-	rp.support = (function(){
-		var ret;
-		try {
-			ret = w.document.createElement( "link" ).relList.supports( "preload" );
-		} catch (e) {
-			ret = false;
-		}
-		return function(){
-			return ret;
-		};
-	})();
-
-	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
-	// then change that media back to its intended value on load
-	rp.bindMediaToggle = function( link ){
-		// remember existing media attr for ultimate state, or default to 'all'
-		var finalMedia = link.media || "all";
-
-		function enableStylesheet(){
-			link.media = finalMedia;
-		}
-
-		// bind load handlers to enable media
-		if( link.addEventListener ){
-			link.addEventListener( "load", enableStylesheet );
-		} else if( link.attachEvent ){
-			link.attachEvent( "onload", enableStylesheet );
-		}
-
-		// Set rel and non-applicable media type to start an async request
-		// note: timeout allows this to happen async to let rendering continue in IE
-		setTimeout(function(){
-			link.rel = "stylesheet";
-			link.media = "only x";
-		});
-		// also enable media after 3 seconds,
-		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
-		setTimeout( enableStylesheet, 3000 );
-	};
-
-	// loop through link elements in DOM
-	rp.poly = function(){
-		// double check this to prevent external calls from running
-		if( rp.support() ){
-			return;
-		}
-		var links = w.document.getElementsByTagName( "link" );
-		for( var i = 0; i < links.length; i++ ){
-			var link = links[ i ];
-			// qualify links to those with rel=preload and as=style attrs
-			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
-				// prevent rerunning on link
-				link.setAttribute( "data-loadcss", true );
-				// bind listeners to toggle media back
-				rp.bindMediaToggle( link );
-			}
-		}
-	};
-
-	// if unsupported, run the polyfill
-	if( !rp.support() ){
-		// run once at least
-		rp.poly();
-
-		// rerun poly on an interval until onload
-		var run = w.setInterval( rp.poly, 500 );
-		if( w.addEventListener ){
-			w.addEventListener( "load", function(){
-				rp.poly();
-				w.clearInterval( run );
-			} );
-		} else if( w.attachEvent ){
-			w.attachEvent( "onload", function(){
-				rp.poly();
-				w.clearInterval( run );
-			} );
-		}
-	}
-
-
-	// commonjs
-	if( typeof exports !== "undefined" ){
-		exports.loadCSS = loadCSS;
-	}
-	else {
-		w.loadCSS = loadCSS;
-	}
-}( typeof global !== "undefined" ? global : this ) );
-</script>
-
-    <link rel="icon" href="/assets/favicon.ico">
-    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script">
-    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script">
-    <link rel="preload" href="/scripts/main.js" as="script">
-    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin="">
-    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin="">
-    
-        <!-- algolia -->
-        <script>
-            
-            var hits = JSON.parse('{"per_page":10}')
-            var labels = JSON.parse('{"input_placeholder":"Search for Posts","hits_empty":"We did not find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}')
-
-            var algolia = {
-                applicationID: 'QZSJMIA860',
-                apiKey: 'f8a83e6a8c27d91887fe1d60e982dec2',
-                indexName: 'daisies',
-                hits: hits,
-                labels: labels
-            }
-        </script>
-    
-    <!-- fancybox -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
-    <!-- 百度统计  -->
-    
-    <!-- 谷歌统计  -->
-    
-</head>
-
-    
-        <body class="post-body">
-    
-     
-<header class="header">
-
-    <div class="read-progress"></div>
-    <div class="header-sidebar-menu">&#xe775;</div>
-    <!-- post页的toggle banner  -->
-    
-    <div class="banner">
-            <div class="blog-title">
-                <a href="/">zhen&#39;s blog.</a>
-            </div>
-            <div class="post-title">
-                <a href="#" class="post-name">Keepalived实现高可用Nginx服务</a>
-            </div>
+  <title>
+Keepalived实现高可用Nginx服务 |
+Yume Shoka = Hexo</title>
+<meta name="generator" content="Hexo 6.2.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
     </div>
-    
-    <a class="home-link" href="/">zhen's blog.</a>
-</header>
-    <div class="wrapper">
-        <div class="site-intro" style="
-
-
-
-
-
-
-
-height:50vh;
-">
-    
-    <!-- 主页  -->
-    
-    
-    <!-- 404页  -->
-            
-    <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
-    <div class="site-intro-meta">
-        <!-- 标题  -->
-        <h1 class="intro-title">
-            <!-- 主页  -->
-            
-            Keepalived实现高可用Nginx服务
-            <!-- 404 -->
-            
-        </h1>
-        <!-- 副标题 -->
-        <p class="intro-subtitle">
-            <!-- 主页副标题  -->
-            
-            
-            <!-- 404 -->
-            
-        </p>
-        <!-- 文章页meta -->
-        
-            <div class="post-intros">
-                <!-- 文章页标签  -->
-                
-                    <div class="post-intro-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="keepalived">keepalived</a>
-    
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">Keepalived实现高可用Nginx服务
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2018-12-25 12:15:15">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2018-12-25T12:15:15+08:00">2018-12-25</time>
+  </span>
 </div>
-                
-                
-                    <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">664</span>阅读时长: <span class="post-count reading-time">3 min</span></span>
-                    </div>
-                
-                <div class="post-intro-meta">
-                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2018/12/25</span>
-                    
-                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
-                        <span class="iconfont-archer">&#xe602;</span>
-                        <span id="busuanzi_value_page_pv"></span>
-                    </span>
-                    
-                    <span class="shareWrapper">
-                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
-                        <span class="shareText">Share</span>
-                        <ul class="shareList">
-                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
-                                <div class="share-qrcode"></div>
-                            </li>
-                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
-                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
-                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
-                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
-                        </ul>
-                    </span>
-                </div>
-            </div>
-        
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
     </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Yume Shoka</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclfw2t96j20zk0m8x6p.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giph4lm9i7j20zk0m84qp.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipexj2jgzj20zk0m8b09.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipesx5fdwj20zk0m81kx.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipevgoki5j20zk0m84qp.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giciusoyjnj219g0u0x56.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
 </div>
-        <script>
- 
-  // get user agent
-  var browser = {
-    versions: function () {
-      var u = window.navigator.userAgent;
-      return {
-        userAgent: u,
-        trident: u.indexOf('Trident') > -1, //IE内核
-        presto: u.indexOf('Presto') > -1, //opera内核
-        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
-        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
-        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
-        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
-        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
-        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
-        iPad: u.indexOf('iPad') > -1, //是否为iPad
-        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
-        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
-        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
-      };
-    }()
-  }
-  console.log("userAgent:" + browser.versions.userAgent);
 
-  // callback
-  function fontLoaded() {
-    console.log('font loaded');
-    if (document.getElementsByClassName('site-intro-meta')) {
-      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
-      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
-      var postIntros = document.getElementsByClassName('post-intros')[0]
-      if (postIntros) {
-        postIntros.classList.add('post-fade-in');
-      }
-    }
-  }
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="default">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/25/Keepalived%E5%AE%9E%E7%8E%B0%E9%AB%98%E5%8F%AF%E7%94%A8Nginx%E6%9C%8D%E5%8A%A1/">
 
-  // UC不支持跨域，所以直接显示
-  function asyncCb(){
-    if (browser.versions.uc) {
-      console.log("UCBrowser");
-      fontLoaded();
-    } else {
-      WebFont.load({
-        custom: {
-          families: ['Oswald-Regular']
-        },
-        loading: function () {  //所有字体开始加载
-          // console.log('loading');
-        },
-        active: function () {  //所有字体已渲染
-          fontLoaded();
-        },
-        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
-          console.log('inactive: timeout');
-          fontLoaded();
-        },
-        timeout: 5000 // Set the timeout to two seconds
-      });
-    }
-  }
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="Zhangzhen">
+    <meta itemprop="description" content=", ">
+  </span>
 
-  function asyncErr(){
-    console.warn('script load from CDN failed, will load local script')
-  }
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
 
-  // load webfont-loader async, and add callback function
-  function async(u, cb, err) {
-    var d = document, t = 'script',
-      o = d.createElement(t),
-      s = d.getElementsByTagName(t)[0];
-    o.src = u;
-    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
-    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
-    s.parentNode.insertBefore(o, s);
-  }
+  <div class="body md" itemprop="articleBody">
+    
 
-  var asyncLoadWithFallBack = function(arr, success, reject) {
-      var currReject = function(){
-        reject()
-        arr.shift()
-        if(arr.length)
-          async(arr[0], success, currReject)
-        }
-
-      async(arr[0], success, currReject)
-  }
-
-  asyncLoadWithFallBack([
-    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
-    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
-    "/lib/webfontloader.min.js"
-  ], asyncCb, asyncErr)
-</script>        
-        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
-        <div class="container container-unloaded">
-            <main class="main post-page">
-    <article class="article-entry">
-        <p>测试环境:</p>
+    <p>测试环境:</p>
 <pre><code>websrvs:realsrv1: 192.168.6.80, realsrv2: 192.168.6.82
 keepsrvs:nodesrv1: 192.168.6.86, nodesrv2: 192.168.6.88
 cleint: 192.168.6.68
 vip: 192.168.6.99
-</code></pre><p>实验目的:</p>
+</code></pre>
+<p>实验目的:</p>
 <pre><code>当主节点nodesrv1上反向代理服务nginx异常不可用,主节点自身调度优先级别降低并释放vip转移给节点nodesrv2
-</code></pre><p>1.在2台节点服务器分别安装nginx</p>
+</code></pre>
+<p>1. 在 2 台节点服务器分别安装 nginx</p>
 <pre><code>nodesrv[1,2]
-    ~# yum install psmisc -y #&apos;killall&apos;命令程序包
-    yum install nginx -y
-    systemctl start nginx
-    systemctl enable nginx
+	~# yum install psmisc -y #'killall'命令程序包
+	yum install nginx -y
+	systemctl start nginx
+	systemctl enable nginx
 
 (1)编辑nginx配置文件,实现代理
-    vi /etc/nginx/conf.d/www.conf
-    upstream websrvs {
-        server 192.168.6.80:80;
-        server 192.168.6.82:80;
-    }
+	vi /etc/nginx/conf.d/www.conf
+	upstream websrvs &#123;
+		server 192.168.6.80:80;
+		server 192.168.6.82:80;
+	&#125;
 
-    server {
-        listen 80 default_server;
-        server_name nodesrv1.lboy.com;
-        root /usr/share/nginx/html;
-        location /{
-            proxy_pass http://websrvs;
-        }
-    }
+	server &#123;
+		listen 80 default_server;
+		server_name nodesrv1.lboy.com;
+		root /usr/share/nginx/html;
+		location /&#123;
+			proxy_pass http://websrvs;
+		&#125;
+	&#125;
 
 (2)编辑nginx主配置文件,删除默认server
-    vi /etc/nginx/nginx.conf
-        server {
-            listen       80;
-            server_name  localhost;
-            ...
-    }
+	vi /etc/nginx/nginx.conf
+		server &#123;
+			listen       80;
+			server_name  localhost;
+			...
+	&#125;
 
 (3)在nodesrv2上同样配置nginx
-    scp /etc/nginx/conf.d/www.conf root@192.168.6.88:/etc/nginx/conf.d/www.conf
-    vi /etc/nginx/conf.d/www.conf
-    server_name nodesrv2.lboy.com;
-    ...
-</code></pre><p>2.修改keepalived配置文件示例如下<br>    ~# systemctl stop keepalived</p>
+	scp /etc/nginx/conf.d/www.conf root@192.168.6.88:/etc/nginx/conf.d/www.conf
+	vi /etc/nginx/conf.d/www.conf
+	server_name nodesrv2.lboy.com;
+	...
+</code></pre>
+<p>2. 修改 keepalived 配置文件示例如下<br>
+～# systemctl stop keepalived</p>
 <pre><code>#nodesrv1配置文件
 ~# man 5 keepalived.conf
 vi /etc/keepalived/keepalived.cfg
 ! Configuration File for keepalived
 
-global_defs {
-    notification_email {
-        root@localhost
-}
-    notification_email_from keepalived@localhost
-    smtp_server 127.0.0.1
-    smtp_connect_timeout 30
-    router_id nodesrv1
-    vrrp_mcast_group4 224.0.100.89
-    vrrp_skip_check_adv_addr
-    vrrp_strict
-    vrrp_garp_interval 0
-    vrrp_gna_interval 0
-    vrrp_iptables #不添加iptables规则
-}
+global_defs &#123;
+	notification_email &#123;
+		root@localhost
+&#125;
+	notification_email_from keepalived@localhost
+	smtp_server 127.0.0.1
+	smtp_connect_timeout 30
+	router_id nodesrv1
+	vrrp_mcast_group4 224.0.100.89
+	vrrp_skip_check_adv_addr
+	vrrp_strict
+	vrrp_garp_interval 0
+	vrrp_gna_interval 0
+	vrrp_iptables #不添加iptables规则
+&#125;
 
-vrrp_script chk_nginx {
-    script &quot;killall -0 nginx &amp;&amp; exit 0 || exit 1&quot;
-    interval 1 #检测时间间隔
-    weight -5  #权重降级
-    fall 2
-    rise 1
-}
+vrrp_script chk_nginx &#123;
+	script &quot;killall -0 nginx &amp;&amp; exit 0 || exit 1&quot;
+	interval 1 #检测时间间隔
+	weight -5  #权重降级
+	fall 2
+	rise 1
+&#125;
 
-vrrp_instance VI_1 {
-    state MASTER
-    interface ens33
-    virtual_router_id 16
-    priority 100
-    advert_int 1
-    authentication {
-        auth_type PASS
-        auth_pass 516f97b2
-    }
-    virtual_ipaddress {
-    192.168.6.99/24 dev ens33
-    }
-    track_interface {
-        ens33
-    }
+vrrp_instance VI_1 &#123;
+	state MASTER
+	interface ens33
+	virtual_router_id 16
+	priority 100
+	advert_int 1
+	authentication &#123;
+		auth_type PASS
+		auth_pass 516f97b2
+	&#125;
+	virtual_ipaddress &#123;
+	192.168.6.99/24 dev ens33
+	&#125;
+	track_interface &#123;
+		ens33
+	&#125;
 
-    track_script {
-        chk_nginx #调用脚本名称,与上定义的脚本名称相同
-    }
-    notify_master &quot;/etc/keepalived/notify.sh master&quot;
-    notify_backup &quot;/etc/keepalived/notify.sh backup&quot; #nginx异常终止时,主节点降为从节点,并传递参数执行脚本,尝试启动nginx
-    notify_fault &quot;/etc/keepalived/notify.sh fault&quot;
-}
+	track_script &#123;
+		chk_nginx #调用脚本名称,与上定义的脚本名称相同
+	&#125;
+	notify_master &quot;/etc/keepalived/notify.sh master&quot;
+	notify_backup &quot;/etc/keepalived/notify.sh backup&quot; #nginx异常终止时,主节点降为从节点,并传递参数执行脚本,尝试启动nginx
+	notify_fault &quot;/etc/keepalived/notify.sh fault&quot;
+&#125;
 
-#vrrp_instance VI_2 {
-#    state MASTER
-#    interface ens33
-#    virtual_router_id 26
-#    priority 98
-#    advert_int 1
-#    authentication {
-#        auth_type PASS
-#        auth_pass 0uuOpPPp
-#    }
-#    virtual_ipaddress {
-#        192.168.6.98/24 dev ens33
-#    }
-#}
+#vrrp_instance VI_2 &#123;
+#	state MASTER
+#	interface ens33
+#	virtual_router_id 26
+#	priority 98
+#	advert_int 1
+#	authentication &#123;
+#		auth_type PASS
+#		auth_pass 0uuOpPPp
+#	&#125;
+#	virtual_ipaddress &#123;
+#		192.168.6.98/24 dev ens33
+#	&#125;
+#&#125;
 
 #nodesrv2配置文件
 
 vi /etc/keepalived/keepalived.cfg
 ...
-vrrp_instance VI_1 {
-    state BACKUP
-    interface ens33
-    virtual_router_id 16
-    priority 98
-    advert_int 1
-    authentication {
-        auth_type PASS
-        auth_pass 516f97b2
-    }
-    virtual_ipaddress {
-        192.168.6.99/24 dev ens33
-    }
-    track_interface {
-        ens33
-    }
-    track_script {
-        chk_nginx
-    }
-    notify_master &quot;/etc/keepalived/notify.sh master&quot;
-    notify_backup &quot;/etc/keepalived/notify.sh backup&quot;
-    notify_fault &quot;/etc/keepalived/notify.sh fault&quot;
-}
+vrrp_instance VI_1 &#123;
+	state BACKUP
+	interface ens33
+	virtual_router_id 16
+	priority 98
+	advert_int 1
+	authentication &#123;
+		auth_type PASS
+		auth_pass 516f97b2
+	&#125;
+	virtual_ipaddress &#123;
+		192.168.6.99/24 dev ens33
+	&#125;
+	track_interface &#123;
+		ens33
+	&#125;
+	track_script &#123;
+		chk_nginx
+	&#125;
+	notify_master &quot;/etc/keepalived/notify.sh master&quot;
+	notify_backup &quot;/etc/keepalived/notify.sh backup&quot;
+	notify_fault &quot;/etc/keepalived/notify.sh fault&quot;
+&#125;
 
-#vrrp_instance VI_2 {
-#    state MASTER
-#    interface ens33
-#    virtual_router_id 26
-#    priority 100
-#    advert_int 1
-#    authentication {
-#        auth_type PASS
-#        auth_pass 0uuOpPPp
-#    }
-#    virtual_ipaddress {
-#        192.168.6.98/24 dev ens33
-#    }
-#}
-</code></pre><p>3.启动服务测试<br>    systemctl start keepalived<br>    systemctl status keepalived</p>
+#vrrp_instance VI_2 &#123;
+#	state MASTER
+#	interface ens33
+#	virtual_router_id 26
+#	priority 100
+#	advert_int 1
+#	authentication &#123;
+#		auth_type PASS
+#		auth_pass 0uuOpPPp
+#	&#125;
+#	virtual_ipaddress &#123;
+#		192.168.6.98/24 dev ens33
+#	&#125;
+#&#125;
+</code></pre>
+<p>3. 启动服务测试<br>
+ systemctl start keepalived<br>
+systemctl status keepalived</p>
 <pre><code>cleint访问测试
 ~# while true; do curl 192.168.6.99; sleep 1; done
-</code></pre><p>#停止nodesrv1上的nginx服务,在nodesrv2上抓包观察VIP地址流动</p>
+</code></pre>
+<p>#停止 nodesrv1 上的 nginx 服务，在 nodesrv2 上抓包观察 VIP 地址流动</p>
 <pre><code>nodesrv1
 ~# systemctl sotp nginx
 
 nodesrv2
 ~# tcpdump -i ens33 -nn host 224.0.100.89
-</code></pre><p>#调适keepalived脚本</p>
-<pre><code>注意:
-    vrrp_script chk_ndown {
-        script &quot;/bin/bash -c &apos;[[ -f /etc/keepalived/down ]]&apos; &amp;&amp; exit 1 || exit 0&quot; #&apos;/etc/keepalived/down&apos;,文件存在时,权重降级
-        interval 1
-        weight -10
-    }
-
-    #[[ -f /etc/keepalived/down ]],要特别地作为bash的参数的运行
-
-    track_script {
-        #chk_nginx
-        chk_ndown
-    }
 </code></pre>
-    </article>
-    <!-- license  -->
-    
-        <div class="license-wrapper">
-            <p>原文作者：<a href="http://yoursite.com">Zhangzhen</a>
-            </p><p>原文链接：<a href="http://yoursite.com/2018/12/25/Keepalived实现高可用Nginx服务/">http://yoursite.com/2018/12/25/Keepalived实现高可用Nginx服务/</a>
-            </p><p>发表日期：<a href="http://yoursite.com/2018/12/25/Keepalived实现高可用Nginx服务/">December 25th 2018, 12:15:15 pm</a>
-            </p><p>更新日期：<a href="http://yoursite.com/2018/12/25/Keepalived实现高可用Nginx服务/">December 25th 2018, 12:20:06 pm</a>
-            </p><p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
-        </div>
-    
-    <!-- paginator  -->
-    <ul class="post-paginator">
-        <li class="next">
-            
-                <div class="nextSlogan">Next Post</div>
-                <a href="/2019/01/05/Nginx反向代理Tomcat负载均衡-redis实现session共享/" title="Nginx反向代理Tomcat负载均衡+redis实现session共享">
-                    <div class="nextTitle">Nginx反向代理Tomcat负载均衡+redis实现session共享</div>
-                </a>
-            
-        </li>
-        <li class="previous">
-            
-                <div class="prevSlogan">Previous Post</div>
-                <a href="/2018/12/24/Keepalived高可用IPVS健康状态检测/" title="Keepalived高可用IPVS健康状态检测">
-                    <div class="prevTitle">Keepalived高可用IPVS健康状态检测</div>
-                </a>
-            
-        </li>
-    </ul>
-    <!-- 评论插件 -->
-    <!-- 来必力City版安装代码 -->
+<p>#调适 keepalived 脚本</p>
+<pre><code>注意:
+	vrrp_script chk_ndown &#123;
+		script &quot;/bin/bash -c '[[ -f /etc/keepalived/down ]]' &amp;&amp; exit 1 || exit 0&quot; #'/etc/keepalived/down',文件存在时,权重降级
+		interval 1
+		weight -10
+	&#125;
 
-    <div id="lv-container" data-id="city" data-uid="MTAyMC80MTgxNy8xODM2Mw==">
-        <script type="text/javascript">
-            (function (d, s) {
-                var j, e = d.getElementsByTagName(s)[0];
-                if (typeof LivereTower === 'function') { return; }
-                j = d.createElement(s);
-                j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-                j.async = true;
+	#[[ -f /etc/keepalived/down ]],要特别地作为bash的参数的运行
 
-                e.parentNode.insertBefore(j, e);
-            })(document, 'script');
-        </script>
-        <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
-    </div>
+	track_script &#123;
+		#chk_nginx
+		chk_ndown
+	&#125;</code></pre>
 
-<!-- City版安装代码已完成 -->
-    
-    
-    <!-- partial('_partial/comment/changyan') -->
-    <!--PC版-->
-
-
-    
-    
-
-    <!-- 评论 -->
-	<!-- APlayer音乐播放器插件 -->
-    <link rel="stylesheet" href="/dist/APlayer.min.css">
-    <div id="aplayer"></div>
-    <script type="text/javascript" src="/dist/APlayer.min.js"></script>
-    <script type="text/javascript" src="/dist/music.js"></script>	
-</main>
-            <!-- profile -->
-            
-        </div>
-        <footer class="footer footer-unloaded">
-    <!-- social  -->
-    
-    <div class="social">
-        
-    
-        
-            
-                <a href="mailto:daisiesloves.smile@gmail.com" class="iconfont-archer email" title="email"></a>
-            
-        
-    
-        
-            
-                <a href="https://daisiesloves.github.io/" class="iconfont-archer github" target="_blank" title="github"></a>
-            
-        
-    
-        
-            
-                <span class="iconfont-archer wechat" title="wechat">
-                  
-                  <img class="profile-qr" src="/assets/example_qr.png">
-                </span>
-            
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-
-    </div>
-    
-    <!-- powered by Hexo  -->
-    <div class="copyright">
-        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
-    </div>
-    <!-- 不蒜子  -->
-    
-    <div class="busuanzi-container">
-    
-     
-    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
-    
-    </div>
-    
-</footer>
-    </div>
-    <!-- toc -->
-    
-    <div class="toc-wrapper" style=
-    
-
-
-
-
-
-
-
-top:50vh;
-
-    >
-        <div class="toc-catalog">
-            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
-        </div>
-        
-    </div>
-    
-    <div class="back-top iconfont-archer">&#xe639;</div>
-    <div class="sidebar sidebar-hide">
-    <ul class="sidebar-tabs sidebar-tabs-active-0">
-        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
-        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
-        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
-    </ul>
-    <div class="sidebar-content sidebar-content-show-archive">
-          <div class="sidebar-panel-archives">
-    <!-- 在ejs中将archive按照时间排序 -->
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <div class="total-and-search">
-        <div class="total-archive">
-        Total : 8
-        </div>
-        <!-- search  -->
-        
-            <div class="site-search popup-trigger">
-                <span class="iconfont-archer search-icon">&#xe627;</span>
-            </div>
-        
-    </div>
-    
-    <div class="post-archive">
-    
-    
-    
-    
-    <div class="archive-year"> 2022 </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">07/13</span><a class="archive-post-title" href="/2022/07/13/Test/">Test</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">01/05</span><a class="archive-post-title" href="/2019/01/05/Nginx反向代理Tomcat负载均衡-redis实现session共享/">Nginx反向代理Tomcat负载均衡+redis实现session共享</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2018 </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">12/25</span><a class="archive-post-title" href="/2018/12/25/Keepalived实现高可用Nginx服务/">Keepalived实现高可用Nginx服务</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">12/24</span><a class="archive-post-title" href="/2018/12/24/Keepalived高可用IPVS健康状态检测/">Keepalived高可用IPVS健康状态检测</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">12/24</span><a class="archive-post-title" href="/2018/12/24/Markdown简单用法/">Markdown简单用法</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">12/23</span><a class="archive-post-title" href="/2018/12/23/Httpd基础知识/">Httpd基础知识</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">12/23</span><a class="archive-post-title" href="/2018/12/23/Hello Word/">Hello Word</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href="/2022/07/20/new 74/">live2d</a>
-        </li>
-    
-    </ul></div>
-  </div>
-        <div class="sidebar-panel-tags">
-    <div class="sidebar-tags-name">
-    
-        <span class="sidebar-tag-name" data-tags="httpd"><span class="iconfont-archer">&#xe606;</span>httpd</span>
-    
-        <span class="sidebar-tag-name" data-tags="Test"><span class="iconfont-archer">&#xe606;</span>Test</span>
-    
-        <span class="sidebar-tag-name" data-tags="keepalived"><span class="iconfont-archer">&#xe606;</span>keepalived</span>
-    
-        <span class="sidebar-tag-name" data-tags="markdown"><span class="iconfont-archer">&#xe606;</span>markdown</span>
-    
-        <span class="sidebar-tag-name" data-tags="tomcat"><span class="iconfont-archer">&#xe606;</span>tomcat</span>
-    
-        <span class="sidebar-tag-name" data-tags="live2d"><span class="iconfont-archer">&#xe606;</span>live2d</span>
-    
-    </div>
-    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
-    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
-    缺失模块。<br>
-    1、请确保node版本大于6.2<br>
-    2、在博客根目录（注意不是archer根目录）执行以下命令：<br>
-    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br>
-    3、在根目录_config.yml里添加配置：
-    <pre style="color: #787878; font-size: 0.6rem;">
-jsonContent:
-  meta: false
-  pages: false
-  posts:
-    title: true
-    date: true
-    path: true
-    text: false
-    raw: false
-    content: false
-    slug: false
-    updated: false
-    comments: false
-    link: false
-    permalink: false
-    excerpt: false
-    categories: true
-    tags: true</pre>
-    </div> 
-    <div class="sidebar-tags-list"></div>
-</div>
-        <div class="sidebar-panel-categories">
-    <div class="sidebar-categories-name">
-    
-    </div>
-    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
-    <div class="sidebar-categories-list"></div>
-</div>
-    </div>
-</div> 
-    <script>
-    var siteMeta = {
-        root: "/",
-        author: "Zhangzhen"
-    }
-</script>
-    <!-- CDN failover -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
-    <script type="text/javascript">
-        if (typeof window.$ === 'undefined')
-        {
-            console.warn('jquery load from jsdelivr failed, will load local script')
-            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
-        }
-    </script>
-    <script src="/scripts/main.js"></script>
-    <!-- algolia -->
-    
-        <div class="site-search">
-  <div class="algolia-popup popup">
-    <div class="algolia-search">
-      <div class="algolia-search-input-icon">
-        <i class="fa fa-search"></i>
+      <div class="tags">
+          <a href="/tags/keepalived/" rel="tag"><i class="ic i-tag"></i> keepalived</a>
       </div>
-      <div class="algolia-search-input" id="algolia-search-input"></div>
-    </div>
+  </div>
 
-    <div class="algolia-results">
-      <div id="algolia-stats"></div>
-      <div id="algolia-hits"></div>
-      <div id="algolia-pagination" class="algolia-pagination"></div>
-    </div>
+   <footer>
 
-    <span class="popup-btn-close">
-      <i class="iconfont-archer">&#xe609;</i>
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
     </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2018-12-25 12:20:06" itemprop="dateModified" datetime="2018-12-25T12:20:06+08:00">2018-12-25</time>
+  </span>
+  <span id="2018/12/25/Keepalived实现高可用Nginx服务/" class="item leancloud_visitors" data-flag-title="Keepalived实现高可用Nginx服务" title="Views">
+      <span class="icon">
+        <i class="ic i-eye"></i>
+      </span>
+      <span class="text">Views</span>
+      <span class="leancloud-visitors-count"></span>
+      <span class="text">times</span>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> Donate</button>
+  <p>Give me a cup of [coffee]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="Zhangzhen WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.png" alt="Zhangzhen Alipay">
+        <p>Alipay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/paypal.png" alt="Zhangzhen PayPal">
+        <p>PayPal</p>
+      </div>
   </div>
 </div>
-        <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.8.0/dist/instantsearch.min.js" defer></script>
-        <script src="/scripts/search.js" defer></script>
-    
-    <!-- busuanzi  -->
-    
-    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    
-    <!-- CNZZ  -->
-    
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>Zhangzhen <i class="ic i-at"><em>@</em></i>Hexo
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="http://yoursite.com/2018/12/25/Keepalived%E5%AE%9E%E7%8E%B0%E9%AB%98%E5%8F%AF%E7%94%A8Nginx%E6%9C%8D%E5%8A%A1/" title="Keepalived实现高可用Nginx服务">http://yoursite.com/2018/12/25/Keepalived实现高可用Nginx服务/</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2018/12/24/Keepalived%E9%AB%98%E5%8F%AF%E7%94%A8IPVS%E5%81%A5%E5%BA%B7%E7%8A%B6%E6%80%81%E6%A3%80%E6%B5%8B/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclwuom7cj20zk0m8dvn.jpg" title="Keepalived高可用IPVS健康状态检测">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Keepalived高可用IPVS健康状态检测</h3>
+  </a>
+
     </div>
-    <!-- async load share.js -->
+    <div class="item right">
+      
+
+  <a href="/2019/01/05/Nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86Tomcat%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1-redis%E5%AE%9E%E7%8E%B0session%E5%85%B1%E4%BA%AB/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipeudstjqj20zk0m8k3r.jpg" title="Nginx反向代理Tomcat负载均衡+redis实现session共享">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Nginx反向代理Tomcat负载均衡+redis实现session共享</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="Zhangzhen"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">Zhangzhen</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">8</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">6</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+</div>
+
+<ul class="menu">
+  
     
-        <script src="/scripts/share.js" async></script>    
-     
-    <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"live2d-widget-model-hijiki"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7}});</script></body>
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2018/12/24/Keepalived%E9%AB%98%E5%8F%AF%E7%94%A8IPVS%E5%81%A5%E5%BA%B7%E7%8A%B6%E6%80%81%E6%A3%80%E6%B5%8B/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2019/01/05/Nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86Tomcat%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1-redis%E5%AE%9E%E7%8E%B0session%E5%85%B1%E4%BA%AB/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2018/12/24/Keepalived%E9%AB%98%E5%8F%AF%E7%94%A8IPVS%E5%81%A5%E5%BA%B7%E7%8A%B6%E6%80%81%E6%A3%80%E6%B5%8B/" title="Keepalived高可用IPVS健康状态检测">Keepalived高可用IPVS健康状态检测</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2018/12/25/Keepalived%E5%AE%9E%E7%8E%B0%E9%AB%98%E5%8F%AF%E7%94%A8Nginx%E6%9C%8D%E5%8A%A1/" title="Keepalived实现高可用Nginx服务">Keepalived实现高可用Nginx服务</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2022/07/13/Test/" title="Test">Test</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/01/05/Nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86Tomcat%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1-redis%E5%AE%9E%E7%8E%B0session%E5%85%B1%E4%BA%AB/" title="Nginx反向代理Tomcat负载均衡+redis实现session共享">Nginx反向代理Tomcat负载均衡+redis实现session共享</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2018/12/23/Httpd%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="Httpd基础知识">Httpd基础知识</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2018/12/24/Markdown%E7%AE%80%E5%8D%95%E7%94%A8%E6%B3%95/" title="Markdown简单用法">Markdown简单用法</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2022/07/20/new%2074/" title="live2d">live2d</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2018/12/23/Hello%20Word/" title="Hello Word">Hello Word</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2022</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Zhangzhen @ Yume Shoka</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2018/12/25/Keepalived实现高可用Nginx服务/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"live2d-widget-model-hijiki"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7}});</script></body>
 </html>
-
-

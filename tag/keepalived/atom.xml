@@ -1,0 +1,363 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>http://yoursite.com</id>
+    <title>Hexo • Posts by &#34;keepalived&#34; tag</title>
+    <link href="http://yoursite.com" />
+    <updated>2018-12-25T04:15:15.000Z</updated>
+    <category term="Test" />
+    <category term="httpd" />
+    <category term="keepalived" />
+    <category term="markdown" />
+    <category term="tomcat" />
+    <category term="live2d" />
+    <entry>
+        <id>http://yoursite.com/2018/12/25/Keepalived%E5%AE%9E%E7%8E%B0%E9%AB%98%E5%8F%AF%E7%94%A8Nginx%E6%9C%8D%E5%8A%A1/</id>
+        <title>Keepalived实现高可用Nginx服务</title>
+        <link rel="alternate" href="http://yoursite.com/2018/12/25/Keepalived%E5%AE%9E%E7%8E%B0%E9%AB%98%E5%8F%AF%E7%94%A8Nginx%E6%9C%8D%E5%8A%A1/"/>
+        <content type="html">&lt;link rel=&#34;stylesheet&#34; class=&#34;aplayer-secondary-style-marker&#34; href=&#34;\assets\css\APlayer.min.css&#34;&gt;&lt;script src=&#34;\assets\js\APlayer.min.js&#34; class=&#34;aplayer-secondary-script-marker&#34;&gt;&lt;/script&gt;&lt;script class=&#34;meting-secondary-script-marker&#34; src=&#34;\assets\js\Meting.min.js&#34;&gt;&lt;/script&gt;&lt;p&gt;测试环境:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;websrvs:realsrv1: 192.168.6.80, realsrv2: 192.168.6.82
+keepsrvs:nodesrv1: 192.168.6.86, nodesrv2: 192.168.6.88
+cleint: 192.168.6.68
+vip: 192.168.6.99
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;实验目的:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;当主节点nodesrv1上反向代理服务nginx异常不可用,主节点自身调度优先级别降低并释放vip转移给节点nodesrv2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;1. 在 2 台节点服务器分别安装 nginx&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;nodesrv[1,2]
+	~# yum install psmisc -y #&#39;killall&#39;命令程序包
+	yum install nginx -y
+	systemctl start nginx
+	systemctl enable nginx
+
+(1)编辑nginx配置文件,实现代理
+	vi /etc/nginx/conf.d/www.conf
+	upstream websrvs &amp;#123;
+		server 192.168.6.80:80;
+		server 192.168.6.82:80;
+	&amp;#125;
+
+	server &amp;#123;
+		listen 80 default_server;
+		server_name nodesrv1.lboy.com;
+		root /usr/share/nginx/html;
+		location /&amp;#123;
+			proxy_pass http://websrvs;
+		&amp;#125;
+	&amp;#125;
+
+(2)编辑nginx主配置文件,删除默认server
+	vi /etc/nginx/nginx.conf
+		server &amp;#123;
+			listen       80;
+			server_name  localhost;
+			...
+	&amp;#125;
+
+(3)在nodesrv2上同样配置nginx
+	scp /etc/nginx/conf.d/www.conf root@192.168.6.88:/etc/nginx/conf.d/www.conf
+	vi /etc/nginx/conf.d/www.conf
+	server_name nodesrv2.lboy.com;
+	...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;2. 修改 keepalived 配置文件示例如下&lt;br&gt;
+～# systemctl stop keepalived&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#nodesrv1配置文件
+~# man 5 keepalived.conf
+vi /etc/keepalived/keepalived.cfg
+! Configuration File for keepalived
+
+global_defs &amp;#123;
+	notification_email &amp;#123;
+		root@localhost
+&amp;#125;
+	notification_email_from keepalived@localhost
+	smtp_server 127.0.0.1
+	smtp_connect_timeout 30
+	router_id nodesrv1
+	vrrp_mcast_group4 224.0.100.89
+	vrrp_skip_check_adv_addr
+	vrrp_strict
+	vrrp_garp_interval 0
+	vrrp_gna_interval 0
+	vrrp_iptables #不添加iptables规则
+&amp;#125;
+
+vrrp_script chk_nginx &amp;#123;
+	script &amp;quot;killall -0 nginx &amp;amp;&amp;amp; exit 0 || exit 1&amp;quot;
+	interval 1 #检测时间间隔
+	weight -5  #权重降级
+	fall 2
+	rise 1
+&amp;#125;
+
+vrrp_instance VI_1 &amp;#123;
+	state MASTER
+	interface ens33
+	virtual_router_id 16
+	priority 100
+	advert_int 1
+	authentication &amp;#123;
+		auth_type PASS
+		auth_pass 516f97b2
+	&amp;#125;
+	virtual_ipaddress &amp;#123;
+	192.168.6.99/24 dev ens33
+	&amp;#125;
+	track_interface &amp;#123;
+		ens33
+	&amp;#125;
+
+	track_script &amp;#123;
+		chk_nginx #调用脚本名称,与上定义的脚本名称相同
+	&amp;#125;
+	notify_master &amp;quot;/etc/keepalived/notify.sh master&amp;quot;
+	notify_backup &amp;quot;/etc/keepalived/notify.sh backup&amp;quot; #nginx异常终止时,主节点降为从节点,并传递参数执行脚本,尝试启动nginx
+	notify_fault &amp;quot;/etc/keepalived/notify.sh fault&amp;quot;
+&amp;#125;
+
+#vrrp_instance VI_2 &amp;#123;
+#	state MASTER
+#	interface ens33
+#	virtual_router_id 26
+#	priority 98
+#	advert_int 1
+#	authentication &amp;#123;
+#		auth_type PASS
+#		auth_pass 0uuOpPPp
+#	&amp;#125;
+#	virtual_ipaddress &amp;#123;
+#		192.168.6.98/24 dev ens33
+#	&amp;#125;
+#&amp;#125;
+
+#nodesrv2配置文件
+
+vi /etc/keepalived/keepalived.cfg
+...
+vrrp_instance VI_1 &amp;#123;
+	state BACKUP
+	interface ens33
+	virtual_router_id 16
+	priority 98
+	advert_int 1
+	authentication &amp;#123;
+		auth_type PASS
+		auth_pass 516f97b2
+	&amp;#125;
+	virtual_ipaddress &amp;#123;
+		192.168.6.99/24 dev ens33
+	&amp;#125;
+	track_interface &amp;#123;
+		ens33
+	&amp;#125;
+	track_script &amp;#123;
+		chk_nginx
+	&amp;#125;
+	notify_master &amp;quot;/etc/keepalived/notify.sh master&amp;quot;
+	notify_backup &amp;quot;/etc/keepalived/notify.sh backup&amp;quot;
+	notify_fault &amp;quot;/etc/keepalived/notify.sh fault&amp;quot;
+&amp;#125;
+
+#vrrp_instance VI_2 &amp;#123;
+#	state MASTER
+#	interface ens33
+#	virtual_router_id 26
+#	priority 100
+#	advert_int 1
+#	authentication &amp;#123;
+#		auth_type PASS
+#		auth_pass 0uuOpPPp
+#	&amp;#125;
+#	virtual_ipaddress &amp;#123;
+#		192.168.6.98/24 dev ens33
+#	&amp;#125;
+#&amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;3. 启动服务测试&lt;br&gt;
+ systemctl start keepalived&lt;br&gt;
+systemctl status keepalived&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cleint访问测试
+~# while true; do curl 192.168.6.99; sleep 1; done
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;#停止 nodesrv1 上的 nginx 服务，在 nodesrv2 上抓包观察 VIP 地址流动&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;nodesrv1
+~# systemctl sotp nginx
+
+nodesrv2
+~# tcpdump -i ens33 -nn host 224.0.100.89
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;#调适 keepalived 脚本&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;注意:
+	vrrp_script chk_ndown &amp;#123;
+		script &amp;quot;/bin/bash -c &#39;[[ -f /etc/keepalived/down ]]&#39; &amp;amp;&amp;amp; exit 1 || exit 0&amp;quot; #&#39;/etc/keepalived/down&#39;,文件存在时,权重降级
+		interval 1
+		weight -10
+	&amp;#125;
+
+	#[[ -f /etc/keepalived/down ]],要特别地作为bash的参数的运行
+
+	track_script &amp;#123;
+		#chk_nginx
+		chk_ndown
+	&amp;#125;&lt;/code&gt;&lt;/pre&gt;
+</content>
+        <category term="keepalived" />
+        <updated>2018-12-25T04:15:15.000Z</updated>
+    </entry>
+    <entry>
+        <id>http://yoursite.com/2018/12/24/Keepalived%E9%AB%98%E5%8F%AF%E7%94%A8IPVS%E5%81%A5%E5%BA%B7%E7%8A%B6%E6%80%81%E6%A3%80%E6%B5%8B/</id>
+        <title>Keepalived高可用IPVS健康状态检测</title>
+        <link rel="alternate" href="http://yoursite.com/2018/12/24/Keepalived%E9%AB%98%E5%8F%AF%E7%94%A8IPVS%E5%81%A5%E5%BA%B7%E7%8A%B6%E6%80%81%E6%A3%80%E6%B5%8B/"/>
+        <content type="html">&lt;link rel=&#34;stylesheet&#34; class=&#34;aplayer-secondary-style-marker&#34; href=&#34;\assets\css\APlayer.min.css&#34;&gt;&lt;script src=&#34;\assets\js\APlayer.min.js&#34; class=&#34;aplayer-secondary-script-marker&#34;&gt;&lt;/script&gt;&lt;script class=&#34;meting-secondary-script-marker&#34; src=&#34;\assets\js\Meting.min.js&#34;&gt;&lt;/script&gt;&lt;p&gt;测试环境&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;nodesrv1: 192.168.6.86, nodesrv2: 192.168.6.88
+realsrv1: 192.168.6.80, realsrv2: 192.168.6.82
+cleint: 192.168.6.68
+vip: 192.168.6.99
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;1.nodesrv 端安装及配置&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;nodesrv[1,2]
+	yum install keepalived -y
+	yum install ipvsadm -y
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;2.nodesrv1 配置文件，nodesrv2 修改对应 IP 地址&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vi /etc/keepalived/keepalived.conf
+! Configuration File for keepalived
+
+global_defs &amp;#123;
+	notification_email &amp;#123;
+	root@localhost
+	&amp;#125;
+	notification_email_from keepalived@localhost
+	smtp_server 127.0.0.1
+	smtp_connect_timeout 30
+	router_id nodesrv1
+	vrrp_mcast_group4 224.0.100.89
+	vrrp_skip_check_adv_addr
+	vrrp_strict
+	vrrp_garp_interval 0
+	vrrp_gna_interval 0
+&amp;#125;
+
+vrrp_instance VI_1 &amp;#123;
+	state MASTER
+	interface ens33
+	virtual_router_id 16
+	priority 100
+	advert_int 1
+	authentication &amp;#123;
+		auth_type PASS
+		auth_pass 516f97b2
+	&amp;#125;
+	virtual_ipaddress &amp;#123;
+	192.168.6.99/24 dev ens33
+	&amp;#125;
+	track_interface &amp;#123;
+	ens33
+	&amp;#125;
+	notify_master &amp;quot;/etc/keepalived/notify.sh master&amp;quot;
+	notify_backup &amp;quot;/etc/keepalived/notify.sh backup&amp;quot;
+	notify_fault &amp;quot;/etc/keepalived/notify.sh fault&amp;quot;   
+&amp;#125;
+
+vrrp_instance VI_2 &amp;#123;
+	state BACKUP
+	interface ens33
+	virtual_router_id 26
+	priority 98
+	advert_int 1
+	authentication &amp;#123;
+		auth_type PASS
+		auth_pass 0uuOpPPp
+	&amp;#125;
+	virtual_ipaddress &amp;#123;
+		192.168.6.98/24 dev ens33
+	&amp;#125;
+&amp;#125;
+
+virtual_server 192.168.6.99 80 &amp;#123;
+	delay_loop 2
+	lb_algo rr
+	lb_kind DR
+	# persistence_timeout 50
+	protocol TCP
+
+	sorry_server 127.0.0.1 80 #定义sorry-server
+
+	real_server 192.168.6.80 80 &amp;#123;
+		weight 1
+		HTTP_GET &amp;#123;
+			url &amp;#123;
+			path /
+			status_code 200
+			&amp;#125;
+			connect_timeout 2	 #连接超时时长
+			nb_get_retry 3		 #超时重试数次
+			delay_before_retry 1 #每次重试时间间隔
+		&amp;#125;
+	&amp;#125;
+	real_server 192.168.6.82 80 &amp;#123;
+		weight 1
+		HTTP_GET &amp;#123;
+			url &amp;#123;
+			path /
+			status_code 200
+			&amp;#125;
+			connect_timeout 2
+			nb_get_retry 3
+			delay_before_retry 1
+		&amp;#125;
+	&amp;#125;
+&amp;#125;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;3.realsrv [1,2] 运行配置脚本&lt;br&gt;
+～# sh lvs_dr_rs.sh start&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vi lvs_dr_rs.sh
+#!/bin/bash
+#Author:wangxiaochun
+#Date:2017-08-13
+vip=192.168.6.99
+mask=&#39;255.255.255.255&#39;
+dev=lo:1
+rpm -q httpd &amp;amp;&amp;gt; /dev/null || yum -y install httpd &amp;amp;&amp;gt;/dev/null
+service httpd start &amp;amp;&amp;gt; /dev/null &amp;amp;&amp;amp; echo &amp;quot;The httpd Server is Ready!&amp;quot;
+echo &amp;quot;&amp;lt;h1&amp;gt;`hostname`&amp;lt;/h1&amp;gt;&amp;quot; &amp;gt; /var/www/html/index.html
+
+case $1 in
+start)
+	echo 1 &amp;gt; /proc/sys/net/ipv4/conf/all/arp_ignore
+	echo 1 &amp;gt; /proc/sys/net/ipv4/conf/lo/arp_ignore
+	echo 2 &amp;gt; /proc/sys/net/ipv4/conf/all/arp_announce
+	echo 2 &amp;gt; /proc/sys/net/ipv4/conf/lo/arp_announce
+	ifconfig $dev $vip netmask $mask #broadcast $vip up
+	#route add -host $vip dev $dev
+	echo &amp;quot;The RS Server is Ready!&amp;quot;
+	;;
+stop)
+	ifconfig $dev down
+	echo 0 &amp;gt; /proc/sys/net/ipv4/conf/all/arp_ignore
+	echo 0 &amp;gt; /proc/sys/net/ipv4/conf/lo/arp_ignore
+	echo 0 &amp;gt; /proc/sys/net/ipv4/conf/all/arp_announce
+	echo 0 &amp;gt; /proc/sys/net/ipv4/conf/lo/arp_announce
+	echo &amp;quot;The RS Server is Canceled!&amp;quot;
+	;;
+*) 
+	echo &amp;quot;Usage: $(basename $0) start|stop&amp;quot;
+	exit 1
+	;;
+esac
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;4. 配置 sorry-server&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;nodesrv[1,2]
+	yum install httpd -y
+	echo &#39;sorry server nodesrv[1,2]&#39; &amp;gt;/www/html/index.html
+	systemctl start httpd
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;5.cleint 测试集群环境，注意防火墙规则&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;~# while true; do curl 192.168.6.99; sleep 1; done
+&lt;/code&gt;&lt;/pre&gt;
+</content>
+        <category term="keepalived" />
+        <updated>2018-12-24T13:16:39.000Z</updated>
+    </entry>
+</feed>
