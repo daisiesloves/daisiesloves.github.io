@@ -5,8 +5,8 @@
     <link href="http://yoursite.com" />
     <updated>2018-12-23T04:03:51.000Z</updated>
     <category term="Test" />
-    <category term="httpd" />
     <category term="keepalived" />
+    <category term="httpd" />
     <category term="markdown" />
     <category term="tomcat" />
     <category term="live2d" />
