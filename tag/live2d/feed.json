@@ -9,7 +9,7 @@
             "url": "http://yoursite.com/2022/07/20/new%2074/",
             "title": "live2d",
             "date_published": "2022-07-20T09:13:57.654Z",
-            "content_html": "<link rel=\"stylesheet\" class=\"aplayer-secondary-style-marker\" href=\"\\assets\\css\\APlayer.min.css\"><script src=\"\\assets\\js\\APlayer.min.js\" class=\"aplayer-secondary-script-marker\"></script><script class=\"meting-secondary-script-marker\" src=\"\\assets\\js\\Meting.min.js\"></script><h1 id=\"live2d\"><a class=\"markdownIt-Anchor\" href=\"#live2d\">#</a> live2d</h1>\n<p>live2d:<br>\nenable: true<br>\nscriptFrom: local<br>\npluginRootPath: live2dw/<br>\npluginJsPath: lib/<br>\npluginModelPath: assets/<br>\ntagMode: false<br>\nlog: false<br>\nmodel:<br>\nuse: live2d-widget-model-hijiki<br>\ndisplay:<br>\nposition: right<br>\nwidth: 150<br>\nheight: 300<br>\nmobile:<br>\nshow: true<br>\nreact:<br>\nopacity: 0.7</p>\n",
+            "content_html": "<link rel=\"stylesheet\" class=\"aplayer-secondary-style-marker\" href=\"\\assets\\css\\APlayer.min.css\"><script src=\"\\assets\\js\\APlayer.min.js\" class=\"aplayer-secondary-script-marker\"></script><h1 id=\"live2d\"><a class=\"markdownIt-Anchor\" href=\"#live2d\">#</a> live2d</h1>\n<p>live2d:<br>\nenable: true<br>\nscriptFrom: local<br>\npluginRootPath: live2dw/<br>\npluginJsPath: lib/<br>\npluginModelPath: assets/<br>\ntagMode: false<br>\nlog: false<br>\nmodel:<br>\nuse: live2d-widget-model-hijiki<br>\ndisplay:<br>\nposition: right<br>\nwidth: 150<br>\nheight: 300<br>\nmobile:<br>\nshow: true<br>\nreact:<br>\nopacity: 0.7</p>\n",
             "tags": [
                 "live2d"
             ]

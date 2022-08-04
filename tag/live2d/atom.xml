@@ -14,7 +14,7 @@
         <id>http://yoursite.com/2022/07/20/new%2074/</id>
         <title>live2d</title>
         <link rel="alternate" href="http://yoursite.com/2022/07/20/new%2074/"/>
-        <content type="html">&lt;link rel=&#34;stylesheet&#34; class=&#34;aplayer-secondary-style-marker&#34; href=&#34;\assets\css\APlayer.min.css&#34;&gt;&lt;script src=&#34;\assets\js\APlayer.min.js&#34; class=&#34;aplayer-secondary-script-marker&#34;&gt;&lt;/script&gt;&lt;script class=&#34;meting-secondary-script-marker&#34; src=&#34;\assets\js\Meting.min.js&#34;&gt;&lt;/script&gt;&lt;h1 id=&#34;live2d&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#live2d&#34;&gt;#&lt;/a&gt; live2d&lt;/h1&gt;
+        <content type="html">&lt;link rel=&#34;stylesheet&#34; class=&#34;aplayer-secondary-style-marker&#34; href=&#34;\assets\css\APlayer.min.css&#34;&gt;&lt;script src=&#34;\assets\js\APlayer.min.js&#34; class=&#34;aplayer-secondary-script-marker&#34;&gt;&lt;/script&gt;&lt;h1 id=&#34;live2d&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#live2d&#34;&gt;#&lt;/a&gt; live2d&lt;/h1&gt;
 &lt;p&gt;live2d:&lt;br&gt;
 enable: true&lt;br&gt;
 scriptFrom: local&lt;br&gt;

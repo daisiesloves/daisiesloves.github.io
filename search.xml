@@ -3,7 +3,7 @@
   <entry>
     <title>Hello Word</title>
     <url>/2018/12/23/Hello%20Word/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="前言"><a class="markdownIt-Anchor" href="#前言">#</a> 前言</h1>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="前言"><a class="markdownIt-Anchor" href="#前言">#</a> 前言</h1>
 <p>微凉<br>
 高桐深密间幽篁，乳燕声希夏日长。<br>
 独坐水亭风满袖，世间清景是微凉。</p>
@@ -15,7 +15,7 @@
   <entry>
     <title>Httpd基础知识</title>
     <url>/2018/12/23/Httpd%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h3 id="http相关术语"><a class="markdownIt-Anchor" href="#http相关术语">#</a> HTTP 相关术语</h3>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="http相关术语"><a class="markdownIt-Anchor" href="#http相关术语">#</a> HTTP 相关术语</h3>
 <pre><code>http:Hyper Text Transfer Protocol, 80/tcp
 html:Hyper Text Markup Language 超文本标记语言,编程语言
 MIME:Multipurpose Internet Mail Extensions
@@ -82,7 +82,7 @@ UV(独立访客):即Unique Visitor,访问网站的一台电脑为一个访客,�
   <entry>
     <title>Keepalived实现高可用Nginx服务</title>
     <url>/2018/12/25/Keepalived%E5%AE%9E%E7%8E%B0%E9%AB%98%E5%8F%AF%E7%94%A8Nginx%E6%9C%8D%E5%8A%A1/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>测试环境:</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>测试环境:</p>
 <pre><code>websrvs:realsrv1: 192.168.6.80, realsrv2: 192.168.6.82
 keepsrvs:nodesrv1: 192.168.6.86, nodesrv2: 192.168.6.88
 cleint: 192.168.6.68
@@ -275,9 +275,92 @@ nodesrv2
       </tags>
   </entry>
   <entry>
+    <title>Markdown简单用法</title>
+    <url>/2018/12/24/Markdown%E7%AE%80%E5%8D%95%E7%94%A8%E6%B3%95/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>Markdown 基本语法</p>
+<pre><code>markdown是一种纯文本格式的标记语言。通过简单的标记语法,它可以使普通文本内容具有一定的格式.
+</code></pre>
+<p>标题</p>
+<pre><code># 这是一级标题
+## 这是二级标题
+### 这是三级标题
+#### 这是四级标题
+##### 这是五级标题
+###### 这是六级标题
+</code></pre>
+<p>字体</p>
+<pre><code>斜体 要倾斜的文字左右分别用一个*号包起来
+	
+	*这是倾斜的文字*
+
+加粗 要加粗的文字左右分别用两个*号包起来
+	
+	**这是加粗的文字**
+	
+斜体加粗 要倾斜和加粗的文字左右分别用三个*号包起来
+
+	***这是斜体加粗的文字***
+	
+删除线 要加删除线的文字左右分别用两个~~号包起来
+
+	~~这是加删除线的文字~~
+</code></pre>
+<p>分割线</p>
+<pre><code>三个或者三个以上的 - 或者 * 都可以
+	---
+	----
+	***
+	*****
+</code></pre>
+<p>超链接</p>
+<pre><code>[超链接名](超链接地址 &quot;超链接title&quot;) title可加可不加
+
+	[百度](http://baidu.com)
+</code></pre>
+<p>列表</p>
+<pre><code>无序列表
+	语法:无序列表用 - + * 任何一种都可以
+	
+	- 列表内容
+	+ 列表内容
+	* 列表内容
+
+	注意:- + * 跟内容之间都要有一个空格
+
+有序列表
+	语法:数字加点
+	
+	1.列表内容
+	2.列表内容
+	3.列表内容
+
+	注意：序号跟内容之间要有空格
+
+列表嵌套
+	上一级和下一级之间敲三个空格即可
+</code></pre>
+<p>代码</p>
+<pre><code>单行代码:代码之间分别用一个反引号包起来
+	`代码内容`
+
+代码块:代码之间分别用三个反引号包起来,且两边的反引号单独占一行	
+	(```)
+	  代码...
+	  代码...
+	  代码...
+	(```)
+	
+注意:为了防止转译,前后三个反引号处加了小括号,实际是没有的.这里只是用来演示,实际中去掉两边小括号即可.
+</code></pre>
+]]></content>
+      <tags>
+        <tag>markdown</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Keepalived高可用IPVS健康状态检测</title>
     <url>/2018/12/24/Keepalived%E9%AB%98%E5%8F%AF%E7%94%A8IPVS%E5%81%A5%E5%BA%B7%E7%8A%B6%E6%80%81%E6%A3%80%E6%B5%8B/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>测试环境</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>测试环境</p>
 <pre><code>nodesrv1: 192.168.6.86, nodesrv2: 192.168.6.88
 realsrv1: 192.168.6.80, realsrv2: 192.168.6.82
 cleint: 192.168.6.68
@@ -430,92 +513,9 @@ esac
       </tags>
   </entry>
   <entry>
-    <title>Markdown简单用法</title>
-    <url>/2018/12/24/Markdown%E7%AE%80%E5%8D%95%E7%94%A8%E6%B3%95/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>Markdown 基本语法</p>
-<pre><code>markdown是一种纯文本格式的标记语言。通过简单的标记语法,它可以使普通文本内容具有一定的格式.
-</code></pre>
-<p>标题</p>
-<pre><code># 这是一级标题
-## 这是二级标题
-### 这是三级标题
-#### 这是四级标题
-##### 这是五级标题
-###### 这是六级标题
-</code></pre>
-<p>字体</p>
-<pre><code>斜体 要倾斜的文字左右分别用一个*号包起来
-	
-	*这是倾斜的文字*
-
-加粗 要加粗的文字左右分别用两个*号包起来
-	
-	**这是加粗的文字**
-	
-斜体加粗 要倾斜和加粗的文字左右分别用三个*号包起来
-
-	***这是斜体加粗的文字***
-	
-删除线 要加删除线的文字左右分别用两个~~号包起来
-
-	~~这是加删除线的文字~~
-</code></pre>
-<p>分割线</p>
-<pre><code>三个或者三个以上的 - 或者 * 都可以
-	---
-	----
-	***
-	*****
-</code></pre>
-<p>超链接</p>
-<pre><code>[超链接名](超链接地址 &quot;超链接title&quot;) title可加可不加
-
-	[百度](http://baidu.com)
-</code></pre>
-<p>列表</p>
-<pre><code>无序列表
-	语法:无序列表用 - + * 任何一种都可以
-	
-	- 列表内容
-	+ 列表内容
-	* 列表内容
-
-	注意:- + * 跟内容之间都要有一个空格
-
-有序列表
-	语法:数字加点
-	
-	1.列表内容
-	2.列表内容
-	3.列表内容
-
-	注意：序号跟内容之间要有空格
-
-列表嵌套
-	上一级和下一级之间敲三个空格即可
-</code></pre>
-<p>代码</p>
-<pre><code>单行代码:代码之间分别用一个反引号包起来
-	`代码内容`
-
-代码块:代码之间分别用三个反引号包起来,且两边的反引号单独占一行	
-	(```)
-	  代码...
-	  代码...
-	  代码...
-	(```)
-	
-注意:为了防止转译,前后三个反引号处加了小括号,实际是没有的.这里只是用来演示,实际中去掉两边小括号即可.
-</code></pre>
-]]></content>
-      <tags>
-        <tag>markdown</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Nginx反向代理Tomcat负载均衡+redis实现session共享</title>
     <url>/2019/01/05/Nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86Tomcat%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1-redis%E5%AE%9E%E7%8E%B0session%E5%85%B1%E4%BA%AB/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>测试环境</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>测试环境</p>
 <pre><code>tomcatsrvs:node01srv: 192.168.6.80, node02srv: 192.168.6.82
 mastersrv:nginxsrv: 192.168.6.88
 redisrv: 192.168.6.86
@@ -683,13 +683,13 @@ maxInactiveInterval=&quot;60&quot;/&gt;
   <entry>
     <title>Test</title>
     <url>/2022/07/13/Test/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p><img src="D:%5COthers%5Chead05_%E5%89%AF%E6%9C%AC.jpg" alt="head05_副本"></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img data-src="D:%5COthers%5Chead05_%E5%89%AF%E6%9C%AC.jpg" alt="head05_副本"></p>
 ]]></content>
   </entry>
   <entry>
     <title>live2d</title>
     <url>/2022/07/20/new%2074/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="live2d"><a class="markdownIt-Anchor" href="#live2d">#</a> live2d</h1>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="live2d"><a class="markdownIt-Anchor" href="#live2d">#</a> live2d</h1>
 <p>live2d:<br>
 enable: true<br>
 scriptFrom: local<br>
