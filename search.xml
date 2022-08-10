@@ -1,6 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Httpd基础知识</title>
+    <url>/2018/12/23/Httpd%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="http相关术语"><a class="markdownIt-Anchor" href="#http相关术语">#</a> HTTP 相关术语</h3>
+<pre><code>http:Hyper Text Transfer Protocol, 80/tcp
+html:Hyper Text Markup Language 超文本标记语言,编程语言
+MIME:Multipurpose Internet Mail Extensions
+	多用途互联网邮件扩展 /etc/mime.types
+格式:major/minor
+	text/plain
+	text/html
+	text/css
+	image/jpeg
+	image/png
+	video/mp4
+	application/javascript
+
+参考:http://www.w3school.com.cn/media/media_mimeref.asp
+</code></pre>
+<h3 id="http工作机制"><a class="markdownIt-Anchor" href="#http工作机制">#</a> HTTP 工作机制</h3>
+<pre><code>http请求:http request
+http响应:http response
+1次http事务:请求&lt;--&gt;响应
+</code></pre>
+<h3 id="web资源web-resource"><a class="markdownIt-Anchor" href="#web资源web-resource">#</a> Web 资源 (web resource)</h3>
+<pre><code>单个网页由多个资源构成,打开一个页面,会有多个资源展示出来,但是每个资源都要单独请求。因此,一个&quot;Web 页面&quot;通常并不是单个资源,而是一组资源的集合.
+
+1.静态文件:无需服务端做出额外处理.
+	文件后缀:.jpg, .html, .txt, .js, .css, .mp3, .avi
+2.动态文件:服务端执行程序,返回执行的结果.
+	文件后缀:.asp, .php, .jsp
+</code></pre>
+<h3 id="提高http连接性能"><a class="markdownIt-Anchor" href="#提高http连接性能">#</a> 提高 HTTP 连接性能</h3>
+<pre><code>并行连接:通过多条TCP连接发起并发的HTTP请求 
+持久连接:keep-alive长连接,重用TCP连接,以消除连接和关闭的时延,以事务个数和时间来决定是否关闭连接
+管道化连接:通过共享TCP连接发起并发的HTTP请求
+复用的连接:交替传送请求和响应报文(实验阶段)
+</code></pre>
+<h3 id="uri"><a class="markdownIt-Anchor" href="#uri">#</a> URI</h3>
+<pre><code>URI:Uniform Resource Identifier,统一资源标识,分为URL和URN
+	URN: Uniform Resource Naming,统一资源命名
+	URL: Uniform Resorce Locator,统一资源定位符,用于描述某服务器某特定资源位置
+两者区别:URN如同一个人的名称,而URL代表一个人的住址；换言之,URN定义某事物的身份,而URL提供查找该事物的方法；URN仅用于命名,而不指定地址 
+</code></pre>
+<h3 id="url组成"><a class="markdownIt-Anchor" href="#url组成">#</a> URL 组成</h3>
+<pre><code>&lt;scheme&gt;://&lt;user&gt;:&lt;password&gt;@&lt;host&gt;:&lt;port&gt;/&lt;path&gt;;&lt;params&gt;?&lt;query&gt;#&lt;frag&gt;   
+schame:方案,访问服务器以获取资源时要使用哪种协议
+user:用户,某些方案访问资源时需要的用户名
+password:密码,用户对应的密码,中间用:分隔
+Host:主机,资源宿主服务器的主机名或IP地址         
+port:端口,资源宿主服务器正在监听的端口号,很多方案有默认端口号
+path:路径,服务器资源的本地名,由一个/将其与前面的URL组件分隔
+params:参数,指定输入的参数,参数为名/值对,多个参数,用;分隔
+query:查询,传递参数给程序,如数据库,用？分隔,多个查询用&amp;分隔
+frag:片段,一小片或一部分资源的名字,此组件在客户端使用,用#分隔
+</code></pre>
+<h3 id="网站访问量"><a class="markdownIt-Anchor" href="#网站访问量">#</a> 网站访问量</h3>
+<pre><code>IP(独立IP):即Internet Protocol,指独立IP数.一天内来自相同客户机IP地址只计算一次,记录远程客户机IP地址的计算机访问网站的次数,是衡量网站流量的重要指标.
+PV(访问量):即Page View,页面浏览量或点击量,用户每次刷新即被计算次,PV反映的是浏览某网站的页面数,PV与来访者的数量成正比,PV并不是页面的来访者数量,而是网站被访问的页面数量.
+UV(独立访客):即Unique Visitor,访问网站的一台电脑为一个访客,一天内相同的客户端只被计算一次,可以理解成访问某网站的电脑的数量,网站判断来访电脑的身份是通过来访电脑的cookies实现的,如果更换了IP后但不清除cookies,再访问相同网站,该网站的统计中UV数是不变的.
+
+网站统计:http://www.alexa.cn/rank/</code></pre>
+]]></content>
+      <tags>
+        <tag>httpd</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Keepalived实现高可用Nginx服务</title>
     <url>/2018/12/25/Keepalived%E5%AE%9E%E7%8E%B0%E9%AB%98%E5%8F%AF%E7%94%A8Nginx%E6%9C%8D%E5%8A%A1/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>测试环境:</p>
@@ -208,73 +275,6 @@ nodesrv2
       </tags>
   </entry>
   <entry>
-    <title>Httpd基础知识</title>
-    <url>/2018/12/23/Httpd%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="http相关术语"><a class="markdownIt-Anchor" href="#http相关术语">#</a> HTTP 相关术语</h3>
-<pre><code>http:Hyper Text Transfer Protocol, 80/tcp
-html:Hyper Text Markup Language 超文本标记语言,编程语言
-MIME:Multipurpose Internet Mail Extensions
-	多用途互联网邮件扩展 /etc/mime.types
-格式:major/minor
-	text/plain
-	text/html
-	text/css
-	image/jpeg
-	image/png
-	video/mp4
-	application/javascript
-
-参考:http://www.w3school.com.cn/media/media_mimeref.asp
-</code></pre>
-<h3 id="http工作机制"><a class="markdownIt-Anchor" href="#http工作机制">#</a> HTTP 工作机制</h3>
-<pre><code>http请求:http request
-http响应:http response
-1次http事务:请求&lt;--&gt;响应
-</code></pre>
-<h3 id="web资源web-resource"><a class="markdownIt-Anchor" href="#web资源web-resource">#</a> Web 资源 (web resource)</h3>
-<pre><code>单个网页由多个资源构成,打开一个页面,会有多个资源展示出来,但是每个资源都要单独请求。因此,一个&quot;Web 页面&quot;通常并不是单个资源,而是一组资源的集合.
-
-1.静态文件:无需服务端做出额外处理.
-	文件后缀:.jpg, .html, .txt, .js, .css, .mp3, .avi
-2.动态文件:服务端执行程序,返回执行的结果.
-	文件后缀:.asp, .php, .jsp
-</code></pre>
-<h3 id="提高http连接性能"><a class="markdownIt-Anchor" href="#提高http连接性能">#</a> 提高 HTTP 连接性能</h3>
-<pre><code>并行连接:通过多条TCP连接发起并发的HTTP请求 
-持久连接:keep-alive长连接,重用TCP连接,以消除连接和关闭的时延,以事务个数和时间来决定是否关闭连接
-管道化连接:通过共享TCP连接发起并发的HTTP请求
-复用的连接:交替传送请求和响应报文(实验阶段)
-</code></pre>
-<h3 id="uri"><a class="markdownIt-Anchor" href="#uri">#</a> URI</h3>
-<pre><code>URI:Uniform Resource Identifier,统一资源标识,分为URL和URN
-	URN: Uniform Resource Naming,统一资源命名
-	URL: Uniform Resorce Locator,统一资源定位符,用于描述某服务器某特定资源位置
-两者区别:URN如同一个人的名称,而URL代表一个人的住址；换言之,URN定义某事物的身份,而URL提供查找该事物的方法；URN仅用于命名,而不指定地址 
-</code></pre>
-<h3 id="url组成"><a class="markdownIt-Anchor" href="#url组成">#</a> URL 组成</h3>
-<pre><code>&lt;scheme&gt;://&lt;user&gt;:&lt;password&gt;@&lt;host&gt;:&lt;port&gt;/&lt;path&gt;;&lt;params&gt;?&lt;query&gt;#&lt;frag&gt;   
-schame:方案,访问服务器以获取资源时要使用哪种协议
-user:用户,某些方案访问资源时需要的用户名
-password:密码,用户对应的密码,中间用:分隔
-Host:主机,资源宿主服务器的主机名或IP地址         
-port:端口,资源宿主服务器正在监听的端口号,很多方案有默认端口号
-path:路径,服务器资源的本地名,由一个/将其与前面的URL组件分隔
-params:参数,指定输入的参数,参数为名/值对,多个参数,用;分隔
-query:查询,传递参数给程序,如数据库,用？分隔,多个查询用&amp;分隔
-frag:片段,一小片或一部分资源的名字,此组件在客户端使用,用#分隔
-</code></pre>
-<h3 id="网站访问量"><a class="markdownIt-Anchor" href="#网站访问量">#</a> 网站访问量</h3>
-<pre><code>IP(独立IP):即Internet Protocol,指独立IP数.一天内来自相同客户机IP地址只计算一次,记录远程客户机IP地址的计算机访问网站的次数,是衡量网站流量的重要指标.
-PV(访问量):即Page View,页面浏览量或点击量,用户每次刷新即被计算次,PV反映的是浏览某网站的页面数,PV与来访者的数量成正比,PV并不是页面的来访者数量,而是网站被访问的页面数量.
-UV(独立访客):即Unique Visitor,访问网站的一台电脑为一个访客,一天内相同的客户端只被计算一次,可以理解成访问某网站的电脑的数量,网站判断来访电脑的身份是通过来访电脑的cookies实现的,如果更换了IP后但不清除cookies,再访问相同网站,该网站的统计中UV数是不变的.
-
-网站统计:http://www.alexa.cn/rank/</code></pre>
-]]></content>
-      <tags>
-        <tag>httpd</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Keepalived高可用IPVS健康状态检测</title>
     <url>/2018/12/24/Keepalived%E9%AB%98%E5%8F%AF%E7%94%A8IPVS%E5%81%A5%E5%BA%B7%E7%8A%B6%E6%80%81%E6%A3%80%E6%B5%8B/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>测试环境</p>
@@ -427,89 +427,6 @@ esac
 ]]></content>
       <tags>
         <tag>keepalived</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Markdown简单用法</title>
-    <url>/2018/12/24/Markdown%E7%AE%80%E5%8D%95%E7%94%A8%E6%B3%95/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>Markdown 基本语法</p>
-<pre><code>markdown是一种纯文本格式的标记语言。通过简单的标记语法,它可以使普通文本内容具有一定的格式.
-</code></pre>
-<p>标题</p>
-<pre><code># 这是一级标题
-## 这是二级标题
-### 这是三级标题
-#### 这是四级标题
-##### 这是五级标题
-###### 这是六级标题
-</code></pre>
-<p>字体</p>
-<pre><code>斜体 要倾斜的文字左右分别用一个*号包起来
-	
-	*这是倾斜的文字*
-
-加粗 要加粗的文字左右分别用两个*号包起来
-	
-	**这是加粗的文字**
-	
-斜体加粗 要倾斜和加粗的文字左右分别用三个*号包起来
-
-	***这是斜体加粗的文字***
-	
-删除线 要加删除线的文字左右分别用两个~~号包起来
-
-	~~这是加删除线的文字~~
-</code></pre>
-<p>分割线</p>
-<pre><code>三个或者三个以上的 - 或者 * 都可以
-	---
-	----
-	***
-	*****
-</code></pre>
-<p>超链接</p>
-<pre><code>[超链接名](超链接地址 &quot;超链接title&quot;) title可加可不加
-
-	[百度](http://baidu.com)
-</code></pre>
-<p>列表</p>
-<pre><code>无序列表
-	语法:无序列表用 - + * 任何一种都可以
-	
-	- 列表内容
-	+ 列表内容
-	* 列表内容
-
-	注意:- + * 跟内容之间都要有一个空格
-
-有序列表
-	语法:数字加点
-	
-	1.列表内容
-	2.列表内容
-	3.列表内容
-
-	注意：序号跟内容之间要有空格
-
-列表嵌套
-	上一级和下一级之间敲三个空格即可
-</code></pre>
-<p>代码</p>
-<pre><code>单行代码:代码之间分别用一个反引号包起来
-	`代码内容`
-
-代码块:代码之间分别用三个反引号包起来,且两边的反引号单独占一行	
-	(```)
-	  代码...
-	  代码...
-	  代码...
-	(```)
-	
-注意:为了防止转译,前后三个反引号处加了小括号,实际是没有的.这里只是用来演示,实际中去掉两边小括号即可.
-</code></pre>
-]]></content>
-      <tags>
-        <tag>markdown</tag>
       </tags>
   </entry>
   <entry>
@@ -678,6 +595,89 @@ maxInactiveInterval=&quot;60&quot;/&gt;
 ]]></content>
       <tags>
         <tag>tomcat</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Markdown简单用法</title>
+    <url>/2018/12/24/Markdown%E7%AE%80%E5%8D%95%E7%94%A8%E6%B3%95/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>Markdown 基本语法</p>
+<pre><code>markdown是一种纯文本格式的标记语言。通过简单的标记语法,它可以使普通文本内容具有一定的格式.
+</code></pre>
+<p>标题</p>
+<pre><code># 这是一级标题
+## 这是二级标题
+### 这是三级标题
+#### 这是四级标题
+##### 这是五级标题
+###### 这是六级标题
+</code></pre>
+<p>字体</p>
+<pre><code>斜体 要倾斜的文字左右分别用一个*号包起来
+	
+	*这是倾斜的文字*
+
+加粗 要加粗的文字左右分别用两个*号包起来
+	
+	**这是加粗的文字**
+	
+斜体加粗 要倾斜和加粗的文字左右分别用三个*号包起来
+
+	***这是斜体加粗的文字***
+	
+删除线 要加删除线的文字左右分别用两个~~号包起来
+
+	~~这是加删除线的文字~~
+</code></pre>
+<p>分割线</p>
+<pre><code>三个或者三个以上的 - 或者 * 都可以
+	---
+	----
+	***
+	*****
+</code></pre>
+<p>超链接</p>
+<pre><code>[超链接名](超链接地址 &quot;超链接title&quot;) title可加可不加
+
+	[百度](http://baidu.com)
+</code></pre>
+<p>列表</p>
+<pre><code>无序列表
+	语法:无序列表用 - + * 任何一种都可以
+	
+	- 列表内容
+	+ 列表内容
+	* 列表内容
+
+	注意:- + * 跟内容之间都要有一个空格
+
+有序列表
+	语法:数字加点
+	
+	1.列表内容
+	2.列表内容
+	3.列表内容
+
+	注意：序号跟内容之间要有空格
+
+列表嵌套
+	上一级和下一级之间敲三个空格即可
+</code></pre>
+<p>代码</p>
+<pre><code>单行代码:代码之间分别用一个反引号包起来
+	`代码内容`
+
+代码块:代码之间分别用三个反引号包起来,且两边的反引号单独占一行	
+	(```)
+	  代码...
+	  代码...
+	  代码...
+	(```)
+	
+注意:为了防止转译,前后三个反引号处加了小括号,实际是没有的.这里只是用来演示,实际中去掉两边小括号即可.
+</code></pre>
+]]></content>
+      <tags>
+        <tag>markdown</tag>
       </tags>
   </entry>
   <entry>
