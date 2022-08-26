@@ -22,7 +22,7 @@ java version &amp;quot;1.7.0_91&amp;quot;
 OpenJDK Runtime Environment (rhel-2.6.2.3.el7-x86_64 u91-b00)
 OpenJDK 64-Bit Server VM (build 24.91-b01, mixed mode)
 
-经分排查，是生产环境jdk版本过低导致，将jdk版本升级到1.8，即可解决此报错问题。使用jd-gui工具，可以查看jar包使用的jdk版本。
+经分排查，是生产环境jdk版本过低导致，将jdk版本升级到1.8，即可解决此报错问题。使用jd-gui工具，查看META-INF\MANIFEST.MF中的内容，Build-Jdk属性就是jar包，JDK的版本。
 
 在flume-env.sh配置文件，指定jdk路径
 export JAVA_HOME=&amp;quot;/home/upays/jdk1.8.0_211/&lt;/code&gt;&lt;/pre&gt;
