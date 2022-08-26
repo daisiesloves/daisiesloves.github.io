@@ -681,9 +681,9 @@ maxInactiveInterval=&quot;60&quot;/&gt;
       </tags>
   </entry>
   <entry>
-    <title>Httpd基础知识</title>
+    <title>Flume-1.10启动异常</title>
     <url>/2022/08/26/Unsupported%20major.minor%20version%2052.0/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="flume-110启动异常"><a class="markdownIt-Anchor" href="#flume-110启动异常">#</a> Flume-1.10 启动异常</h3>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="flume-110unsupported-majorminor-version-520启动异常"><a class="markdownIt-Anchor" href="#flume-110unsupported-majorminor-version-520启动异常">#</a> Flume-1.10,Unsupported major.minor version 52.0 启动异常</h3>
 <pre><code>执行报错：Exception in thread &quot;main&quot; java.lang.UnsupportedClassVersionError: com/heima/socket/Demo2_Receive : Unsupported major.minor version 52.0
 
 ]$ java -version
@@ -697,7 +697,7 @@ OpenJDK 64-Bit Server VM (build 24.91-b01, mixed mode)
 export JAVA_HOME=&quot;/home/upays/jdk1.8.0_211/</code></pre>
 ]]></content>
       <tags>
-        <tag>httpd</tag>
+        <tag>Flume JDK</tag>
       </tags>
   </entry>
 </search>

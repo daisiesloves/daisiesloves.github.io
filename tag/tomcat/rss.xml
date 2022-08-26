@@ -12,6 +12,7 @@
         <category>keepalived</category>
         <category>markdown</category>
         <category>tomcat</category>
+        <category>Flume JDK</category>
         <item>
             <guid isPermalink="true">http://yoursite.com/2019/01/05/Nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86Tomcat%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1-redis%E5%AE%9E%E7%8E%B0session%E5%85%B1%E4%BA%AB/</guid>
             <title>Nginx反向代理Tomcat负载均衡+redis实现session共享</title>

@@ -9,11 +9,12 @@
     <category term="keepalived" />
     <category term="markdown" />
     <category term="tomcat" />
+    <category term="Flume JDK" />
     <entry>
         <id>http://yoursite.com/2022/08/26/Unsupported%20major.minor%20version%2052.0/</id>
-        <title>Httpd基础知识</title>
+        <title>Flume-1.10启动异常</title>
         <link rel="alternate" href="http://yoursite.com/2022/08/26/Unsupported%20major.minor%20version%2052.0/"/>
-        <content type="html">&lt;link rel=&#34;stylesheet&#34; class=&#34;aplayer-secondary-style-marker&#34; href=&#34;\assets\css\APlayer.min.css&#34;&gt;&lt;script src=&#34;\assets\js\APlayer.min.js&#34; class=&#34;aplayer-secondary-script-marker&#34;&gt;&lt;/script&gt;&lt;h3 id=&#34;flume-110启动异常&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#flume-110启动异常&#34;&gt;#&lt;/a&gt; Flume-1.10 启动异常&lt;/h3&gt;
+        <content type="html">&lt;link rel=&#34;stylesheet&#34; class=&#34;aplayer-secondary-style-marker&#34; href=&#34;\assets\css\APlayer.min.css&#34;&gt;&lt;script src=&#34;\assets\js\APlayer.min.js&#34; class=&#34;aplayer-secondary-script-marker&#34;&gt;&lt;/script&gt;&lt;h3 id=&#34;flume-110unsupported-majorminor-version-520启动异常&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#flume-110unsupported-majorminor-version-520启动异常&#34;&gt;#&lt;/a&gt; Flume-1.10,Unsupported major.minor version 52.0 启动异常&lt;/h3&gt;
 &lt;pre&gt;&lt;code&gt;执行报错：Exception in thread &amp;quot;main&amp;quot; java.lang.UnsupportedClassVersionError: com/heima/socket/Demo2_Receive : Unsupported major.minor version 52.0
 
 ]$ java -version
@@ -26,7 +27,7 @@ OpenJDK 64-Bit Server VM (build 24.91-b01, mixed mode)
 在flume-env.sh配置文件，指定jdk路径
 export JAVA_HOME=&amp;quot;/home/upays/jdk1.8.0_211/&lt;/code&gt;&lt;/pre&gt;
 </content>
-        <category term="httpd" />
+        <category term="Flume JDK" />
         <updated>2022-08-26T01:30:32.000Z</updated>
     </entry>
     <entry>
