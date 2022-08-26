@@ -12,4 +12,25 @@
         <tag>Test</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Flume-1.10启动异常</title>
+    <url>/2022/08/26/Flume-1.10%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="flume-110unsupported-majorminor-version-520启动异常"><a class="markdownIt-Anchor" href="#flume-110unsupported-majorminor-version-520启动异常">#</a> Flume-1.10,Unsupported major.minor version 52.0 启动异常</h3>
+<pre><code>执行报错：Exception in thread &quot;main&quot; java.lang.UnsupportedClassVersionError: com/heima/socket/Demo2_Receive : Unsupported major.minor version 52.0
+
+]$ java -version
+java version &quot;1.7.0_91&quot;
+OpenJDK Runtime Environment (rhel-2.6.2.3.el7-x86_64 u91-b00)
+OpenJDK 64-Bit Server VM (build 24.91-b01, mixed mode)
+
+经分排查，是生产环境jdk版本过低导致，将jdk版本升级到1.8，即可解决此报错问题。使用jd-gui工具，查看META-INF\MANIFEST.MF中的内容，Build-Jdk属性就是jar包，JDK的版本。
+
+在flume-env.sh配置文件，指定jdk路径
+export JAVA_HOME=&quot;/home/upays/jdk1.8.0_211/</code></pre>
+]]></content>
+      <tags>
+        <tag>Flume</tag>
+        <tag>JDK</tag>
+      </tags>
+  </entry>
 </search>

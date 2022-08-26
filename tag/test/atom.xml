@@ -5,6 +5,8 @@
     <link href="http://yoursite.com" />
     <updated>2018-12-23T04:03:51.000Z</updated>
     <category term="Test" />
+    <category term="Flume" />
+    <category term="JDK" />
     <entry>
         <id>http://yoursite.com/2018/12/23/Hello%20Word/</id>
         <title>Hello Word</title>
