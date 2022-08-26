@@ -7,12 +7,12 @@
         <language></language>
         <pubDate>Sun, 23 Dec 2018 18:44:33 +0800</pubDate>
         <lastBuildDate>Sun, 23 Dec 2018 18:44:33 +0800</lastBuildDate>
+        <category>keepalived</category>
         <category>Test</category>
         <category>httpd</category>
-        <category>keepalived</category>
         <category>markdown</category>
-        <category>tomcat</category>
         <category>Flume JDK</category>
+        <category>tomcat</category>
         <item>
             <guid isPermalink="true">http://yoursite.com/2018/12/23/Httpd%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
             <title>Httpd基础知识</title>

@@ -4,12 +4,12 @@
     <title>It&#39;s better to burn out than to fade away. • Posts by &#34;httpd&#34; tag</title>
     <link href="http://yoursite.com" />
     <updated>2018-12-23T10:44:33.000Z</updated>
+    <category term="keepalived" />
     <category term="Test" />
     <category term="httpd" />
-    <category term="keepalived" />
     <category term="markdown" />
-    <category term="tomcat" />
     <category term="Flume JDK" />
+    <category term="tomcat" />
     <entry>
         <id>http://yoursite.com/2018/12/23/Httpd%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</id>
         <title>Httpd基础知识</title>

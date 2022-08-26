@@ -4,12 +4,12 @@
     <title>It&#39;s better to burn out than to fade away. • Posts by &#34;flume jdk&#34; tag</title>
     <link href="http://yoursite.com" />
     <updated>2022-08-26T01:30:32.000Z</updated>
+    <category term="keepalived" />
     <category term="Test" />
     <category term="httpd" />
-    <category term="keepalived" />
     <category term="markdown" />
-    <category term="tomcat" />
     <category term="Flume JDK" />
+    <category term="tomcat" />
     <entry>
         <id>http://yoursite.com/2022/08/26/Unsupported%20major.minor%20version%2052.0/</id>
         <title>Flume-1.10启动异常</title>

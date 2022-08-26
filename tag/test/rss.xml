@@ -7,12 +7,12 @@
         <language></language>
         <pubDate>Sun, 23 Dec 2018 12:03:51 +0800</pubDate>
         <lastBuildDate>Sun, 23 Dec 2018 12:03:51 +0800</lastBuildDate>
+        <category>keepalived</category>
         <category>Test</category>
         <category>httpd</category>
-        <category>keepalived</category>
         <category>markdown</category>
-        <category>tomcat</category>
         <category>Flume JDK</category>
+        <category>tomcat</category>
         <item>
             <guid isPermalink="true">http://yoursite.com/2018/12/23/Hello%20Word/</guid>
             <title>Hello Word</title>

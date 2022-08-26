@@ -1,85 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hello Word</title>
-    <url>/2018/12/23/Hello%20Word/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="前言"><a class="markdownIt-Anchor" href="#前言">#</a> 前言</h1>
-<p>微凉<br>
-高桐深密间幽篁，乳燕声希夏日长。<br>
-独坐水亭风满袖，世间清景是微凉。</p>
-]]></content>
-      <tags>
-        <tag>Test</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Httpd基础知识</title>
-    <url>/2018/12/23/Httpd%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="http相关术语"><a class="markdownIt-Anchor" href="#http相关术语">#</a> HTTP 相关术语</h3>
-<pre><code>http:Hyper Text Transfer Protocol, 80/tcp
-html:Hyper Text Markup Language 超文本标记语言,编程语言
-MIME:Multipurpose Internet Mail Extensions
-	多用途互联网邮件扩展 /etc/mime.types
-格式:major/minor
-	text/plain
-	text/html
-	text/css
-	image/jpeg
-	image/png
-	video/mp4
-	application/javascript
-
-参考:http://www.w3school.com.cn/media/media_mimeref.asp
-</code></pre>
-<h3 id="http工作机制"><a class="markdownIt-Anchor" href="#http工作机制">#</a> HTTP 工作机制</h3>
-<pre><code>http请求:http request
-http响应:http response
-1次http事务:请求&lt;--&gt;响应
-</code></pre>
-<h3 id="web资源web-resource"><a class="markdownIt-Anchor" href="#web资源web-resource">#</a> Web 资源 (web resource)</h3>
-<pre><code>单个网页由多个资源构成,打开一个页面,会有多个资源展示出来,但是每个资源都要单独请求。因此,一个&quot;Web 页面&quot;通常并不是单个资源,而是一组资源的集合.
-
-1.静态文件:无需服务端做出额外处理.
-	文件后缀:.jpg, .html, .txt, .js, .css, .mp3, .avi
-2.动态文件:服务端执行程序,返回执行的结果.
-	文件后缀:.asp, .php, .jsp
-</code></pre>
-<h3 id="提高http连接性能"><a class="markdownIt-Anchor" href="#提高http连接性能">#</a> 提高 HTTP 连接性能</h3>
-<pre><code>并行连接:通过多条TCP连接发起并发的HTTP请求 
-持久连接:keep-alive长连接,重用TCP连接,以消除连接和关闭的时延,以事务个数和时间来决定是否关闭连接
-管道化连接:通过共享TCP连接发起并发的HTTP请求
-复用的连接:交替传送请求和响应报文(实验阶段)
-</code></pre>
-<h3 id="uri"><a class="markdownIt-Anchor" href="#uri">#</a> URI</h3>
-<pre><code>URI:Uniform Resource Identifier,统一资源标识,分为URL和URN
-	URN: Uniform Resource Naming,统一资源命名
-	URL: Uniform Resorce Locator,统一资源定位符,用于描述某服务器某特定资源位置
-两者区别:URN如同一个人的名称,而URL代表一个人的住址；换言之,URN定义某事物的身份,而URL提供查找该事物的方法；URN仅用于命名,而不指定地址 
-</code></pre>
-<h3 id="url组成"><a class="markdownIt-Anchor" href="#url组成">#</a> URL 组成</h3>
-<pre><code>&lt;scheme&gt;://&lt;user&gt;:&lt;password&gt;@&lt;host&gt;:&lt;port&gt;/&lt;path&gt;;&lt;params&gt;?&lt;query&gt;#&lt;frag&gt;   
-schame:方案,访问服务器以获取资源时要使用哪种协议
-user:用户,某些方案访问资源时需要的用户名
-password:密码,用户对应的密码,中间用:分隔
-Host:主机,资源宿主服务器的主机名或IP地址         
-port:端口,资源宿主服务器正在监听的端口号,很多方案有默认端口号
-path:路径,服务器资源的本地名,由一个/将其与前面的URL组件分隔
-params:参数,指定输入的参数,参数为名/值对,多个参数,用;分隔
-query:查询,传递参数给程序,如数据库,用？分隔,多个查询用&amp;分隔
-frag:片段,一小片或一部分资源的名字,此组件在客户端使用,用#分隔
-</code></pre>
-<h3 id="网站访问量"><a class="markdownIt-Anchor" href="#网站访问量">#</a> 网站访问量</h3>
-<pre><code>IP(独立IP):即Internet Protocol,指独立IP数.一天内来自相同客户机IP地址只计算一次,记录远程客户机IP地址的计算机访问网站的次数,是衡量网站流量的重要指标.
-PV(访问量):即Page View,页面浏览量或点击量,用户每次刷新即被计算次,PV反映的是浏览某网站的页面数,PV与来访者的数量成正比,PV并不是页面的来访者数量,而是网站被访问的页面数量.
-UV(独立访客):即Unique Visitor,访问网站的一台电脑为一个访客,一天内相同的客户端只被计算一次,可以理解成访问某网站的电脑的数量,网站判断来访电脑的身份是通过来访电脑的cookies实现的,如果更换了IP后但不清除cookies,再访问相同网站,该网站的统计中UV数是不变的.
-
-网站统计:http://www.alexa.cn/rank/</code></pre>
-]]></content>
-      <tags>
-        <tag>httpd</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Keepalived实现高可用Nginx服务</title>
     <url>/2018/12/25/Keepalived%E5%AE%9E%E7%8E%B0%E9%AB%98%E5%8F%AF%E7%94%A8Nginx%E6%9C%8D%E5%8A%A1/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>测试环境:</p>
@@ -272,6 +193,85 @@ nodesrv2
 ]]></content>
       <tags>
         <tag>keepalived</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello Word</title>
+    <url>/2018/12/23/Hello%20Word/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="前言"><a class="markdownIt-Anchor" href="#前言">#</a> 前言</h1>
+<p>微凉<br>
+高桐深密间幽篁，乳燕声希夏日长。<br>
+独坐水亭风满袖，世间清景是微凉。</p>
+]]></content>
+      <tags>
+        <tag>Test</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Httpd基础知识</title>
+    <url>/2018/12/23/Httpd%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="http相关术语"><a class="markdownIt-Anchor" href="#http相关术语">#</a> HTTP 相关术语</h3>
+<pre><code>http:Hyper Text Transfer Protocol, 80/tcp
+html:Hyper Text Markup Language 超文本标记语言,编程语言
+MIME:Multipurpose Internet Mail Extensions
+	多用途互联网邮件扩展 /etc/mime.types
+格式:major/minor
+	text/plain
+	text/html
+	text/css
+	image/jpeg
+	image/png
+	video/mp4
+	application/javascript
+
+参考:http://www.w3school.com.cn/media/media_mimeref.asp
+</code></pre>
+<h3 id="http工作机制"><a class="markdownIt-Anchor" href="#http工作机制">#</a> HTTP 工作机制</h3>
+<pre><code>http请求:http request
+http响应:http response
+1次http事务:请求&lt;--&gt;响应
+</code></pre>
+<h3 id="web资源web-resource"><a class="markdownIt-Anchor" href="#web资源web-resource">#</a> Web 资源 (web resource)</h3>
+<pre><code>单个网页由多个资源构成,打开一个页面,会有多个资源展示出来,但是每个资源都要单独请求。因此,一个&quot;Web 页面&quot;通常并不是单个资源,而是一组资源的集合.
+
+1.静态文件:无需服务端做出额外处理.
+	文件后缀:.jpg, .html, .txt, .js, .css, .mp3, .avi
+2.动态文件:服务端执行程序,返回执行的结果.
+	文件后缀:.asp, .php, .jsp
+</code></pre>
+<h3 id="提高http连接性能"><a class="markdownIt-Anchor" href="#提高http连接性能">#</a> 提高 HTTP 连接性能</h3>
+<pre><code>并行连接:通过多条TCP连接发起并发的HTTP请求 
+持久连接:keep-alive长连接,重用TCP连接,以消除连接和关闭的时延,以事务个数和时间来决定是否关闭连接
+管道化连接:通过共享TCP连接发起并发的HTTP请求
+复用的连接:交替传送请求和响应报文(实验阶段)
+</code></pre>
+<h3 id="uri"><a class="markdownIt-Anchor" href="#uri">#</a> URI</h3>
+<pre><code>URI:Uniform Resource Identifier,统一资源标识,分为URL和URN
+	URN: Uniform Resource Naming,统一资源命名
+	URL: Uniform Resorce Locator,统一资源定位符,用于描述某服务器某特定资源位置
+两者区别:URN如同一个人的名称,而URL代表一个人的住址；换言之,URN定义某事物的身份,而URL提供查找该事物的方法；URN仅用于命名,而不指定地址 
+</code></pre>
+<h3 id="url组成"><a class="markdownIt-Anchor" href="#url组成">#</a> URL 组成</h3>
+<pre><code>&lt;scheme&gt;://&lt;user&gt;:&lt;password&gt;@&lt;host&gt;:&lt;port&gt;/&lt;path&gt;;&lt;params&gt;?&lt;query&gt;#&lt;frag&gt;   
+schame:方案,访问服务器以获取资源时要使用哪种协议
+user:用户,某些方案访问资源时需要的用户名
+password:密码,用户对应的密码,中间用:分隔
+Host:主机,资源宿主服务器的主机名或IP地址         
+port:端口,资源宿主服务器正在监听的端口号,很多方案有默认端口号
+path:路径,服务器资源的本地名,由一个/将其与前面的URL组件分隔
+params:参数,指定输入的参数,参数为名/值对,多个参数,用;分隔
+query:查询,传递参数给程序,如数据库,用？分隔,多个查询用&amp;分隔
+frag:片段,一小片或一部分资源的名字,此组件在客户端使用,用#分隔
+</code></pre>
+<h3 id="网站访问量"><a class="markdownIt-Anchor" href="#网站访问量">#</a> 网站访问量</h3>
+<pre><code>IP(独立IP):即Internet Protocol,指独立IP数.一天内来自相同客户机IP地址只计算一次,记录远程客户机IP地址的计算机访问网站的次数,是衡量网站流量的重要指标.
+PV(访问量):即Page View,页面浏览量或点击量,用户每次刷新即被计算次,PV反映的是浏览某网站的页面数,PV与来访者的数量成正比,PV并不是页面的来访者数量,而是网站被访问的页面数量.
+UV(独立访客):即Unique Visitor,访问网站的一台电脑为一个访客,一天内相同的客户端只被计算一次,可以理解成访问某网站的电脑的数量,网站判断来访电脑的身份是通过来访电脑的cookies实现的,如果更换了IP后但不清除cookies,再访问相同网站,该网站的统计中UV数是不变的.
+
+网站统计:http://www.alexa.cn/rank/</code></pre>
+]]></content>
+      <tags>
+        <tag>httpd</tag>
       </tags>
   </entry>
   <entry>
@@ -513,6 +513,26 @@ esac
       </tags>
   </entry>
   <entry>
+    <title>Flume-1.10启动异常</title>
+    <url>/2022/08/26/Unsupported%20major.minor%20version%2052.0/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="flume-110unsupported-majorminor-version-520启动异常"><a class="markdownIt-Anchor" href="#flume-110unsupported-majorminor-version-520启动异常">#</a> Flume-1.10,Unsupported major.minor version 52.0 启动异常</h3>
+<pre><code>执行报错：Exception in thread &quot;main&quot; java.lang.UnsupportedClassVersionError: com/heima/socket/Demo2_Receive : Unsupported major.minor version 52.0
+
+]$ java -version
+java version &quot;1.7.0_91&quot;
+OpenJDK Runtime Environment (rhel-2.6.2.3.el7-x86_64 u91-b00)
+OpenJDK 64-Bit Server VM (build 24.91-b01, mixed mode)
+
+经分排查，是生产环境jdk版本过低导致，将jdk版本升级到1.8，即可解决此报错问题。使用jd-gui工具，查看META-INF\MANIFEST.MF中的内容，Build-Jdk属性就是jar包，JDK的版本。
+
+在flume-env.sh配置文件，指定jdk路径
+export JAVA_HOME=&quot;/home/upays/jdk1.8.0_211/</code></pre>
+]]></content>
+      <tags>
+        <tag>Flume JDK</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Nginx反向代理Tomcat负载均衡+redis实现session共享</title>
     <url>/2019/01/05/Nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86Tomcat%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1-redis%E5%AE%9E%E7%8E%B0session%E5%85%B1%E4%BA%AB/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>测试环境</p>
@@ -678,26 +698,6 @@ maxInactiveInterval=&quot;60&quot;/&gt;
 ]]></content>
       <tags>
         <tag>tomcat</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Flume-1.10启动异常</title>
-    <url>/2022/08/26/Unsupported%20major.minor%20version%2052.0/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="flume-110unsupported-majorminor-version-520启动异常"><a class="markdownIt-Anchor" href="#flume-110unsupported-majorminor-version-520启动异常">#</a> Flume-1.10,Unsupported major.minor version 52.0 启动异常</h3>
-<pre><code>执行报错：Exception in thread &quot;main&quot; java.lang.UnsupportedClassVersionError: com/heima/socket/Demo2_Receive : Unsupported major.minor version 52.0
-
-]$ java -version
-java version &quot;1.7.0_91&quot;
-OpenJDK Runtime Environment (rhel-2.6.2.3.el7-x86_64 u91-b00)
-OpenJDK 64-Bit Server VM (build 24.91-b01, mixed mode)
-
-经分排查，是生产环境jdk版本过低导致，将jdk版本升级到1.8，即可解决此报错问题。使用jd-gui工具，查看META-INF\MANIFEST.MF中的内容，Build-Jdk属性就是jar包，JDK的版本。
-
-在flume-env.sh配置文件，指定jdk路径
-export JAVA_HOME=&quot;/home/upays/jdk1.8.0_211/</code></pre>
-]]></content>
-      <tags>
-        <tag>Flume JDK</tag>
       </tags>
   </entry>
 </search>
