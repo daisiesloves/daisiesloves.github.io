@@ -5,47 +5,28 @@
         <link>http://yoursite.com</link>
         <description></description>
         <language></language>
-        <pubDate>Wed, 20 Jul 2022 17:13:57 +0800</pubDate>
-        <lastBuildDate>Wed, 20 Jul 2022 17:13:57 +0800</lastBuildDate>
+        <pubDate>Fri, 26 Aug 2022 09:30:32 +0800</pubDate>
+        <lastBuildDate>Fri, 26 Aug 2022 09:30:32 +0800</lastBuildDate>
+        <category>Test</category>
         <category>httpd</category>
         <category>keepalived</category>
-        <category>Test</category>
-        <category>tomcat</category>
         <category>markdown</category>
-        <category>live2d</category>
+        <category>tomcat</category>
         <item>
-            <guid isPermalink="true">http://yoursite.com/2022/07/20/new%2074/</guid>
-            <title>live2d</title>
-            <link>http://yoursite.com/2022/07/20/new%2074/</link>
-            <category>live2d</category>
-            <pubDate>Wed, 20 Jul 2022 17:13:57 +0800</pubDate>
-            <description><![CDATA[ &lt;link rel=&#34;stylesheet&#34; class=&#34;aplayer-secondary-style-marker&#34; href=&#34;\assets\css\APlayer.min.css&#34;&gt;&lt;script src=&#34;\assets\js\APlayer.min.js&#34; class=&#34;aplayer-secondary-script-marker&#34;&gt;&lt;/script&gt;&lt;h1 id=&#34;live2d&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#live2d&#34;&gt;#&lt;/a&gt; live2d&lt;/h1&gt;
-&lt;p&gt;live2d:&lt;br&gt;
-enable: true&lt;br&gt;
-scriptFrom: local&lt;br&gt;
-pluginRootPath: live2dw/&lt;br&gt;
-pluginJsPath: lib/&lt;br&gt;
-pluginModelPath: assets/&lt;br&gt;
-tagMode: false&lt;br&gt;
-log: false&lt;br&gt;
-model:&lt;br&gt;
-use: live2d-widget-model-hijiki&lt;br&gt;
-display:&lt;br&gt;
-position: right&lt;br&gt;
-width: 150&lt;br&gt;
-height: 300&lt;br&gt;
-mobile:&lt;br&gt;
-show: true&lt;br&gt;
-react:&lt;br&gt;
-opacity: 0.7&lt;/p&gt;
- ]]></description>
-        </item>
-        <item>
-            <guid isPermalink="true">http://yoursite.com/2022/07/13/Test/</guid>
-            <title>Test</title>
-            <link>http://yoursite.com/2022/07/13/Test/</link>
-            <pubDate>Wed, 13 Jul 2022 14:12:59 +0800</pubDate>
-            <description><![CDATA[ &lt;link rel=&#34;stylesheet&#34; class=&#34;aplayer-secondary-style-marker&#34; href=&#34;\assets\css\APlayer.min.css&#34;&gt;&lt;script src=&#34;\assets\js\APlayer.min.js&#34; class=&#34;aplayer-secondary-script-marker&#34;&gt;&lt;/script&gt;&lt;p&gt;&lt;img data-src=&#34;D:%5COthers%5Chead05_%E5%89%AF%E6%9C%AC.jpg&#34; alt=&#34;head05_副本&#34;&gt;&lt;/p&gt;
+            <guid isPermalink="true">http://yoursite.com/2022/08/26/Unsupported%20major.minor%20version%2052.0/</guid>
+            <title>Httpd基础知识</title>
+            <link>http://yoursite.com/2022/08/26/Unsupported%20major.minor%20version%2052.0/</link>
+            <category>httpd</category>
+            <pubDate>Fri, 26 Aug 2022 09:30:32 +0800</pubDate>
+            <description><![CDATA[ &lt;link rel=&#34;stylesheet&#34; class=&#34;aplayer-secondary-style-marker&#34; href=&#34;\assets\css\APlayer.min.css&#34;&gt;&lt;script src=&#34;\assets\js\APlayer.min.js&#34; class=&#34;aplayer-secondary-script-marker&#34;&gt;&lt;/script&gt;&lt;h3 id=&#34;flume-110启动异常&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#flume-110启动异常&#34;&gt;#&lt;/a&gt; Flume-1.10 启动异常&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;执行报错：Exception in thread &amp;quot;main&amp;quot; java.lang.UnsupportedClassVersionError: com/heima/socket/Demo2_Receive : Unsupported major.minor version 52.0
+
+]$ java -version
+java version &amp;quot;1.7.0_91&amp;quot;
+OpenJDK Runtime Environment (rhel-2.6.2.3.el7-x86_64 u91-b00)
+OpenJDK 64-Bit Server VM (build 24.91-b01, mixed mode)
+
+经分排查，是生产环境jdk版本过低导致，将jdk版本升级到1.8，即可解决此报错问题。使用jd-gui工具，可以查看jar包使用的jdk版本。&lt;/code&gt;&lt;/pre&gt;
  ]]></description>
         </item>
         <item>
