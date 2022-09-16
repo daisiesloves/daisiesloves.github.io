@@ -10,6 +10,7 @@
         <category>Test</category>
         <category>Flume</category>
         <category>JDK</category>
+        <category>kafka</category>
         <item>
             <guid isPermalink="true">http://yoursite.com/2018/12/23/Hello%20Word/</guid>
             <title>Hello Word</title>

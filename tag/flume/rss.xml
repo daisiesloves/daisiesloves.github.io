@@ -10,6 +10,7 @@
         <category>Test</category>
         <category>Flume</category>
         <category>JDK</category>
+        <category>kafka</category>
         <item>
             <guid isPermalink="true">http://yoursite.com/2022/08/26/Flume-1.10%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99/</guid>
             <title>Flume-1.10启动异常</title>
