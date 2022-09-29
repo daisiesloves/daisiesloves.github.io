@@ -2,19 +2,19 @@
 <rss version="2.0">
     <channel>
         <title>It&#39;s better to burn out than to fade away.</title>
-        <link>http://yoursite.com</link>
+        <link>http://daisiesloves.github.io</link>
         <description></description>
         <language></language>
         <pubDate>Fri, 16 Sep 20022 15:30:06 +0800</pubDate>
         <lastBuildDate>Fri, 16 Sep 20022 15:30:06 +0800</lastBuildDate>
-        <category>Test</category>
         <category>Flume</category>
         <category>JDK</category>
+        <category>Test</category>
         <category>kafka</category>
         <item>
-            <guid isPermalink="true">http://yoursite.com/20022/09/16/Spark%E5%90%AF%E5%8A%A8%E6%97%B6%E6%97%A5%E5%BF%97Kafka%E6%B6%88%E8%B4%B9%E6%8A%A5%E9%94%99/</guid>
+            <guid isPermalink="true">http://daisiesloves.github.io/20022/09/16/Spark%E5%90%AF%E5%8A%A8%E6%97%B6%E6%97%A5%E5%BF%97Kafka%E6%B6%88%E8%B4%B9%E6%8A%A5%E9%94%99/</guid>
             <title>Spark启动时日志Kafka消费报错</title>
-            <link>http://yoursite.com/20022/09/16/Spark%E5%90%AF%E5%8A%A8%E6%97%B6%E6%97%A5%E5%BF%97Kafka%E6%B6%88%E8%B4%B9%E6%8A%A5%E9%94%99/</link>
+            <link>http://daisiesloves.github.io/20022/09/16/Spark%E5%90%AF%E5%8A%A8%E6%97%B6%E6%97%A5%E5%BF%97Kafka%E6%B6%88%E8%B4%B9%E6%8A%A5%E9%94%99/</link>
             <category>kafka</category>
             <pubDate>Fri, 16 Sep 20022 15:30:06 +0800</pubDate>
             <description><![CDATA[ &lt;link rel=&#34;stylesheet&#34; class=&#34;aplayer-secondary-style-marker&#34; href=&#34;\assets\css\APlayer.min.css&#34;&gt;&lt;script src=&#34;\assets\js\APlayer.min.js&#34; class=&#34;aplayer-secondary-script-marker&#34;&gt;&lt;/script&gt;&lt;h1 id=&#34;spark启动报错日志&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#spark启动报错日志&#34;&gt;#&lt;/a&gt; Spark 启动报错日志&lt;/h1&gt;
@@ -59,9 +59,9 @@ at java.lang.Thread.run(Thread.java:745)&lt;/p&gt;
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">http://yoursite.com/2022/08/26/Flume-1.10%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99/</guid>
+            <guid isPermalink="true">http://daisiesloves.github.io/2022/08/26/Flume-1.10%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99/</guid>
             <title>Flume-1.10启动异常</title>
-            <link>http://yoursite.com/2022/08/26/Flume-1.10%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99/</link>
+            <link>http://daisiesloves.github.io/2022/08/26/Flume-1.10%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99/</link>
             <category>Flume</category>
             <category>JDK</category>
             <pubDate>Fri, 26 Aug 2022 09:30:32 +0800</pubDate>
@@ -80,9 +80,9 @@ export JAVA_HOME=&amp;quot;/home/upays/jdk1.8.0_211/&lt;/code&gt;&lt;/pre&gt;
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">http://yoursite.com/2018/12/23/Hello%20Word/</guid>
+            <guid isPermalink="true">http://daisiesloves.github.io/2018/12/23/Hello%20Word/</guid>
             <title>Hello Word</title>
-            <link>http://yoursite.com/2018/12/23/Hello%20Word/</link>
+            <link>http://daisiesloves.github.io/2018/12/23/Hello%20Word/</link>
             <category>Test</category>
             <pubDate>Sun, 23 Dec 2018 12:03:51 +0800</pubDate>
             <description><![CDATA[ &lt;link rel=&#34;stylesheet&#34; class=&#34;aplayer-secondary-style-marker&#34; href=&#34;\assets\css\APlayer.min.css&#34;&gt;&lt;script src=&#34;\assets\js\APlayer.min.js&#34; class=&#34;aplayer-secondary-script-marker&#34;&gt;&lt;/script&gt;&lt;h1 id=&#34;前言&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#前言&#34;&gt;#&lt;/a&gt; 前言&lt;/h1&gt;
