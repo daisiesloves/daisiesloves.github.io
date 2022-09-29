@@ -12,7 +12,7 @@
         <id>http://yoursite.com/20022/09/16/Spark%E5%90%AF%E5%8A%A8%E6%97%B6%E6%97%A5%E5%BF%97Kafka%E6%B6%88%E8%B4%B9%E6%8A%A5%E9%94%99/</id>
         <title>Spark启动时日志Kafka消费报错</title>
         <link rel="alternate" href="http://yoursite.com/20022/09/16/Spark%E5%90%AF%E5%8A%A8%E6%97%B6%E6%97%A5%E5%BF%97Kafka%E6%B6%88%E8%B4%B9%E6%8A%A5%E9%94%99/"/>
-        <content type="html">&lt;link rel=&#34;stylesheet&#34; class=&#34;aplayer-secondary-style-marker&#34; href=&#34;\assets\css\APlayer.min.css&#34;&gt;&lt;script src=&#34;\assets\js\APlayer.min.js&#34; class=&#34;aplayer-secondary-script-marker&#34;&gt;&lt;/script&gt;&lt;h1 id=&#34;spark启动报错日志&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#spark启动报错日志&#34;&gt;#&lt;/a&gt; Spark 启动报错日志&lt;/h1&gt;
+        <content type="html">&lt;link rel=&#34;stylesheet&#34; class=&#34;aplayer-secondary-style-marker&#34; href=&#34;\assets\css\APlayer.min.css&#34;&gt;&lt;script src=&#34;\assets\js\APlayer.min.js&#34; class=&#34;aplayer-secondary-script-marker&#34;&gt;&lt;/script&gt;&lt;h1&gt;&lt;span id=&#34;spark-启动报错日志&#34;&gt; Spark 启动报错日志&lt;/span&gt;&lt;/h1&gt;
 &lt;p&gt;22/09/16 06:00:29 INFO CachedKafkaConsumer: Initial fetch for spark-executor-own_combine2022082406 jyupay_py_1 7 28846987218&lt;br&gt;
 22/09/16 06:00:29 INFO KerberosLogin: [Principal=jyupay@ZHKDC]: TGT valid starting at: Fri Sep 16 06:00:29 CST 2022&lt;br&gt;
 22/09/16 06:00:29 INFO KerberosLogin: [Principal=jyupay@ZHKDC]: TGT expires: Sat Sep 17 06:00:29 CST 2022&lt;br&gt;

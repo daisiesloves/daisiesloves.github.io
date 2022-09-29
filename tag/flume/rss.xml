@@ -18,7 +18,7 @@
             <category>Flume</category>
             <category>JDK</category>
             <pubDate>Fri, 26 Aug 2022 09:30:32 +0800</pubDate>
-            <description><![CDATA[ &lt;link rel=&#34;stylesheet&#34; class=&#34;aplayer-secondary-style-marker&#34; href=&#34;\assets\css\APlayer.min.css&#34;&gt;&lt;script src=&#34;\assets\js\APlayer.min.js&#34; class=&#34;aplayer-secondary-script-marker&#34;&gt;&lt;/script&gt;&lt;h3 id=&#34;flume-110unsupported-majorminor-version-520启动异常&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#flume-110unsupported-majorminor-version-520启动异常&#34;&gt;#&lt;/a&gt; Flume-1.10,Unsupported major.minor version 52.0 启动异常&lt;/h3&gt;
+            <description><![CDATA[ &lt;link rel=&#34;stylesheet&#34; class=&#34;aplayer-secondary-style-marker&#34; href=&#34;\assets\css\APlayer.min.css&#34;&gt;&lt;script src=&#34;\assets\js\APlayer.min.js&#34; class=&#34;aplayer-secondary-script-marker&#34;&gt;&lt;/script&gt;&lt;h3&gt;&lt;span id=&#34;flume-110unsupported-majorminor-version-520-启动异常&#34;&gt; Flume-1.10,Unsupported major.minor version 52.0 启动异常&lt;/span&gt;&lt;/h3&gt;
 &lt;pre&gt;&lt;code&gt;执行报错：Exception in thread &amp;quot;main&amp;quot; java.lang.UnsupportedClassVersionError: com/heima/socket/Demo2_Receive : Unsupported major.minor version 52.0
 
 ]$ java -version

@@ -17,7 +17,7 @@
             <link>http://yoursite.com/20022/09/16/Spark%E5%90%AF%E5%8A%A8%E6%97%B6%E6%97%A5%E5%BF%97Kafka%E6%B6%88%E8%B4%B9%E6%8A%A5%E9%94%99/</link>
             <category>kafka</category>
             <pubDate>Fri, 16 Sep 20022 15:30:06 +0800</pubDate>
-            <description><![CDATA[ &lt;link rel=&#34;stylesheet&#34; class=&#34;aplayer-secondary-style-marker&#34; href=&#34;\assets\css\APlayer.min.css&#34;&gt;&lt;script src=&#34;\assets\js\APlayer.min.js&#34; class=&#34;aplayer-secondary-script-marker&#34;&gt;&lt;/script&gt;&lt;h1 id=&#34;spark启动报错日志&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#spark启动报错日志&#34;&gt;#&lt;/a&gt; Spark 启动报错日志&lt;/h1&gt;
+            <description><![CDATA[ &lt;link rel=&#34;stylesheet&#34; class=&#34;aplayer-secondary-style-marker&#34; href=&#34;\assets\css\APlayer.min.css&#34;&gt;&lt;script src=&#34;\assets\js\APlayer.min.js&#34; class=&#34;aplayer-secondary-script-marker&#34;&gt;&lt;/script&gt;&lt;h1&gt;&lt;span id=&#34;spark-启动报错日志&#34;&gt; Spark 启动报错日志&lt;/span&gt;&lt;/h1&gt;
 &lt;p&gt;22/09/16 06:00:29 INFO CachedKafkaConsumer: Initial fetch for spark-executor-own_combine2022082406 jyupay_py_1 7 28846987218&lt;br&gt;
 22/09/16 06:00:29 INFO KerberosLogin: [Principal=jyupay@ZHKDC]: TGT valid starting at: Fri Sep 16 06:00:29 CST 2022&lt;br&gt;
 22/09/16 06:00:29 INFO KerberosLogin: [Principal=jyupay@ZHKDC]: TGT expires: Sat Sep 17 06:00:29 CST 2022&lt;br&gt;
@@ -59,13 +59,22 @@ at java.lang.Thread.run(Thread.java:745)&lt;/p&gt;
  ]]></description>
         </item>
         <item>
+            <guid isPermalink="true">http://yoursite.com/2022/09/23/Test/</guid>
+            <title>Test</title>
+            <link>http://yoursite.com/2022/09/23/Test/</link>
+            <category>Test</category>
+            <pubDate>Fri, 23 Sep 2022 12:03:51 +0800</pubDate>
+            <description><![CDATA[ &lt;link rel=&#34;stylesheet&#34; class=&#34;aplayer-secondary-style-marker&#34; href=&#34;\assets\css\APlayer.min.css&#34;&gt;&lt;script src=&#34;\assets\js\APlayer.min.js&#34; class=&#34;aplayer-secondary-script-marker&#34;&gt;&lt;/script&gt;&lt;p&gt;Test post.&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
             <guid isPermalink="true">http://yoursite.com/2022/08/26/Flume-1.10%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99/</guid>
             <title>Flume-1.10启动异常</title>
             <link>http://yoursite.com/2022/08/26/Flume-1.10%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99/</link>
             <category>Flume</category>
             <category>JDK</category>
             <pubDate>Fri, 26 Aug 2022 09:30:32 +0800</pubDate>
-            <description><![CDATA[ &lt;link rel=&#34;stylesheet&#34; class=&#34;aplayer-secondary-style-marker&#34; href=&#34;\assets\css\APlayer.min.css&#34;&gt;&lt;script src=&#34;\assets\js\APlayer.min.js&#34; class=&#34;aplayer-secondary-script-marker&#34;&gt;&lt;/script&gt;&lt;h3 id=&#34;flume-110unsupported-majorminor-version-520启动异常&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#flume-110unsupported-majorminor-version-520启动异常&#34;&gt;#&lt;/a&gt; Flume-1.10,Unsupported major.minor version 52.0 启动异常&lt;/h3&gt;
+            <description><![CDATA[ &lt;link rel=&#34;stylesheet&#34; class=&#34;aplayer-secondary-style-marker&#34; href=&#34;\assets\css\APlayer.min.css&#34;&gt;&lt;script src=&#34;\assets\js\APlayer.min.js&#34; class=&#34;aplayer-secondary-script-marker&#34;&gt;&lt;/script&gt;&lt;h3&gt;&lt;span id=&#34;flume-110unsupported-majorminor-version-520-启动异常&#34;&gt; Flume-1.10,Unsupported major.minor version 52.0 启动异常&lt;/span&gt;&lt;/h3&gt;
 &lt;pre&gt;&lt;code&gt;执行报错：Exception in thread &amp;quot;main&amp;quot; java.lang.UnsupportedClassVersionError: com/heima/socket/Demo2_Receive : Unsupported major.minor version 52.0
 
 ]$ java -version
@@ -85,7 +94,7 @@ export JAVA_HOME=&amp;quot;/home/upays/jdk1.8.0_211/&lt;/code&gt;&lt;/pre&gt;
             <link>http://yoursite.com/2018/12/23/Hello%20Word/</link>
             <category>Test</category>
             <pubDate>Sun, 23 Dec 2018 12:03:51 +0800</pubDate>
-            <description><![CDATA[ &lt;link rel=&#34;stylesheet&#34; class=&#34;aplayer-secondary-style-marker&#34; href=&#34;\assets\css\APlayer.min.css&#34;&gt;&lt;script src=&#34;\assets\js\APlayer.min.js&#34; class=&#34;aplayer-secondary-script-marker&#34;&gt;&lt;/script&gt;&lt;h1 id=&#34;前言&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#前言&#34;&gt;#&lt;/a&gt; 前言&lt;/h1&gt;
+            <description><![CDATA[ &lt;link rel=&#34;stylesheet&#34; class=&#34;aplayer-secondary-style-marker&#34; href=&#34;\assets\css\APlayer.min.css&#34;&gt;&lt;script src=&#34;\assets\js\APlayer.min.js&#34; class=&#34;aplayer-secondary-script-marker&#34;&gt;&lt;/script&gt;&lt;h1&gt;&lt;span id=&#34;前言&#34;&gt; 前言&lt;/span&gt;&lt;/h1&gt;
 &lt;p&gt;微凉&lt;br&gt;
 高桐深密间幽篁，乳燕声希夏日长。&lt;br&gt;
 独坐水亭风满袖，世间清景是微凉。&lt;/p&gt;
