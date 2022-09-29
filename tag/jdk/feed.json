@@ -2,11 +2,11 @@
     "version": "https://jsonfeed.org/version/1",
     "title": "It's better to burn out than to fade away. • All posts by \"jdk\" tag",
     "description": null,
-    "home_page_url": "http://daisiesloves.github.io",
+    "home_page_url": "http://yoursite.com",
     "items": [
         {
-            "id": "http://daisiesloves.github.io/2022/08/26/Flume-1.10%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99/",
-            "url": "http://daisiesloves.github.io/2022/08/26/Flume-1.10%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99/",
+            "id": "http://yoursite.com/2022/08/26/Flume-1.10%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99/",
+            "url": "http://yoursite.com/2022/08/26/Flume-1.10%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99/",
             "title": "Flume-1.10启动异常",
             "date_published": "2022-08-26T01:30:32.000Z",
             "content_html": "<link rel=\"stylesheet\" class=\"aplayer-secondary-style-marker\" href=\"\\assets\\css\\APlayer.min.css\"><script src=\"\\assets\\js\\APlayer.min.js\" class=\"aplayer-secondary-script-marker\"></script><h3 id=\"flume-110unsupported-majorminor-version-520启动异常\"><a class=\"markdownIt-Anchor\" href=\"#flume-110unsupported-majorminor-version-520启动异常\">#</a> Flume-1.10,Unsupported major.minor version 52.0 启动异常</h3>\n<pre><code>执行报错：Exception in thread &quot;main&quot; java.lang.UnsupportedClassVersionError: com/heima/socket/Demo2_Receive : Unsupported major.minor version 52.0\n\n]$ java -version\njava version &quot;1.7.0_91&quot;\nOpenJDK Runtime Environment (rhel-2.6.2.3.el7-x86_64 u91-b00)\nOpenJDK 64-Bit Server VM (build 24.91-b01, mixed mode)\n\n经分排查，是生产环境jdk版本过低导致，将jdk版本升级到1.8，即可解决此报错问题。使用jd-gui工具，查看META-INF\\MANIFEST.MF中的内容，Build-Jdk属性就是jar包，JDK的版本。\n\n在flume-env.sh配置文件，指定jdk路径\nexport JAVA_HOME=&quot;/home/upays/jdk1.8.0_211/</code></pre>\n",

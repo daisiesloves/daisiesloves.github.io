@@ -1,17 +1,17 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://daisiesloves.github.io</id>
+    <id>http://yoursite.com</id>
     <title>It&#39;s better to burn out than to fade away. • Posts by &#34;test&#34; tag</title>
-    <link href="http://daisiesloves.github.io" />
+    <link href="http://yoursite.com" />
     <updated>2018-12-23T04:03:51.000Z</updated>
     <category term="Flume" />
     <category term="JDK" />
     <category term="Test" />
     <category term="kafka" />
     <entry>
-        <id>http://daisiesloves.github.io/2018/12/23/Hello%20Word/</id>
+        <id>http://yoursite.com/2018/12/23/Hello%20Word/</id>
         <title>Hello Word</title>
-        <link rel="alternate" href="http://daisiesloves.github.io/2018/12/23/Hello%20Word/"/>
+        <link rel="alternate" href="http://yoursite.com/2018/12/23/Hello%20Word/"/>
         <content type="html">&lt;link rel=&#34;stylesheet&#34; class=&#34;aplayer-secondary-style-marker&#34; href=&#34;\assets\css\APlayer.min.css&#34;&gt;&lt;script src=&#34;\assets\js\APlayer.min.js&#34; class=&#34;aplayer-secondary-script-marker&#34;&gt;&lt;/script&gt;&lt;h1 id=&#34;前言&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#前言&#34;&gt;#&lt;/a&gt; 前言&lt;/h1&gt;
 &lt;p&gt;微凉&lt;br&gt;
 高桐深密间幽篁，乳燕声希夏日长。&lt;br&gt;
