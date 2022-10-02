@@ -8,11 +8,20 @@
     <author>
       <name>凣汐微凉</name>
     </author>
-    <updated>+020022-09-16T07:30:06.000Z</updated>
+    <updated>2022-09-23T04:03:51.000Z</updated>
     <entry>
-        <id>https://daisiesloves.github.io/20022/09/16/spark%E5%90%AF%E5%8A%A8%E6%97%B6%E6%97%A5%E5%BF%97kafka%E6%B6%88%E8%B4%B9%E6%8A%A5%E9%94%99/Spark%E5%90%AF%E5%8A%A8%E6%97%B6%E6%97%A5%E5%BF%97Kafka%E6%B6%88%E8%B4%B9%E6%8A%A5%E9%94%99/Spark%E5%90%AF%E5%8A%A8%E6%97%B6%E6%97%A5%E5%BF%97Kafka%E6%B6%88%E8%B4%B9%E6%8A%A5%E9%94%99/</id>
+        <id>https://daisiesloves.github.io/2022/09/23/test/Test/Test/</id>
+        <title>Test</title>
+        <link rel="alternate" href="https://daisiesloves.github.io/2022/09/23/test/Test/Test/"/>
+        <content type="html">&lt;link rel=&#34;stylesheet&#34; class=&#34;aplayer-secondary-style-marker&#34; href=&#34;\assets\css\APlayer.min.css&#34;&gt;&lt;script src=&#34;\assets\js\APlayer.min.js&#34; class=&#34;aplayer-secondary-script-marker&#34;&gt;&lt;/script&gt;&lt;p&gt;Test post.&lt;/p&gt;
+</content>
+        <category term="Test" scheme="https://daisiesloves.github.io/tags/Test/" />
+        <updated>2022-09-23T04:03:51.000Z</updated>
+    </entry>
+    <entry>
+        <id>https://daisiesloves.github.io/2022/09/16/spark%E5%90%AF%E5%8A%A8%E6%97%B6%E6%97%A5%E5%BF%97kafka%E6%B6%88%E8%B4%B9%E6%8A%A5%E9%94%99/Spark%E5%90%AF%E5%8A%A8%E6%97%B6%E6%97%A5%E5%BF%97Kafka%E6%B6%88%E8%B4%B9%E6%8A%A5%E9%94%99/Spark%E5%90%AF%E5%8A%A8%E6%97%B6%E6%97%A5%E5%BF%97Kafka%E6%B6%88%E8%B4%B9%E6%8A%A5%E9%94%99/</id>
         <title>Spark启动时日志Kafka消费报错</title>
-        <link rel="alternate" href="https://daisiesloves.github.io/20022/09/16/spark%E5%90%AF%E5%8A%A8%E6%97%B6%E6%97%A5%E5%BF%97kafka%E6%B6%88%E8%B4%B9%E6%8A%A5%E9%94%99/Spark%E5%90%AF%E5%8A%A8%E6%97%B6%E6%97%A5%E5%BF%97Kafka%E6%B6%88%E8%B4%B9%E6%8A%A5%E9%94%99/Spark%E5%90%AF%E5%8A%A8%E6%97%B6%E6%97%A5%E5%BF%97Kafka%E6%B6%88%E8%B4%B9%E6%8A%A5%E9%94%99/"/>
+        <link rel="alternate" href="https://daisiesloves.github.io/2022/09/16/spark%E5%90%AF%E5%8A%A8%E6%97%B6%E6%97%A5%E5%BF%97kafka%E6%B6%88%E8%B4%B9%E6%8A%A5%E9%94%99/Spark%E5%90%AF%E5%8A%A8%E6%97%B6%E6%97%A5%E5%BF%97Kafka%E6%B6%88%E8%B4%B9%E6%8A%A5%E9%94%99/Spark%E5%90%AF%E5%8A%A8%E6%97%B6%E6%97%A5%E5%BF%97Kafka%E6%B6%88%E8%B4%B9%E6%8A%A5%E9%94%99/"/>
         <content type="html">&lt;link rel=&#34;stylesheet&#34; class=&#34;aplayer-secondary-style-marker&#34; href=&#34;\assets\css\APlayer.min.css&#34;&gt;&lt;script src=&#34;\assets\js\APlayer.min.js&#34; class=&#34;aplayer-secondary-script-marker&#34;&gt;&lt;/script&gt;&lt;h1&gt;&lt;span id=&#34;spark-启动报错日志&#34;&gt; Spark 启动报错日志&lt;/span&gt;&lt;/h1&gt;
 &lt;p&gt;22/09/16 06:00:29 INFO CachedKafkaConsumer: Initial fetch for spark-executor-own_combine2022082406 jyupay_py_1 7 28846987218&lt;br&gt;
 22/09/16 06:00:29 INFO KerberosLogin: [Principal=jyupay@ZHKDC]: TGT valid starting at: Fri Sep 16 06:00:29 CST 2022&lt;br&gt;
@@ -54,16 +63,7 @@ at org.apache.spark.executor.Executor&lt;span class=&#34;katex&#34;&gt;&lt;span 
 at java.lang.Thread.run(Thread.java:745)&lt;/p&gt;
 </content>
         <category term="kafka" scheme="https://daisiesloves.github.io/tags/kafka/" />
-        <updated>+020022-09-16T07:30:06.000Z</updated>
-    </entry>
-    <entry>
-        <id>https://daisiesloves.github.io/2022/09/23/test/Test/Test/</id>
-        <title>Test</title>
-        <link rel="alternate" href="https://daisiesloves.github.io/2022/09/23/test/Test/Test/"/>
-        <content type="html">&lt;link rel=&#34;stylesheet&#34; class=&#34;aplayer-secondary-style-marker&#34; href=&#34;\assets\css\APlayer.min.css&#34;&gt;&lt;script src=&#34;\assets\js\APlayer.min.js&#34; class=&#34;aplayer-secondary-script-marker&#34;&gt;&lt;/script&gt;&lt;p&gt;Test post.&lt;/p&gt;
-</content>
-        <category term="Test" scheme="https://daisiesloves.github.io/tags/Test/" />
-        <updated>2022-09-23T04:03:51.000Z</updated>
+        <updated>2022-09-16T07:30:06.000Z</updated>
     </entry>
     <entry>
         <id>https://daisiesloves.github.io/2022/08/26/flume-1-10%E5%90%AF%E5%8A%A8%E5%BC%82%E5%B8%B8/Flume-1.10%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99/Flume-1.10%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99/</id>
