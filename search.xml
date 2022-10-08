@@ -1,10 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Flume-1.10启动异常</title>
+    <url>/2022/08/26/flume-1-10%E5%90%AF%E5%8A%A8%E5%BC%82%E5%B8%B8/Flume-1.10%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99/Flume-1.10%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3><span id="flume-110unsupported-majorminor-version-520-启动异常"> Flume-1.10,Unsupported major.minor version 52.0 启动异常</span></h3>
+<pre><code>执行报错：Exception in thread &quot;main&quot; java.lang.UnsupportedClassVersionError: com/heima/socket/Demo2_Receive : Unsupported major.minor version 52.0
+
+]$ java -version
+java version &quot;1.7.0_91&quot;
+OpenJDK Runtime Environment (rhel-2.6.2.3.el7-x86_64 u91-b00)
+OpenJDK 64-Bit Server VM (build 24.91-b01, mixed mode)
+
+经分排查，是生产环境jdk版本过低导致，将jdk版本升级到1.8，即可解决此报错问题。使用jd-gui工具，查看META-INF\MANIFEST.MF中的内容，Build-Jdk属性就是jar包，JDK的版本。
+
+在flume-env.sh配置文件，指定jdk路径
+export JAVA_HOME=&quot;/home/upays/jdk1.8.0_211/</code></pre>
+]]></content>
+      <tags>
+        <tag>Flume</tag>
+        <tag>JDK</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello Word</title>
+    <url>/2018/12/23/hello-word/Hello%20Word/Hello%20Word/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1><span id="前言"> 前言</span></h1>
+<p>微凉<br>
+高桐深密间幽篁，乳燕声希夏日长。<br>
+独坐水亭风满袖，世间清景是微凉。</p>
+]]></content>
+      <tags>
+        <tag>Test</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>HDFS目录配额空间不够导致Spark任务异常</title>
     <url>/2022/10/08/hdfs%E7%9B%AE%E5%BD%95%E9%85%8D%E9%A2%9D%E7%A9%BA%E9%97%B4%E4%B8%8D%E5%A4%9F%E5%AF%BC%E8%87%B4spark%E4%BB%BB%E5%8A%A1%E5%BC%82%E5%B8%B8/HDFS%E7%9B%AE%E5%BD%95%E9%85%8D%E9%A2%9D%E7%A9%BA%E9%97%B4%E4%B8%8D%E5%A4%9F%E5%AF%BC%E8%87%B4Spark%E4%BB%BB%E5%8A%A1%E5%BC%82%E5%B8%B8/HDFS%E7%9B%AE%E5%BD%95%E9%85%8D%E9%A2%9D%E7%A9%BA%E9%97%B4%E4%B8%8D%E5%A4%9F%E5%AF%BC%E8%87%B4Spark%E4%BB%BB%E5%8A%A1%E5%BC%82%E5%B8%B8/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1><span id="hdfs-目录配额空间不够导致-spark-任务异常"> HDFS 目录配额空间不够导致 Spark 任务异常</span></h1>
-<h2><span id="错误日志如下"> 错误日志如下：</span></h2>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2><span id="hdfs-目录配额空间不够导致-spark-任务异常"> HDFS 目录配额空间不够导致 Spark 任务异常</span></h2>
+<h3><span id="错误日志如下"> 错误日志如下：</span></h3>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">22/10/07 03:45:18 INFO Client: Preparing resources for our AM container</span><br><span class="line">22/10/07 03:45:18 WARN Client: Neither spark.yarn.jars nor spark.yarn.archive is set, falling back to uploading libraries under SPARK_HOME.</span><br><span class="line">22/10/07 03:45:21 INFO Client: Uploading resource file:/tmp/spark-a23912f6-850d-45a5-88d2-a2a4376c03d9/__spark_libs__5308838579049091591.zip -&gt; hdfs://router-fed/user/jyupay/.sparkStaging/application_1663262516437_821787/__spark_libs__5308838579049091591.zip</span><br><span class="line">22/10/07 03:45:22 INFO Client: Uploading resource file:/app01/upays/data-center/pay/combine/data_combine.jar -&gt; hdfs://router-fed/user/jyupay/.sparkStaging/application_1663262516437_821787/data_combine.jar</span><br><span class="line">22/10/07 03:45:22 INFO Client: Deleted staging directory hdfs://router-fed/user/jyupay/.sparkStaging/application_1663262516437_821787</span><br><span class="line">Exception in thread &quot;main&quot; org.apache.hadoop.hdfs.protocol.DSQuotaExceededException: The DiskSpace quota of /user/jyupay is exceeded: quota = 27487790694400 B = 25 TB but diskspace consumed = 27488154349032 B = 25.00 TB</span><br><span class="line">        at org.apache.hadoop.hdfs.server.namenode.DirectoryWithQuotaFeature.verifyStoragespaceQuota(DirectoryWithQuotaFeature.java:195)</span><br><span class="line">        at org.apache.hadoop.hdfs.server.namenode.DirectoryWithQuotaFeature.verifyQuota(DirectoryWithQuotaFeature.java:222)</span><br><span class="line">        at org.apache.hadoop.hdfs.server.namenode.FSDirectory.verifyQuota(FSDirectory.java:1159)</span><br><span class="line">        at org.apache.hadoop.hdfs.server.namenode.FSDirectory.updateCount(FSDirectory.java:991)</span><br><span class="line">        at org.apache.hadoop.hdfs.server.namenode.FSDirectory.updateCount(FSDirectory.java:950)</span><br><span class="line">        at org.apache.hadoop.hdfs.server.namenode.FSDirWriteFileOp.addBlock(FSDirWriteFileOp.java:505)</span><br><span class="line">        at org.apache.hadoop.hdfs.server.namenode.FSDirWriteFileOp.saveAllocatedBlock(FSDirWriteFileOp.java:777)</span><br><span class="line">        at org.apache.hadoop.hdfs.server.namenode.FSDirWriteFileOp.storeAllocatedBlock(FSDirWriteFileOp.java:260)</span><br><span class="line">        at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.getAdditionalBlock(FSNamesystem.java:2728)</span><br><span class="line">        at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.addBlock(NameNodeRpcServer.java:894)</span><br><span class="line">        at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.addBlock(ClientNamenodeProtocolServerSideTranslatorPB.java:581)</span><br><span class="line">        at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:529)</span><br><span class="line">        at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:1036)</span><br><span class="line">        at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:917)</span><br><span class="line">        at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:854)</span><br><span class="line">        at javax.security.auth.Subject.doAs(Subject.java:422)</span><br><span class="line">        at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1699)</span><br><span class="line">        at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2779)</span><br></pre></td></tr></table></figure>
 ]]></content>
       <tags>
@@ -15,7 +48,7 @@
   <entry>
     <title>Spark启动时日志Kafka消费报错</title>
     <url>/2022/09/16/spark%E5%90%AF%E5%8A%A8%E6%97%B6%E6%97%A5%E5%BF%97kafka%E6%B6%88%E8%B4%B9%E6%8A%A5%E9%94%99/Spark%E5%90%AF%E5%8A%A8%E6%97%B6%E6%97%A5%E5%BF%97Kafka%E6%B6%88%E8%B4%B9%E6%8A%A5%E9%94%99/Spark%E5%90%AF%E5%8A%A8%E6%97%B6%E6%97%A5%E5%BF%97Kafka%E6%B6%88%E8%B4%B9%E6%8A%A5%E9%94%99/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1><span id="spark-启动报错日志"> Spark 启动报错日志</span></h1>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3><span id="spark-启动报错日志"> Spark 启动报错日志</span></h3>
 <p>22/09/16 06:00:29 INFO CachedKafkaConsumer: Initial fetch for spark-executor-own_combine2022082406 jyupay_py_1 7 28846987218<br>
 22/09/16 06:00:29 INFO KerberosLogin: [Principal=jyupay@ZHKDC]: TGT valid starting at: Fri Sep 16 06:00:29 CST 2022<br>
 22/09/16 06:00:29 INFO KerberosLogin: [Principal=jyupay@ZHKDC]: TGT expires: Sat Sep 17 06:00:29 CST 2022<br>
@@ -57,39 +90,6 @@ at java.lang.Thread.run(Thread.java:745)</p>
 ]]></content>
       <tags>
         <tag>kafka</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Flume-1.10启动异常</title>
-    <url>/2022/08/26/flume-1-10%E5%90%AF%E5%8A%A8%E5%BC%82%E5%B8%B8/Flume-1.10%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99/Flume-1.10%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3><span id="flume-110unsupported-majorminor-version-520-启动异常"> Flume-1.10,Unsupported major.minor version 52.0 启动异常</span></h3>
-<pre><code>执行报错：Exception in thread &quot;main&quot; java.lang.UnsupportedClassVersionError: com/heima/socket/Demo2_Receive : Unsupported major.minor version 52.0
-
-]$ java -version
-java version &quot;1.7.0_91&quot;
-OpenJDK Runtime Environment (rhel-2.6.2.3.el7-x86_64 u91-b00)
-OpenJDK 64-Bit Server VM (build 24.91-b01, mixed mode)
-
-经分排查，是生产环境jdk版本过低导致，将jdk版本升级到1.8，即可解决此报错问题。使用jd-gui工具，查看META-INF\MANIFEST.MF中的内容，Build-Jdk属性就是jar包，JDK的版本。
-
-在flume-env.sh配置文件，指定jdk路径
-export JAVA_HOME=&quot;/home/upays/jdk1.8.0_211/</code></pre>
-]]></content>
-      <tags>
-        <tag>Flume</tag>
-        <tag>JDK</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hello Word</title>
-    <url>/2018/12/23/hello-word/Hello%20Word/Hello%20Word/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1><span id="前言"> 前言</span></h1>
-<p>微凉<br>
-高桐深密间幽篁，乳燕声希夏日长。<br>
-独坐水亭风满袖，世间清景是微凉。</p>
-]]></content>
-      <tags>
-        <tag>Test</tag>
       </tags>
   </entry>
   <entry>
