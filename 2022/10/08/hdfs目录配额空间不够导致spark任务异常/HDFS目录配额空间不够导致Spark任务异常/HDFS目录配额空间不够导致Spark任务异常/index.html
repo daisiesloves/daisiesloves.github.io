@@ -64,27 +64,27 @@ Daisies = It's better to burn out than to fade away.</title>
   </h1>
   
 <div class="meta">
-  <span class="item" title="作成日：2022-10-08 15:30:06">
+  <span class="item" title="Created: 2022-10-08 15:30:06">
     <span class="icon">
       <i class="ic i-calendar"></i>
     </span>
-    <span class="text">投稿日</span>
+    <span class="text">Posted on</span>
     <time itemprop="dateCreated datePublished" datetime="2022-10-08T15:30:06+08:00">2022-10-08</time>
   </span>
-  <span class="item" title="単語数">
+  <span class="item" title="Symbols count in article">
     <span class="icon">
       <i class="ic i-pen"></i>
     </span>
-    <span class="text">単語数</span>
-    <span>3.1k</span>
-    <span class="text">単語</span>
+    <span class="text">Symbols count in article</span>
+    <span>2.6k</span>
+    <span class="text">words</span>
   </span>
-  <span class="item" title="読書の時間">
+  <span class="item" title="Reading time">
     <span class="icon">
       <i class="ic i-clock"></i>
     </span>
-    <span class="text">読書の時間</span>
-    <span>3 分</span>
+    <span class="text">Reading time</span>
+    <span>2 mins.</span>
   </span>
 </div>
 
@@ -94,7 +94,7 @@ Daisies = It's better to burn out than to fade away.</title>
         <nav id="nav">
   <div class="inner">
     <div class="toggle">
-      <div class="lines" aria-label="ナビゲーションバーの切り替え">
+      <div class="lines" aria-label="Toggle navigation bar">
         <span class="line"></span>
         <span class="line"></span>
         <span class="line"></span>
@@ -117,12 +117,12 @@ Daisies = It's better to burn out than to fade away.</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclwrdwyaj20zk0m8are.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicivghyooj20zk0m8dir.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giciryrr3rj20zk0m8nhk.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giph4fomxoj20zk0m8axp.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclj61ylzj20zk0m8b29.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giph4lm9i7j20zk0m84qp.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicm0fdw5cj20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipet4bz0yj20zk0m8e81.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicitht3xtj20zk0m8k5v.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipevarprfj20zk0m8npd.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giph4wqtg4j20zk0m8x6p.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclgrvbd6j20zk0m8qv5.jpg"></li>
         </ul>
       </div>
     </header>
@@ -147,7 +147,7 @@ Daisies = It's better to burn out than to fade away.</title>
     
 <div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
 <i class="ic i-home"></i>
-<span><a href="/">ホーム</a></span>
+<span><a href="/">Home</a></span>
 </div>
 
     <article itemscope itemtype="http://schema.org/Article" class="post block" lang="default">
@@ -168,30 +168,7 @@ Daisies = It's better to burn out than to fade away.</title>
 
     <h1><span id="hdfs-目录配额空间不够导致-spark-任务异常"> HDFS 目录配额空间不够导致 Spark 任务异常</span></h1>
 <h2><span id="错误日志如下"> 错误日志如下：</span></h2>
-<p>22/10/07 03:45:18 INFO Client: Preparing resources for our AM container<br>
-22/10/07 03:45:18 WARN Client: Neither spark.yarn.jars nor spark.yarn.archive is set, falling back to uploading libraries under SPARK_HOME.<br>
-22/10/07 03:45:21 INFO Client: Uploading resource file:/tmp/spark-a23912f6-850d-45a5-88d2-a2a4376c03d9/__spark_libs__5308838579049091591.zip -&gt; hdfs://router-fed/user/jyupay/.sparkStaging/application_1663262516437_821787/__spark_libs__5308838579049091591.zip<br>
-22/10/07 03:45:22 INFO Client: Uploading resource file:/app01/upays/data-center/pay/combine/data_combine.jar -&gt; hdfs://router-fed/user/jyupay/.sparkStaging/application_1663262516437_821787/data_combine.jar<br>
-22/10/07 03:45:22 INFO Client: Deleted staging directory hdfs://router-fed/user/jyupay/.sparkStaging/application_1663262516437_821787<br>
-Exception in thread “main” org.apache.hadoop.hdfs.protocol.DSQuotaExceededException: The DiskSpace quota of /user/jyupay is exceeded: quota = 27487790694400 B = 25 TB but diskspace consumed = 27488154349032 B = 25.00 TB<br>
-at org.apache.hadoop.hdfs.server.namenode.DirectoryWithQuotaFeature.verifyStoragespaceQuota(DirectoryWithQuotaFeature.java:195)<br>
-at org.apache.hadoop.hdfs.server.namenode.DirectoryWithQuotaFeature.verifyQuota(DirectoryWithQuotaFeature.java:222)<br>
-at org.apache.hadoop.hdfs.server.namenode.FSDirectory.verifyQuota(FSDirectory.java:1159)<br>
-at org.apache.hadoop.hdfs.server.namenode.FSDirectory.updateCount(FSDirectory.java:991)<br>
-at org.apache.hadoop.hdfs.server.namenode.FSDirectory.updateCount(FSDirectory.java:950)<br>
-at org.apache.hadoop.hdfs.server.namenode.FSDirWriteFileOp.addBlock(FSDirWriteFileOp.java:505)<br>
-at org.apache.hadoop.hdfs.server.namenode.FSDirWriteFileOp.saveAllocatedBlock(FSDirWriteFileOp.java:777)<br>
-at org.apache.hadoop.hdfs.server.namenode.FSDirWriteFileOp.storeAllocatedBlock(FSDirWriteFileOp.java:260)<br>
-at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.getAdditionalBlock(FSNamesystem.java:2728)<br>
-at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.addBlock(NameNodeRpcServer.java:894)<br>
-at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.addBlock(ClientNamenodeProtocolServerSideTranslatorPB.java:581)<br>
-at org.apache.hadoop.ipc.ProtobufRpcEngine<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mi>e</mi><mi>r</mi><mi>v</mi><mi>e</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">Server</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span></span>ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:529)<br>
-at org.apache.hadoop.ipc.RPC<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mi>e</mi><mi>r</mi><mi>v</mi><mi>e</mi><mi>r</mi><mi mathvariant="normal">.</mi><mi>c</mi><mi>a</mi><mi>l</mi><mi>l</mi><mo stretchy="false">(</mo><mi>R</mi><mi>P</mi><mi>C</mi><mi mathvariant="normal">.</mi><mi>j</mi><mi>a</mi><mi>v</mi><mi>a</mi><mo>:</mo><mn>1036</mn><mo stretchy="false">)</mo><mi>a</mi><mi>t</mi><mi>o</mi><mi>r</mi><mi>g</mi><mi mathvariant="normal">.</mi><mi>a</mi><mi>p</mi><mi>a</mi><mi>c</mi><mi>h</mi><mi>e</mi><mi mathvariant="normal">.</mi><mi>h</mi><mi>a</mi><mi>d</mi><mi>o</mi><mi>o</mi><mi>p</mi><mi mathvariant="normal">.</mi><mi>i</mi><mi>p</mi><mi>c</mi><mi mathvariant="normal">.</mi><mi>S</mi><mi>e</mi><mi>r</mi><mi>v</mi><mi>e</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">Server.call(RPC.java:1036)
-        at org.apache.hadoop.ipc.Server</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord">.</span><span class="mord mathnormal">c</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord">.</span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mord">3</span><span class="mord">6</span><span class="mclose">)</span><span class="mord mathnormal">a</span><span class="mord mathnormal">t</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord">.</span><span class="mord mathnormal">a</span><span class="mord mathnormal">p</span><span class="mord mathnormal">a</span><span class="mord mathnormal">c</span><span class="mord mathnormal">h</span><span class="mord mathnormal">e</span><span class="mord">.</span><span class="mord mathnormal">h</span><span class="mord mathnormal">a</span><span class="mord mathnormal">d</span><span class="mord mathnormal">o</span><span class="mord mathnormal">o</span><span class="mord mathnormal">p</span><span class="mord">.</span><span class="mord mathnormal">i</span><span class="mord mathnormal">p</span><span class="mord mathnormal">c</span><span class="mord">.</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span></span>RpcCall.run(Server.java:917)<br>
-at org.apache.hadoop.ipc.Server<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mi>p</mi><mi>c</mi><mi>C</mi><mi>a</mi><mi>l</mi><mi>l</mi><mi mathvariant="normal">.</mi><mi>r</mi><mi>u</mi><mi>n</mi><mo stretchy="false">(</mo><mi>S</mi><mi>e</mi><mi>r</mi><mi>v</mi><mi>e</mi><mi>r</mi><mi mathvariant="normal">.</mi><mi>j</mi><mi>a</mi><mi>v</mi><mi>a</mi><mo>:</mo><mn>854</mn><mo stretchy="false">)</mo><mi>a</mi><mi>t</mi><mi>j</mi><mi>a</mi><mi>v</mi><mi>a</mi><mi>x</mi><mi mathvariant="normal">.</mi><mi>s</mi><mi>e</mi><mi>c</mi><mi>u</mi><mi>r</mi><mi>i</mi><mi>t</mi><mi>y</mi><mi mathvariant="normal">.</mi><mi>a</mi><mi>u</mi><mi>t</mi><mi>h</mi><mi mathvariant="normal">.</mi><mi>S</mi><mi>u</mi><mi>b</mi><mi>j</mi><mi>e</mi><mi>c</mi><mi>t</mi><mi mathvariant="normal">.</mi><mi>d</mi><mi>o</mi><mi>A</mi><mi>s</mi><mo stretchy="false">(</mo><mi>S</mi><mi>u</mi><mi>b</mi><mi>j</mi><mi>e</mi><mi>c</mi><mi>t</mi><mi mathvariant="normal">.</mi><mi>j</mi><mi>a</mi><mi>v</mi><mi>a</mi><mo>:</mo><mn>422</mn><mo stretchy="false">)</mo><mi>a</mi><mi>t</mi><mi>o</mi><mi>r</mi><mi>g</mi><mi mathvariant="normal">.</mi><mi>a</mi><mi>p</mi><mi>a</mi><mi>c</mi><mi>h</mi><mi>e</mi><mi mathvariant="normal">.</mi><mi>h</mi><mi>a</mi><mi>d</mi><mi>o</mi><mi>o</mi><mi>p</mi><mi mathvariant="normal">.</mi><mi>s</mi><mi>e</mi><mi>c</mi><mi>u</mi><mi>r</mi><mi>i</mi><mi>t</mi><mi>y</mi><mi mathvariant="normal">.</mi><mi>U</mi><mi>s</mi><mi>e</mi><mi>r</mi><mi>G</mi><mi>r</mi><mi>o</mi><mi>u</mi><mi>p</mi><mi>I</mi><mi>n</mi><mi>f</mi><mi>o</mi><mi>r</mi><mi>m</mi><mi>a</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi><mi mathvariant="normal">.</mi><mi>d</mi><mi>o</mi><mi>A</mi><mi>s</mi><mo stretchy="false">(</mo><mi>U</mi><mi>s</mi><mi>e</mi><mi>r</mi><mi>G</mi><mi>r</mi><mi>o</mi><mi>u</mi><mi>p</mi><mi>I</mi><mi>n</mi><mi>f</mi><mi>o</mi><mi>r</mi><mi>m</mi><mi>a</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi><mi mathvariant="normal">.</mi><mi>j</mi><mi>a</mi><mi>v</mi><mi>a</mi><mo>:</mo><mn>1699</mn><mo stretchy="false">)</mo><mi>a</mi><mi>t</mi><mi>o</mi><mi>r</mi><mi>g</mi><mi mathvariant="normal">.</mi><mi>a</mi><mi>p</mi><mi>a</mi><mi>c</mi><mi>h</mi><mi>e</mi><mi mathvariant="normal">.</mi><mi>h</mi><mi>a</mi><mi>d</mi><mi>o</mi><mi>o</mi><mi>p</mi><mi mathvariant="normal">.</mi><mi>i</mi><mi>p</mi><mi>c</mi><mi mathvariant="normal">.</mi><mi>S</mi><mi>e</mi><mi>r</mi><mi>v</mi><mi>e</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">RpcCall.run(Server.java:854)
-        at javax.security.auth.Subject.doAs(Subject.java:422)
-        at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1699)
-        at org.apache.hadoop.ipc.Server</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mord mathnormal">p</span><span class="mord mathnormal">c</span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord">.</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">u</span><span class="mord mathnormal">n</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord">.</span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">8</span><span class="mord">5</span><span class="mord">4</span><span class="mclose">)</span><span class="mord mathnormal">a</span><span class="mord mathnormal">t</span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">a</span><span class="mord mathnormal">x</span><span class="mord">.</span><span class="mord mathnormal">s</span><span class="mord mathnormal">e</span><span class="mord mathnormal">c</span><span class="mord mathnormal">u</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">i</span><span class="mord mathnormal">t</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mord">.</span><span class="mord mathnormal">a</span><span class="mord mathnormal">u</span><span class="mord mathnormal">t</span><span class="mord mathnormal">h</span><span class="mord">.</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal">u</span><span class="mord mathnormal">b</span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mord mathnormal">e</span><span class="mord mathnormal">c</span><span class="mord mathnormal">t</span><span class="mord">.</span><span class="mord mathnormal">d</span><span class="mord mathnormal">o</span><span class="mord mathnormal">A</span><span class="mord mathnormal">s</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal">u</span><span class="mord mathnormal">b</span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mord mathnormal">e</span><span class="mord mathnormal">c</span><span class="mord mathnormal">t</span><span class="mord">.</span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">4</span><span class="mord">2</span><span class="mord">2</span><span class="mclose">)</span><span class="mord mathnormal">a</span><span class="mord mathnormal">t</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord">.</span><span class="mord mathnormal">a</span><span class="mord mathnormal">p</span><span class="mord mathnormal">a</span><span class="mord mathnormal">c</span><span class="mord mathnormal">h</span><span class="mord mathnormal">e</span><span class="mord">.</span><span class="mord mathnormal">h</span><span class="mord mathnormal">a</span><span class="mord mathnormal">d</span><span class="mord mathnormal">o</span><span class="mord mathnormal">o</span><span class="mord mathnormal">p</span><span class="mord">.</span><span class="mord mathnormal">s</span><span class="mord mathnormal">e</span><span class="mord mathnormal">c</span><span class="mord mathnormal">u</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">i</span><span class="mord mathnormal">t</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mord">.</span><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="mord mathnormal">s</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">G</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">o</span><span class="mord mathnormal">u</span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">m</span><span class="mord mathnormal">a</span><span class="mord mathnormal">t</span><span class="mord mathnormal">i</span><span class="mord mathnormal">o</span><span class="mord mathnormal">n</span><span class="mord">.</span><span class="mord mathnormal">d</span><span class="mord mathnormal">o</span><span class="mord mathnormal">A</span><span class="mord mathnormal">s</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="mord mathnormal">s</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">G</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">o</span><span class="mord mathnormal">u</span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">m</span><span class="mord mathnormal">a</span><span class="mord mathnormal">t</span><span class="mord mathnormal">i</span><span class="mord mathnormal">o</span><span class="mord mathnormal">n</span><span class="mord">.</span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mord">6</span><span class="mord">9</span><span class="mord">9</span><span class="mclose">)</span><span class="mord mathnormal">a</span><span class="mord mathnormal">t</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord">.</span><span class="mord mathnormal">a</span><span class="mord mathnormal">p</span><span class="mord mathnormal">a</span><span class="mord mathnormal">c</span><span class="mord mathnormal">h</span><span class="mord mathnormal">e</span><span class="mord">.</span><span class="mord mathnormal">h</span><span class="mord mathnormal">a</span><span class="mord mathnormal">d</span><span class="mord mathnormal">o</span><span class="mord mathnormal">o</span><span class="mord mathnormal">p</span><span class="mord">.</span><span class="mord mathnormal">i</span><span class="mord mathnormal">p</span><span class="mord mathnormal">c</span><span class="mord">.</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span></span>Handler.run(Server.java:2779)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">22/10/07 03:45:18 INFO Client: Preparing resources for our AM container</span><br><span class="line">22/10/07 03:45:18 WARN Client: Neither spark.yarn.jars nor spark.yarn.archive is set, falling back to uploading libraries under SPARK_HOME.</span><br><span class="line">22/10/07 03:45:21 INFO Client: Uploading resource file:/tmp/spark-a23912f6-850d-45a5-88d2-a2a4376c03d9/__spark_libs__5308838579049091591.zip -&gt; hdfs://router-fed/user/jyupay/.sparkStaging/application_1663262516437_821787/__spark_libs__5308838579049091591.zip</span><br><span class="line">22/10/07 03:45:22 INFO Client: Uploading resource file:/app01/upays/data-center/pay/combine/data_combine.jar -&gt; hdfs://router-fed/user/jyupay/.sparkStaging/application_1663262516437_821787/data_combine.jar</span><br><span class="line">22/10/07 03:45:22 INFO Client: Deleted staging directory hdfs://router-fed/user/jyupay/.sparkStaging/application_1663262516437_821787</span><br><span class="line">Exception in thread &quot;main&quot; org.apache.hadoop.hdfs.protocol.DSQuotaExceededException: The DiskSpace quota of /user/jyupay is exceeded: quota = 27487790694400 B = 25 TB but diskspace consumed = 27488154349032 B = 25.00 TB</span><br><span class="line">        at org.apache.hadoop.hdfs.server.namenode.DirectoryWithQuotaFeature.verifyStoragespaceQuota(DirectoryWithQuotaFeature.java:195)</span><br><span class="line">        at org.apache.hadoop.hdfs.server.namenode.DirectoryWithQuotaFeature.verifyQuota(DirectoryWithQuotaFeature.java:222)</span><br><span class="line">        at org.apache.hadoop.hdfs.server.namenode.FSDirectory.verifyQuota(FSDirectory.java:1159)</span><br><span class="line">        at org.apache.hadoop.hdfs.server.namenode.FSDirectory.updateCount(FSDirectory.java:991)</span><br><span class="line">        at org.apache.hadoop.hdfs.server.namenode.FSDirectory.updateCount(FSDirectory.java:950)</span><br><span class="line">        at org.apache.hadoop.hdfs.server.namenode.FSDirWriteFileOp.addBlock(FSDirWriteFileOp.java:505)</span><br><span class="line">        at org.apache.hadoop.hdfs.server.namenode.FSDirWriteFileOp.saveAllocatedBlock(FSDirWriteFileOp.java:777)</span><br><span class="line">        at org.apache.hadoop.hdfs.server.namenode.FSDirWriteFileOp.storeAllocatedBlock(FSDirWriteFileOp.java:260)</span><br><span class="line">        at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.getAdditionalBlock(FSNamesystem.java:2728)</span><br><span class="line">        at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.addBlock(NameNodeRpcServer.java:894)</span><br><span class="line">        at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.addBlock(ClientNamenodeProtocolServerSideTranslatorPB.java:581)</span><br><span class="line">        at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:529)</span><br><span class="line">        at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:1036)</span><br><span class="line">        at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:917)</span><br><span class="line">        at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:854)</span><br><span class="line">        at javax.security.auth.Subject.doAs(Subject.java:422)</span><br><span class="line">        at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1699)</span><br><span class="line">        at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2779)</span><br></pre></td></tr></table></figure>
 
       <div class="tags">
           <a href="/tags/spark/" rel="tag"><i class="ic i-tag"></i> spark</a>
@@ -206,28 +183,28 @@ at org.apache.hadoop.ipc.Server<span class="katex"><span class="katex-mathml"><m
     <span class="icon">
       <i class="ic i-calendar-check"></i>
     </span>
-    <span class="text">編集日</span>
-    <time title="修正日：2022-10-08 17:03:53" itemprop="dateModified" datetime="2022-10-08T17:03:53+08:00">2022-10-08</time>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2022-10-08 17:20:35" itemprop="dateModified" datetime="2022-10-08T17:20:35+08:00">2022-10-08</time>
   </span>
-  <span id="2022/10/08/hdfs目录配额空间不够导致spark任务异常/HDFS目录配额空间不够导致Spark任务异常/HDFS目录配额空间不够导致Spark任务异常/" class="item leancloud_visitors" data-flag-title="HDFS目录配额空间不够导致Spark任务异常" title="閲覧数">
+  <span id="2022/10/08/hdfs目录配额空间不够导致spark任务异常/HDFS目录配额空间不够导致Spark任务异常/HDFS目录配额空间不够导致Spark任务异常/" class="item leancloud_visitors" data-flag-title="HDFS目录配额空间不够导致Spark任务异常" title="Views">
       <span class="icon">
         <i class="ic i-eye"></i>
       </span>
-      <span class="text">閲覧数</span>
+      <span class="text">Views</span>
       <span class="leancloud-visitors-count"></span>
-      <span class="text">回</span>
+      <span class="text">times</span>
   </span>
 </div>
 
       
 <div class="reward">
-  <button><i class="ic i-heartbeat"></i> 寄付</button>
-  <p>*~(￣▽￣)~[お茶]を一杯ください</p>
+  <button><i class="ic i-heartbeat"></i> Donate</button>
+  <p>Give me a cup of [coffee]~(￣▽￣)~*</p>
   <div id="qr">
       
       <div>
-        <img data-src="/images/wechatpay.png" alt="凣汐微凉 WeChat 支払う">
-        <p>WeChat 支払う</p>
+        <img data-src="/images/wechatpay.png" alt="凣汐微凉 WeChat Pay">
+        <p>WeChat Pay</p>
       </div>
       
       <div>
@@ -247,14 +224,14 @@ at org.apache.hadoop.ipc.Server<span class="katex"><span class="katex-mathml"><m
 <div id="copyright">
 <ul>
   <li class="author">
-    <strong>著者： </strong>凣汐微凉 <i class="ic i-at"><em>@</em></i>It's better to burn out than to fade away.
+    <strong>Post author:  </strong>凣汐微凉 <i class="ic i-at"><em>@</em></i>It's better to burn out than to fade away.
   </li>
   <li class="link">
-    <strong>記事へのリンク：</strong>
+    <strong>Post link: </strong>
     <a href="https://daisiesloves.github.io/2022/10/08/hdfs%E7%9B%AE%E5%BD%95%E9%85%8D%E9%A2%9D%E7%A9%BA%E9%97%B4%E4%B8%8D%E5%A4%9F%E5%AF%BC%E8%87%B4spark%E4%BB%BB%E5%8A%A1%E5%BC%82%E5%B8%B8/HDFS%E7%9B%AE%E5%BD%95%E9%85%8D%E9%A2%9D%E7%A9%BA%E9%97%B4%E4%B8%8D%E5%A4%9F%E5%AF%BC%E8%87%B4Spark%E4%BB%BB%E5%8A%A1%E5%BC%82%E5%B8%B8/HDFS%E7%9B%AE%E5%BD%95%E9%85%8D%E9%A2%9D%E7%A9%BA%E9%97%B4%E4%B8%8D%E5%A4%9F%E5%AF%BC%E8%87%B4Spark%E4%BB%BB%E5%8A%A1%E5%BC%82%E5%B8%B8/" title="HDFS目录配额空间不够导致Spark任务异常">https://daisiesloves.github.io/2022/10/08/hdfs目录配额空间不够导致spark任务异常/HDFS目录配额空间不够导致Spark任务异常/HDFS目录配额空间不够导致Spark任务异常/</a>
   </li>
   <li class="license">
-    <strong>著作権表示： </strong>このブログ内のすべての記事は、特別な記載がない限り <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> の下のライセンスで保護されています。
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
   </li>
 </ul>
 </div>
@@ -270,8 +247,8 @@ at org.apache.hadoop.ipc.Server<span class="katex"><span class="katex-mathml"><m
     <div class="item left">
       
 
-  <a href="/2022/09/23/test/Test/Test/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipexw3o58j20zk0m8e81.jpg" title="Test">
-  <span class="type">前の記事</span>
+  <a href="/2022/09/23/test/Test/Test/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclhfehz7j20zk0m8u0x.jpg" title="Test">
+  <span class="type">Previous Post</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Test</h3>
   </a>
@@ -293,12 +270,12 @@ at org.apache.hadoop.ipc.Server<span class="katex"><span class="katex-mathml"><m
 
   <div class="panels">
     <div class="inner">
-      <div class="contents panel pjax" data-title="見出し">
+      <div class="contents panel pjax" data-title="Contents">
           <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text"> HDFS 目录配额空间不够导致 Spark 任务异常</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.1.</span> <span class="toc-text"> 错误日志如下：</span></a></li></ol></li></ol>
       </div>
-      <div class="related panel pjax" data-title="関連記事">
+      <div class="related panel pjax" data-title="Related">
       </div>
-      <div class="overview panel" data-title="概要">
+      <div class="overview panel" data-title="Overview">
         <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
   <img class="image" itemprop="image" alt="凣汐微凉"
       data-src="/images/avatar.jpg">
@@ -310,13 +287,13 @@ at org.apache.hadoop.ipc.Server<span class="katex"><span class="katex-mathml"><m
     <div class="item posts">
       <a href="/archives/">
         <span class="count">5</span>
-        <span class="name">ポスト</span>
+        <span class="name">posts</span>
       </a>
     </div>
     <div class="item tags">
       <a href="/tags/">
         <span class="count">6</span>
-        <span class="name">タグ</span>
+        <span class="name">tags</span>
       </a>
     </div>
 </nav>
@@ -328,12 +305,12 @@ at org.apache.hadoop.ipc.Server<span class="katex"><span class="katex-mathml"><m
   
     
   <li class="item">
-    <a href="/" rel="section"><i class="ic i-home"></i>ホーム</a>
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
   </li>
 
     
   <li class="item">
-    <a href="/about/" rel="section"><i class="ic i-user"></i>プロフィール</a>
+    <a href="/about/" rel="section"><i class="ic i-user"></i>About</a>
   </li>
 
 
@@ -364,7 +341,7 @@ at org.apache.hadoop.ipc.Server<span class="katex"><span class="katex-mathml"><m
         <div class="widgets">
           
 <div class="rpost pjax">
-  <h2>ランダムな記事</h2>
+  <h2>Random Posts</h2>
   <ul>
       
   <li class="item">
@@ -372,7 +349,16 @@ at org.apache.hadoop.ipc.Server<span class="katex"><span class="katex-mathml"><m
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2022/10/08/hdfs%E7%9B%AE%E5%BD%95%E9%85%8D%E9%A2%9D%E7%A9%BA%E9%97%B4%E4%B8%8D%E5%A4%9F%E5%AF%BC%E8%87%B4spark%E4%BB%BB%E5%8A%A1%E5%BC%82%E5%B8%B8/HDFS%E7%9B%AE%E5%BD%95%E9%85%8D%E9%A2%9D%E7%A9%BA%E9%97%B4%E4%B8%8D%E5%A4%9F%E5%AF%BC%E8%87%B4Spark%E4%BB%BB%E5%8A%A1%E5%BC%82%E5%B8%B8/HDFS%E7%9B%AE%E5%BD%95%E9%85%8D%E9%A2%9D%E7%A9%BA%E9%97%B4%E4%B8%8D%E5%A4%9F%E5%AF%BC%E8%87%B4Spark%E4%BB%BB%E5%8A%A1%E5%BC%82%E5%B8%B8/" title="HDFS目录配额空间不够导致Spark任务异常">HDFS目录配额空间不够导致Spark任务异常</a></span>
+    <span><a href="/2022/08/26/flume-1-10%E5%90%AF%E5%8A%A8%E5%BC%82%E5%B8%B8/Flume-1.10%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99/Flume-1.10%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99/" title="Flume-1.10启动异常">Flume-1.10启动异常</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2018/12/23/hello-word/Hello%20Word/Hello%20Word/" title="Hello Word">Hello Word</a></span>
   </li>
 
       
@@ -390,15 +376,6 @@ at org.apache.hadoop.ipc.Server<span class="katex"><span class="katex-mathml"><m
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2022/08/26/flume-1-10%E5%90%AF%E5%8A%A8%E5%BC%82%E5%B8%B8/Flume-1.10%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99/Flume-1.10%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99/" title="Flume-1.10启动异常">Flume-1.10启动异常</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
     <span><a href="/2022/09/16/spark%E5%90%AF%E5%8A%A8%E6%97%B6%E6%97%A5%E5%BF%97kafka%E6%B6%88%E8%B4%B9%E6%8A%A5%E9%94%99/Spark%E5%90%AF%E5%8A%A8%E6%97%B6%E6%97%A5%E5%BF%97Kafka%E6%B6%88%E8%B4%B9%E6%8A%A5%E9%94%99/Spark%E5%90%AF%E5%8A%A8%E6%97%B6%E6%97%A5%E5%BF%97Kafka%E6%B6%88%E8%B4%B9%E6%8A%A5%E9%94%99/" title="Spark启动时日志Kafka消费报错">Spark启动时日志Kafka消费报错</a></span>
   </li>
 
@@ -408,13 +385,13 @@ at org.apache.hadoop.ipc.Server<span class="katex"><span class="katex-mathml"><m
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2018/12/23/hello-word/Hello%20Word/Hello%20Word/" title="Hello Word">Hello Word</a></span>
+    <span><a href="/2022/10/08/hdfs%E7%9B%AE%E5%BD%95%E9%85%8D%E9%A2%9D%E7%A9%BA%E9%97%B4%E4%B8%8D%E5%A4%9F%E5%AF%BC%E8%87%B4spark%E4%BB%BB%E5%8A%A1%E5%BC%82%E5%B8%B8/HDFS%E7%9B%AE%E5%BD%95%E9%85%8D%E9%A2%9D%E7%A9%BA%E9%97%B4%E4%B8%8D%E5%A4%9F%E5%AF%BC%E8%87%B4Spark%E4%BB%BB%E5%8A%A1%E5%BC%82%E5%B8%B8/HDFS%E7%9B%AE%E5%BD%95%E9%85%8D%E9%A2%9D%E7%A9%BA%E9%97%B4%E4%B8%8D%E5%A4%9F%E5%AF%BC%E8%87%B4Spark%E4%BB%BB%E5%8A%A1%E5%BC%82%E5%B8%B8/" title="HDFS目录配额空间不够导致Spark任务异常">HDFS目录配额空间不够导致Spark任务异常</a></span>
   </li>
 
   </ul>
 </div>
 <div>
-  <h2>最近のコメント</h2>
+  <h2>Recent Comments</h2>
   <ul class="leancloud-recent-comment"></ul>
 </div>
 
@@ -433,13 +410,13 @@ at org.apache.hadoop.ipc.Server<span class="katex"><span class="katex-mathml"><m
     <span class="post-meta-item-icon">
       <i class="ic i-chart-area"></i>
     </span>
-    <span title="単語の総数">9k 単語</span>
+    <span title="Symbols count total">8k words</span>
 
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="ic i-coffee"></i>
     </span>
-    <span title="読書の合計時間">8 分</span>
+    <span title="Reading time total">7 mins.</span>
   </div>
   <div class="powered-by">
     Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
@@ -453,16 +430,16 @@ at org.apache.hadoop.ipc.Server<span class="katex"><span class="katex-mathml"><m
   var LOCAL = {
     path: '2022/10/08/hdfs目录配额空间不够导致spark任务异常/HDFS目录配额空间不够导致Spark任务异常/HDFS目录配额空间不够导致Spark任务异常/',
     favicon: {
-      show: "（●´3｀●）やれやれだぜ",
-      hide: "(´Д｀)大変だ！"
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
     },
     search : {
-      placeholder: "検索…",
-      empty: "「 ${query} 」については何も見つかりませんでした",
-      stats: "${time} ms以内に ${hits} 件の結果が見つかりました"
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
     },
     valine: true,fancybox: true,
-    copyright: 'コピーは成功しました。 <br> 再印刷については、 ％s 契約に従ってください。',
+    copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
     ignores : [
       function(uri) {
         return uri.includes('#');
