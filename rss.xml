@@ -10,8 +10,17 @@
         </author>
         <description></description>
         <language></language>
-        <pubDate>Sun, 09 Oct 2022 11:30:06 +0800</pubDate>
-        <lastBuildDate>Sun, 09 Oct 2022 11:30:06 +0800</lastBuildDate>
+        <pubDate>Mon, 10 Oct 2022 16:03:51 +0800</pubDate>
+        <lastBuildDate>Mon, 10 Oct 2022 16:03:51 +0800</lastBuildDate>
+        <item>
+            <guid isPermalink="true">https://daisiesloves.github.io/2022/10/10/test%20post/</guid>
+            <title>Test2</title>
+            <link>https://daisiesloves.github.io/2022/10/10/test%20post/</link>
+            <category term="Test2" scheme="https://daisiesloves.github.io/tags/Test2/" />
+            <pubDate>Mon, 10 Oct 2022 16:03:51 +0800</pubDate>
+            <description><![CDATA[ &lt;link rel=&#34;stylesheet&#34; class=&#34;aplayer-secondary-style-marker&#34; href=&#34;\assets\css\APlayer.min.css&#34;&gt;&lt;script src=&#34;\assets\js\APlayer.min.js&#34; class=&#34;aplayer-secondary-script-marker&#34;&gt;&lt;/script&gt;&lt;p&gt;Test post 2.&lt;/p&gt;
+ ]]></description>
+        </item>
         <item>
             <guid isPermalink="true">https://daisiesloves.github.io/2022/10/09/Hdfs%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/</guid>
             <title>Hadoop fs命令</title>
@@ -106,15 +115,6 @@ PATHNAME（指定路径）&lt;br&gt;
             <category term="Test" scheme="https://daisiesloves.github.io/tags/Test/" />
             <pubDate>Fri, 23 Sep 2022 12:03:51 +0800</pubDate>
             <description><![CDATA[ &lt;link rel=&#34;stylesheet&#34; class=&#34;aplayer-secondary-style-marker&#34; href=&#34;\assets\css\APlayer.min.css&#34;&gt;&lt;script src=&#34;\assets\js\APlayer.min.js&#34; class=&#34;aplayer-secondary-script-marker&#34;&gt;&lt;/script&gt;&lt;p&gt;Test post.&lt;/p&gt;
- ]]></description>
-        </item>
-        <item>
-            <guid isPermalink="true">https://daisiesloves.github.io/2022/09/23/test%20post/</guid>
-            <title>Test2</title>
-            <link>https://daisiesloves.github.io/2022/09/23/test%20post/</link>
-            <category term="Test2" scheme="https://daisiesloves.github.io/tags/Test2/" />
-            <pubDate>Fri, 23 Sep 2022 12:03:51 +0800</pubDate>
-            <description><![CDATA[ &lt;link rel=&#34;stylesheet&#34; class=&#34;aplayer-secondary-style-marker&#34; href=&#34;\assets\css\APlayer.min.css&#34;&gt;&lt;script src=&#34;\assets\js\APlayer.min.js&#34; class=&#34;aplayer-secondary-script-marker&#34;&gt;&lt;/script&gt;&lt;p&gt;Test post 2.&lt;/p&gt;
  ]]></description>
         </item>
         <item>
