@@ -16,46 +16,32 @@
             <guid isPermalink="true">https://daisiesloves.github.io/Hadoop%20fs%E5%91%BD%E4%BB%A4/</guid>
             <title>Hadoop fs命令</title>
             <link>https://daisiesloves.github.io/Hadoop%20fs%E5%91%BD%E4%BB%A4/</link>
-            <category term="hadoop" scheme="https://daisiesloves.github.io/tags/hadoop/" />
             <category term="hdfs" scheme="https://daisiesloves.github.io/tags/hdfs/" />
+            <category term="hadoop" scheme="https://daisiesloves.github.io/tags/hadoop/" />
             <pubDate>Sun, 09 Oct 2022 11:30:06 +0800</pubDate>
-            <description><![CDATA[ &lt;link rel=&#34;stylesheet&#34; class=&#34;aplayer-secondary-style-marker&#34; href=&#34;\assets\css\APlayer.min.css&#34;&gt;&lt;script src=&#34;\assets\js\APlayer.min.js&#34; class=&#34;aplayer-secondary-script-marker&#34;&gt;&lt;/script&gt;&lt;h2 id=&#34;hdfs-shell命令&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#hdfs-shell命令&#34;&gt;#&lt;/a&gt; HDFS SHELL 命令&lt;/h2&gt;
+            <description><![CDATA[ &lt;link rel=&#34;stylesheet&#34; class=&#34;aplayer-secondary-style-marker&#34; href=&#34;\assets\css\APlayer.min.css&#34;&gt;&lt;script src=&#34;\assets\js\APlayer.min.js&#34; class=&#34;aplayer-secondary-script-marker&#34;&gt;&lt;/script&gt;&lt;h1 id=&#34;hdfs-shell命令&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#hdfs-shell命令&#34;&gt;#&lt;/a&gt; HDFS SHELL 命令&lt;/h1&gt;
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;Hdfs 文件相关操作&lt;/p&gt;
-&lt;h3 id=&#34;查看目录下文件&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#查看目录下文件&#34;&gt;#&lt;/a&gt; 查看目录下文件&lt;/h3&gt;
-&lt;p&gt;hdfs dfs -ls -h /user/jyupay&lt;/p&gt;
-&lt;p&gt;[upays@jzhjf-core-hadoop3-c-1 ~]$ hadoop fs -ls /user/jyupay/offline/diffAndsettle/docment/backup/20221006/dc_dm_charge_diff_0077_day/CHARGE20221005100001.CMCC.0077-all&lt;br /&gt;
--rw-r-----   3 jyupay bdocadm  159239323 2022-10-07 01:01 /user/jyupay/offline/diffAndsettle/docment/backup/20221006/dc_dm_charge_diff_0077_day/CHARGE20221005100001.CMCC.0077-all #第二列数字 3 为副本数&lt;/p&gt;
-&lt;h3 id=&#34;查看文件占用空间大小&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#查看文件占用空间大小&#34;&gt;#&lt;/a&gt; 查看文件占用空间大小&lt;/h3&gt;
-&lt;p&gt;hdfs dfs -du -h /user/jyupay/&lt;br /&gt;
- 或 hadoop fs -du -h /user/jyupay&lt;/p&gt;
-&lt;h3 id=&#34;创建-删除文件夹&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#创建-删除文件夹&#34;&gt;#&lt;/a&gt; 创建、删除文件夹&lt;/h3&gt;
-&lt;p&gt;hadoop fs -mkdir /pathname&lt;br /&gt;
-hadoop fs -rm -r /pathname&lt;/p&gt;
-&lt;p&gt;#创建、删除、移动文件&lt;br /&gt;
- hadoop fs -touchz /user/jyupay/file1.txt	# 创建一个空文件&lt;br /&gt;
- hadoop fs -rm /user/jyupay/file1.txt		# 删除文件&lt;br /&gt;
- hadoop fs -mv hdfs://ns1/user/jyupay/.Trash/file1.txt hdfs://ns1/user/jyupay/file1/file1.txt #移动文件，如从回收站恢复文件&lt;/p&gt;
-&lt;h3 id=&#34;永久删除文件不放入回收站&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#永久删除文件不放入回收站&#34;&gt;#&lt;/a&gt; 永久删除文件，不放入回收站&lt;/h3&gt;
-&lt;p&gt;hdfs dfs -rm -skipTrash hadoop fs -rm -r /dir_name&lt;/p&gt;
-&lt;h3 id=&#34;上传-下载文件&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#上传-下载文件&#34;&gt;#&lt;/a&gt; 上传、下载文件&lt;/h3&gt;
-&lt;p&gt;hadoop fs -put file1 /user/jyupay&lt;br /&gt;
-hadoop fs -copyFromLocal file1.txt/user/jyupay #copyFromLocal 从本地拷贝一个文件到 hdfs&lt;/p&gt;
-&lt;p&gt;hadoop fs -get /user/jyupay/file1&lt;br /&gt;
-hadoop fs -copyToLocal /user/jyupay/file1 /opt/data/file1 #copyToLocal 从 hdsf 拷贝文件到本地&lt;br /&gt;
- hadoop fs -getmerge /user/jyupay/1.txt/user/jyupay/2.txt 3.txt #getmerge 合并 hdfs 多个文件并传至本地&lt;/p&gt;
-&lt;h3 id=&#34;查看文件&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#查看文件&#34;&gt;#&lt;/a&gt; 查看文件&lt;/h3&gt;
-&lt;p&gt;hadoop fs -cat /user/jyupay/file1.txt&lt;br /&gt;
-hadoop fs -cat /user/jyupay/file*&lt;br /&gt;
-hadoop fs -tail /user/jyupay/file2.txt	#tail 查看文件的最后 1000 字节&lt;br /&gt;
- hadoop fs -text /user/jyupay/file3.txt	# 将源文件输出为文本格式。允许的格式是 zip 和 TextRecordInputStream，如果是压缩文件会先解压再查看&lt;/p&gt;
-&lt;h3 id=&#34;hdfs清空回收站&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#hdfs清空回收站&#34;&gt;#&lt;/a&gt; Hdfs 清空回收站&lt;/h3&gt;
-&lt;p&gt;hadoop fs -ls -r hdfs://ns1/user/jyupay/.Trash&lt;br /&gt;
-hadoop fs -expunge&lt;/p&gt;
+&lt;h2 id=&#34;查看目录下文件&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#查看目录下文件&#34;&gt;#&lt;/a&gt; 查看目录下文件&lt;/h2&gt;
+&lt;p&gt;&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;hdfs dfs -ls -h /user/jyupay&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;[upays@jzhjf-core-hadoop3-c-1 ~]$ hadoop fs -ls /user/jyupay/offline/diffAndsettle/docment/backup/20221006/dc_dm_charge_diff_0077_day/CHARGE20221005100001.CMCC.0077-all&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;-rw-r-----   3 jyupay bdocadm  159239323 2022-10-07 01:01 /user/jyupay/offline/diffAndsettle/docment/backup/20221006/dc_dm_charge_diff_0077_day/CHARGE20221005100001.CMCC.0077-all #第二列数字3为副本数&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&#34;查看文件占用空间大小&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#查看文件占用空间大小&#34;&gt;#&lt;/a&gt; 查看文件占用空间大小&lt;/h2&gt;
+&lt;p&gt;&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;hdfs dfs -du -h /user/jyupay/&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;或 hadoop fs -du -h /user/jyupay&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&#34;创建-删除文件夹&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#创建-删除文件夹&#34;&gt;#&lt;/a&gt; 创建、删除文件夹&lt;/h2&gt;
+&lt;p&gt;&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;hadoop fs -mkdir /pathname&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;hadoop fs -rm -r /pathname&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&#34;创建-删除-移动文件&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#创建-删除-移动文件&#34;&gt;#&lt;/a&gt; 创建、删除、移动文件&lt;/h2&gt;
+&lt;p&gt;&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;hadoop fs -touchz /user/jyupay/file1.txt	#创建一个空文件&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;hadoop fs -rm /user/jyupay/file1.txt		#删除文件&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;hadoop fs -mv hdfs://ns1/user/jyupay/.Trash/file1.txt hdfs://ns1/user/jyupay/file1/file1.txt #移动文件，如从回收站恢复文件&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&#34;永久删除文件不放入回收站&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#永久删除文件不放入回收站&#34;&gt;#&lt;/a&gt; 永久删除文件，不放入回收站&lt;/h2&gt;
+&lt;p&gt;&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;hdfs dfs -rm -skipTrash hadoop fs -rm -r /dir_name&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;## 上传、下载文件&lt;br /&gt;
+ &lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;hadoop fs -put file1 /user/jyupay&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;hadoop fs -copyFromLocal file1.txt /user/jyupay #copyFromLocal 从本地拷贝一个文件到hdfs&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;hadoop fs -get /user/jyupay/file1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;hadoop fs -copyToLocal /user/jyupay/file1 /opt/data/file1 #copyToLocal 从hdsf拷贝文件到本地&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;hadoop fs -getmerge /user/jyupay/1.txt /user/jyupay/2.txt 3.txt #getmerge合并hdfs多个文件并传至本地&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&#34;查看文件&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#查看文件&#34;&gt;#&lt;/a&gt; 查看文件&lt;/h2&gt;
+&lt;p&gt;&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;hadoop fs -cat /user/jyupay/file1.txt&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;hadoop fs -cat /user/jyupay/file*&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;hadoop fs -tail /user/jyupay/file2.txt	#tail查看文件的最后1000字节&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;hadoop fs -text /user/jyupay/file3.txt	#将源文件输出为文本格式。允许的格式是zip和TextRecordInputStream，如果是压缩文件会先解压再查看&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&#34;hdfs清空回收站&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#hdfs清空回收站&#34;&gt;#&lt;/a&gt; Hdfs 清空回收站&lt;/h2&gt;
+&lt;p&gt;&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;hadoop fs -ls -r hdfs://ns1/user/jyupay/.Trash&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;hadoop fs -expunge&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;查看目录配合相关&lt;br /&gt;
+&lt;p&gt;查看目录配额相关&lt;br /&gt;
  hadoop fs -count [-q] [-h] [-v] [-t [&amp;lt;storage type&amp;gt;]] [-u] [-x] [-e] &amp;lt;path&amp;gt;&lt;br /&gt;
  功能描述：&lt;br /&gt;
 统计 HDFS 指定路径的可容纳文件 / 文件夹配额、空间配额、目录数、文件数及占用空间&lt;br /&gt;
@@ -80,9 +66,8 @@ PATHNAME（指定路径）&lt;br /&gt;
  - t：显示每种存储类型的空间配额和使用情况。如果未给出 - u 或 - q 选项，则 - t 选项将被忽略。可选参数 storage type 支持的输入类型有：&amp;quot;all&amp;quot;，&amp;quot;ram_disk&amp;quot;，&amp;quot;ssd&amp;quot;，&amp;quot;disk&amp;quot; 或 &amp;quot;archive&amp;quot;。&lt;br /&gt;
 -x：统计结果排除快照。如果指定了 - u 或 - q 选项，则 - x 选项将被忽略&lt;br /&gt;
  - e：显示指定路径的 EC 编码模式，通过列 ERASURECODING_POLICY 显示&lt;/p&gt;
-&lt;h1 id=&#34;查看hdfs空间配额信息&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#查看hdfs空间配额信息&#34;&gt;#&lt;/a&gt; 查看 hdfs 空间配额信息&lt;/h1&gt;
-&lt;p&gt;hadoop fs -count -q -v /user/bdoc/35/hive/jyupay&lt;br /&gt;
- 或 hdfs dfs -count -q -v /user/jyupay/&lt;/p&gt;
+&lt;h2 id=&#34;查看hdfs空间配额信息&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#查看hdfs空间配额信息&#34;&gt;#&lt;/a&gt; 查看 hdfs 空间配额信息&lt;/h2&gt;
+&lt;p&gt;&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;hadoop fs -count -q -v /user/bdoc/35/hive/jyupay&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;或 hdfs dfs -count -q -v /user/jyupay/&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
  ]]></description>
@@ -91,8 +76,8 @@ PATHNAME（指定路径）&lt;br /&gt;
             <guid isPermalink="true">https://daisiesloves.github.io/Hdfs%E7%9B%AE%E5%BD%95%E9%85%8D%E9%A2%9D%E7%A9%BA%E9%97%B4%E4%B8%8D%E5%A4%9F%E5%AF%BC%E8%87%B4Spark%E4%BB%BB%E5%8A%A1%E5%BC%82%E5%B8%B8/</guid>
             <title>HDFS目录配额空间不够导致Spark任务异常</title>
             <link>https://daisiesloves.github.io/Hdfs%E7%9B%AE%E5%BD%95%E9%85%8D%E9%A2%9D%E7%A9%BA%E9%97%B4%E4%B8%8D%E5%A4%9F%E5%AF%BC%E8%87%B4Spark%E4%BB%BB%E5%8A%A1%E5%BC%82%E5%B8%B8/</link>
-            <category term="hdfs" scheme="https://daisiesloves.github.io/tags/hdfs/" />
             <category term="spark" scheme="https://daisiesloves.github.io/tags/spark/" />
+            <category term="hdfs" scheme="https://daisiesloves.github.io/tags/hdfs/" />
             <pubDate>Sat, 08 Oct 2022 15:30:06 +0800</pubDate>
             <description><![CDATA[ &lt;link rel=&#34;stylesheet&#34; class=&#34;aplayer-secondary-style-marker&#34; href=&#34;\assets\css\APlayer.min.css&#34;&gt;&lt;script src=&#34;\assets\js\APlayer.min.js&#34; class=&#34;aplayer-secondary-script-marker&#34;&gt;&lt;/script&gt;&lt;h2 id=&#34;hdfs目录配额空间不够导致spark任务异常&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#hdfs目录配额空间不够导致spark任务异常&#34;&gt;#&lt;/a&gt; HDFS 目录配额空间不够导致 Spark 任务异常&lt;/h2&gt;
 &lt;h3 id=&#34;错误日志如下&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#错误日志如下&#34;&gt;#&lt;/a&gt; 错误日志如下：&lt;/h3&gt;

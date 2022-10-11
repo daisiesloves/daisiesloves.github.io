@@ -1,66 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Flume-1.10启动异常</title>
-    <url>/Flume-1.10%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="flume-110unsupported-majorminor-version-520启动异常"><a class="anchor" href="#flume-110unsupported-majorminor-version-520启动异常">#</a> Flume-1.10,Unsupported major.minor version 52.0 启动异常</h3>
-<pre><code>执行报错：Exception in thread &quot;main&quot; java.lang.UnsupportedClassVersionError: com/heima/socket/Demo2_Receive : Unsupported major.minor version 52.0
-
-]$ java -version
-java version &quot;1.7.0_91&quot;
-OpenJDK Runtime Environment (rhel-2.6.2.3.el7-x86_64 u91-b00)
-OpenJDK 64-Bit Server VM (build 24.91-b01, mixed mode)
-
-经分排查，是生产环境jdk版本过低导致，将jdk版本升级到1.8，即可解决此报错问题。使用jd-gui工具，查看META-INF\MANIFEST.MF中的内容，Build-Jdk属性就是jar包，JDK的版本。
-
-在flume-env.sh配置文件，指定jdk路径
-export JAVA_HOME=&quot;/home/upays/jdk1.8.0_211/</code></pre>
+    <title>HDFS目录配额空间不够导致Spark任务异常</title>
+    <url>/Hdfs%E7%9B%AE%E5%BD%95%E9%85%8D%E9%A2%9D%E7%A9%BA%E9%97%B4%E4%B8%8D%E5%A4%9F%E5%AF%BC%E8%87%B4Spark%E4%BB%BB%E5%8A%A1%E5%BC%82%E5%B8%B8/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="hdfs目录配额空间不够导致spark任务异常"><a class="anchor" href="#hdfs目录配额空间不够导致spark任务异常">#</a> HDFS 目录配额空间不够导致 Spark 任务异常</h2>
+<h3 id="错误日志如下"><a class="anchor" href="#错误日志如下">#</a> 错误日志如下：</h3>
+<p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">22/10/07 03:45:18 WARN Client: Neither spark.yarn.jars nor spark.yarn.archive is set, falling back to uploading libraries under SPARK_HOME.</span><br><span class="line">22/10/07 03:45:21 INFO Client: Uploading resource file:/tmp/spark-a23912f6-850d-45a5-88d2-a2a4376c03d9/__spark_libs__5308838579049091591.zip -&gt; hdfs://router-fed/user/jyupay/.sparkStaging/application_1663262516437_821787/__spark_libs__5308838579049091591.zip</span><br><span class="line">22/10/07 03:45:22 INFO Client: Uploading resource file:/app01/upays/data-center/pay/combine/data_combine.jar -&gt; hdfs://router-fed/user/jyupay/.sparkStaging/application_1663262516437_821787/data_combine.jar</span><br><span class="line">22/10/07 03:45:22 INFO Client: Deleted staging directory hdfs://router-fed/user/jyupay/.sparkStaging/application_1663262516437_821787</span><br><span class="line">Exception in thread &quot;main&quot; org.apache.hadoop.hdfs.protocol.DSQuotaExceededException: The DiskSpace quota of /user/jyupay is exceeded: quota = 27487790694400 B = 25 TB but diskspace consumed = 27488154349032 B = 25.00 TB</span><br><span class="line">        at org.apache.hadoop.hdfs.server.namenode.DirectoryWithQuotaFeature.verifyStoragespaceQuota(DirectoryWithQuotaFeature.java:195)</span><br><span class="line">        at org.apache.hadoop.hdfs.server.namenode.DirectoryWithQuotaFeature.verifyQuota(DirectoryWithQuotaFeature.java:222)</span><br><span class="line">        at org.apache.hadoop.hdfs.server.namenode.FSDirectory.verifyQuota(FSDirectory.java:1159)</span><br><span class="line">        at org.apache.hadoop.hdfs.server.namenode.FSDirectory.updateCount(FSDirectory.java:991)</span><br><span class="line">        at org.apache.hadoop.hdfs.server.namenode.FSDirectory.updateCount(FSDirectory.java:950)</span><br><span class="line">        at org.apache.hadoop.hdfs.server.namenode.FSDirWriteFileOp.addBlock(FSDirWriteFileOp.java:505)</span><br><span class="line">        at org.apache.hadoop.hdfs.server.namenode.FSDirWriteFileOp.saveAllocatedBlock(FSDirWriteFileOp.java:777)</span><br><span class="line">        at org.apache.hadoop.hdfs.server.namenode.FSDirWriteFileOp.storeAllocatedBlock(FSDirWriteFileOp.java:260)</span><br><span class="line">        at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.getAdditionalBlock(FSNamesystem.java:2728)</span><br><span class="line">        at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.addBlock(NameNodeRpcServer.java:894)</span><br><span class="line">        at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.addBlock(ClientNamenodeProtocolServerSideTranslatorPB.java:581)</span><br><span class="line">        at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:529)</span><br><span class="line">        at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:1036)</span><br><span class="line">        at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:917)</span><br><span class="line">        at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:854)</span><br><span class="line">        at javax.security.auth.Subject.doAs(Subject.java:422)</span><br><span class="line">        at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1699)</span><br><span class="line">        at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2779)</span><br></pre></td></tr></table></figure></p>
 ]]></content>
       <tags>
-        <tag>Flume</tag>
-        <tag>JDK</tag>
+        <tag>spark</tag>
+        <tag>hdfs</tag>
       </tags>
   </entry>
   <entry>
     <title>Hadoop fs命令</title>
     <url>/Hadoop%20fs%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="hdfs-shell命令"><a class="anchor" href="#hdfs-shell命令">#</a> HDFS SHELL 命令</h2>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="hdfs-shell命令"><a class="anchor" href="#hdfs-shell命令">#</a> HDFS SHELL 命令</h1>
 <ol>
 <li>
 <p>Hdfs 文件相关操作</p>
-<h3 id="查看目录下文件"><a class="anchor" href="#查看目录下文件">#</a> 查看目录下文件</h3>
-<p>hdfs dfs -ls -h /user/jyupay</p>
-<p>[upays@jzhjf-core-hadoop3-c-1 ~]$ hadoop fs -ls /user/jyupay/offline/diffAndsettle/docment/backup/20221006/dc_dm_charge_diff_0077_day/CHARGE20221005100001.CMCC.0077-all<br />
--rw-r-----   3 jyupay bdocadm  159239323 2022-10-07 01:01 /user/jyupay/offline/diffAndsettle/docment/backup/20221006/dc_dm_charge_diff_0077_day/CHARGE20221005100001.CMCC.0077-all #第二列数字 3 为副本数</p>
-<h3 id="查看文件占用空间大小"><a class="anchor" href="#查看文件占用空间大小">#</a> 查看文件占用空间大小</h3>
-<p>hdfs dfs -du -h /user/jyupay/<br />
- 或 hadoop fs -du -h /user/jyupay</p>
-<h3 id="创建-删除文件夹"><a class="anchor" href="#创建-删除文件夹">#</a> 创建、删除文件夹</h3>
-<p>hadoop fs -mkdir /pathname<br />
-hadoop fs -rm -r /pathname</p>
-<p>#创建、删除、移动文件<br />
- hadoop fs -touchz /user/jyupay/file1.txt	# 创建一个空文件<br />
- hadoop fs -rm /user/jyupay/file1.txt		# 删除文件<br />
- hadoop fs -mv hdfs://ns1/user/jyupay/.Trash/file1.txt hdfs://ns1/user/jyupay/file1/file1.txt #移动文件，如从回收站恢复文件</p>
-<h3 id="永久删除文件不放入回收站"><a class="anchor" href="#永久删除文件不放入回收站">#</a> 永久删除文件，不放入回收站</h3>
-<p>hdfs dfs -rm -skipTrash hadoop fs -rm -r /dir_name</p>
-<h3 id="上传-下载文件"><a class="anchor" href="#上传-下载文件">#</a> 上传、下载文件</h3>
-<p>hadoop fs -put file1 /user/jyupay<br />
-hadoop fs -copyFromLocal file1.txt/user/jyupay #copyFromLocal 从本地拷贝一个文件到 hdfs</p>
-<p>hadoop fs -get /user/jyupay/file1<br />
-hadoop fs -copyToLocal /user/jyupay/file1 /opt/data/file1 #copyToLocal 从 hdsf 拷贝文件到本地<br />
- hadoop fs -getmerge /user/jyupay/1.txt/user/jyupay/2.txt 3.txt #getmerge 合并 hdfs 多个文件并传至本地</p>
-<h3 id="查看文件"><a class="anchor" href="#查看文件">#</a> 查看文件</h3>
-<p>hadoop fs -cat /user/jyupay/file1.txt<br />
-hadoop fs -cat /user/jyupay/file*<br />
-hadoop fs -tail /user/jyupay/file2.txt	#tail 查看文件的最后 1000 字节<br />
- hadoop fs -text /user/jyupay/file3.txt	# 将源文件输出为文本格式。允许的格式是 zip 和 TextRecordInputStream，如果是压缩文件会先解压再查看</p>
-<h3 id="hdfs清空回收站"><a class="anchor" href="#hdfs清空回收站">#</a> Hdfs 清空回收站</h3>
-<p>hadoop fs -ls -r hdfs://ns1/user/jyupay/.Trash<br />
-hadoop fs -expunge</p>
+<h2 id="查看目录下文件"><a class="anchor" href="#查看目录下文件">#</a> 查看目录下文件</h2>
+<p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hdfs dfs -ls -h /user/jyupay</span><br><span class="line">[upays@jzhjf-core-hadoop3-c-1 ~]$ hadoop fs -ls /user/jyupay/offline/diffAndsettle/docment/backup/20221006/dc_dm_charge_diff_0077_day/CHARGE20221005100001.CMCC.0077-all</span><br><span class="line">-rw-r-----   3 jyupay bdocadm  159239323 2022-10-07 01:01 /user/jyupay/offline/diffAndsettle/docment/backup/20221006/dc_dm_charge_diff_0077_day/CHARGE20221005100001.CMCC.0077-all #第二列数字3为副本数</span><br></pre></td></tr></table></figure></p>
+<h2 id="查看文件占用空间大小"><a class="anchor" href="#查看文件占用空间大小">#</a> 查看文件占用空间大小</h2>
+<p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hdfs dfs -du -h /user/jyupay/</span><br><span class="line">或 hadoop fs -du -h /user/jyupay</span><br></pre></td></tr></table></figure></p>
+<h2 id="创建-删除文件夹"><a class="anchor" href="#创建-删除文件夹">#</a> 创建、删除文件夹</h2>
+<p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hadoop fs -mkdir /pathname</span><br><span class="line">hadoop fs -rm -r /pathname</span><br></pre></td></tr></table></figure></p>
+<h2 id="创建-删除-移动文件"><a class="anchor" href="#创建-删除-移动文件">#</a> 创建、删除、移动文件</h2>
+<p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hadoop fs -touchz /user/jyupay/file1.txt	#创建一个空文件</span><br><span class="line">hadoop fs -rm /user/jyupay/file1.txt		#删除文件</span><br><span class="line">hadoop fs -mv hdfs://ns1/user/jyupay/.Trash/file1.txt hdfs://ns1/user/jyupay/file1/file1.txt #移动文件，如从回收站恢复文件</span><br></pre></td></tr></table></figure></p>
+<h2 id="永久删除文件不放入回收站"><a class="anchor" href="#永久删除文件不放入回收站">#</a> 永久删除文件，不放入回收站</h2>
+<p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hdfs dfs -rm -skipTrash hadoop fs -rm -r /dir_name</span><br></pre></td></tr></table></figure></p>
+<p>## 上传、下载文件<br />
+ <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hadoop fs -put file1 /user/jyupay</span><br><span class="line">hadoop fs -copyFromLocal file1.txt /user/jyupay #copyFromLocal 从本地拷贝一个文件到hdfs</span><br><span class="line">hadoop fs -get /user/jyupay/file1</span><br><span class="line">hadoop fs -copyToLocal /user/jyupay/file1 /opt/data/file1 #copyToLocal 从hdsf拷贝文件到本地</span><br><span class="line">hadoop fs -getmerge /user/jyupay/1.txt /user/jyupay/2.txt 3.txt #getmerge合并hdfs多个文件并传至本地</span><br></pre></td></tr></table></figure></p>
+<h2 id="查看文件"><a class="anchor" href="#查看文件">#</a> 查看文件</h2>
+<p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hadoop fs -cat /user/jyupay/file1.txt</span><br><span class="line">hadoop fs -cat /user/jyupay/file*</span><br><span class="line">hadoop fs -tail /user/jyupay/file2.txt	#tail查看文件的最后1000字节</span><br><span class="line">hadoop fs -text /user/jyupay/file3.txt	#将源文件输出为文本格式。允许的格式是zip和TextRecordInputStream，如果是压缩文件会先解压再查看</span><br></pre></td></tr></table></figure></p>
+<h2 id="hdfs清空回收站"><a class="anchor" href="#hdfs清空回收站">#</a> Hdfs 清空回收站</h2>
+<p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hadoop fs -ls -r hdfs://ns1/user/jyupay/.Trash</span><br><span class="line">hadoop fs -expunge</span><br></pre></td></tr></table></figure></p>
 </li>
 <li>
-<p>查看目录配合相关<br />
+<p>查看目录配额相关<br />
  hadoop fs -count [-q] [-h] [-v] [-t [&lt;storage type&gt;]] [-u] [-x] [-e] &lt;path&gt;<br />
  功能描述：<br />
 统计 HDFS 指定路径的可容纳文件 / 文件夹配额、空间配额、目录数、文件数及占用空间<br />
@@ -85,27 +62,35 @@ PATHNAME（指定路径）<br />
  - t：显示每种存储类型的空间配额和使用情况。如果未给出 - u 或 - q 选项，则 - t 选项将被忽略。可选参数 storage type 支持的输入类型有：&quot;all&quot;，&quot;ram_disk&quot;，&quot;ssd&quot;，&quot;disk&quot; 或 &quot;archive&quot;。<br />
 -x：统计结果排除快照。如果指定了 - u 或 - q 选项，则 - x 选项将被忽略<br />
  - e：显示指定路径的 EC 编码模式，通过列 ERASURECODING_POLICY 显示</p>
-<h1 id="查看hdfs空间配额信息"><a class="anchor" href="#查看hdfs空间配额信息">#</a> 查看 hdfs 空间配额信息</h1>
-<p>hadoop fs -count -q -v /user/bdoc/35/hive/jyupay<br />
- 或 hdfs dfs -count -q -v /user/jyupay/</p>
+<h2 id="查看hdfs空间配额信息"><a class="anchor" href="#查看hdfs空间配额信息">#</a> 查看 hdfs 空间配额信息</h2>
+<p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hadoop fs -count -q -v /user/bdoc/35/hive/jyupay</span><br><span class="line">或 hdfs dfs -count -q -v /user/jyupay/</span><br></pre></td></tr></table></figure></p>
 </li>
 </ol>
 ]]></content>
       <tags>
-        <tag>hadoop</tag>
         <tag>hdfs</tag>
+        <tag>hadoop</tag>
       </tags>
   </entry>
   <entry>
-    <title>HDFS目录配额空间不够导致Spark任务异常</title>
-    <url>/Hdfs%E7%9B%AE%E5%BD%95%E9%85%8D%E9%A2%9D%E7%A9%BA%E9%97%B4%E4%B8%8D%E5%A4%9F%E5%AF%BC%E8%87%B4Spark%E4%BB%BB%E5%8A%A1%E5%BC%82%E5%B8%B8/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="hdfs目录配额空间不够导致spark任务异常"><a class="anchor" href="#hdfs目录配额空间不够导致spark任务异常">#</a> HDFS 目录配额空间不够导致 Spark 任务异常</h2>
-<h3 id="错误日志如下"><a class="anchor" href="#错误日志如下">#</a> 错误日志如下：</h3>
-<p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">22/10/07 03:45:18 WARN Client: Neither spark.yarn.jars nor spark.yarn.archive is set, falling back to uploading libraries under SPARK_HOME.</span><br><span class="line">22/10/07 03:45:21 INFO Client: Uploading resource file:/tmp/spark-a23912f6-850d-45a5-88d2-a2a4376c03d9/__spark_libs__5308838579049091591.zip -&gt; hdfs://router-fed/user/jyupay/.sparkStaging/application_1663262516437_821787/__spark_libs__5308838579049091591.zip</span><br><span class="line">22/10/07 03:45:22 INFO Client: Uploading resource file:/app01/upays/data-center/pay/combine/data_combine.jar -&gt; hdfs://router-fed/user/jyupay/.sparkStaging/application_1663262516437_821787/data_combine.jar</span><br><span class="line">22/10/07 03:45:22 INFO Client: Deleted staging directory hdfs://router-fed/user/jyupay/.sparkStaging/application_1663262516437_821787</span><br><span class="line">Exception in thread &quot;main&quot; org.apache.hadoop.hdfs.protocol.DSQuotaExceededException: The DiskSpace quota of /user/jyupay is exceeded: quota = 27487790694400 B = 25 TB but diskspace consumed = 27488154349032 B = 25.00 TB</span><br><span class="line">        at org.apache.hadoop.hdfs.server.namenode.DirectoryWithQuotaFeature.verifyStoragespaceQuota(DirectoryWithQuotaFeature.java:195)</span><br><span class="line">        at org.apache.hadoop.hdfs.server.namenode.DirectoryWithQuotaFeature.verifyQuota(DirectoryWithQuotaFeature.java:222)</span><br><span class="line">        at org.apache.hadoop.hdfs.server.namenode.FSDirectory.verifyQuota(FSDirectory.java:1159)</span><br><span class="line">        at org.apache.hadoop.hdfs.server.namenode.FSDirectory.updateCount(FSDirectory.java:991)</span><br><span class="line">        at org.apache.hadoop.hdfs.server.namenode.FSDirectory.updateCount(FSDirectory.java:950)</span><br><span class="line">        at org.apache.hadoop.hdfs.server.namenode.FSDirWriteFileOp.addBlock(FSDirWriteFileOp.java:505)</span><br><span class="line">        at org.apache.hadoop.hdfs.server.namenode.FSDirWriteFileOp.saveAllocatedBlock(FSDirWriteFileOp.java:777)</span><br><span class="line">        at org.apache.hadoop.hdfs.server.namenode.FSDirWriteFileOp.storeAllocatedBlock(FSDirWriteFileOp.java:260)</span><br><span class="line">        at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.getAdditionalBlock(FSNamesystem.java:2728)</span><br><span class="line">        at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.addBlock(NameNodeRpcServer.java:894)</span><br><span class="line">        at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.addBlock(ClientNamenodeProtocolServerSideTranslatorPB.java:581)</span><br><span class="line">        at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:529)</span><br><span class="line">        at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:1036)</span><br><span class="line">        at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:917)</span><br><span class="line">        at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:854)</span><br><span class="line">        at javax.security.auth.Subject.doAs(Subject.java:422)</span><br><span class="line">        at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1699)</span><br><span class="line">        at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2779)</span><br></pre></td></tr></table></figure></p>
+    <title>Flume-1.10启动异常</title>
+    <url>/Flume-1.10%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="flume-110unsupported-majorminor-version-520启动异常"><a class="anchor" href="#flume-110unsupported-majorminor-version-520启动异常">#</a> Flume-1.10,Unsupported major.minor version 52.0 启动异常</h3>
+<pre><code>执行报错：Exception in thread &quot;main&quot; java.lang.UnsupportedClassVersionError: com/heima/socket/Demo2_Receive : Unsupported major.minor version 52.0
+
+]$ java -version
+java version &quot;1.7.0_91&quot;
+OpenJDK Runtime Environment (rhel-2.6.2.3.el7-x86_64 u91-b00)
+OpenJDK 64-Bit Server VM (build 24.91-b01, mixed mode)
+
+经分排查，是生产环境jdk版本过低导致，将jdk版本升级到1.8，即可解决此报错问题。使用jd-gui工具，查看META-INF\MANIFEST.MF中的内容，Build-Jdk属性就是jar包，JDK的版本。
+
+在flume-env.sh配置文件，指定jdk路径
+export JAVA_HOME=&quot;/home/upays/jdk1.8.0_211/</code></pre>
 ]]></content>
       <tags>
-        <tag>hdfs</tag>
-        <tag>spark</tag>
+        <tag>Flume</tag>
+        <tag>JDK</tag>
       </tags>
   </entry>
   <entry>
