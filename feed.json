@@ -11,11 +11,12 @@
             "url": "https://daisiesloves.github.io/test4/",
             "title": "test4",
             "date_published": "2022-10-11T01:49:18.000Z",
-            "content_html": "<link rel=\"stylesheet\" class=\"aplayer-secondary-style-marker\" href=\"\\assets\\css\\APlayer.min.css\"><script src=\"\\assets\\js\\APlayer.min.js\" class=\"aplayer-secondary-script-marker\"></script><p>Test post 4.</p>\n",
+            "content_html": "<link rel=\"stylesheet\" class=\"aplayer-secondary-style-marker\" href=\"\\assets\\css\\APlayer.min.css\"><script src=\"\\assets\\js\\APlayer.min.js\" class=\"aplayer-secondary-script-marker\"></script><p>Test post 4 add.</p>\n",
             "tags": [
                 "2002",
                 "10",
-                "11"
+                "11",
+                "test4"
             ]
         },
         {
