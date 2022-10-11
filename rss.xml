@@ -3,30 +3,42 @@
     <channel>
         <title>It&#39;s better to burn out than to fade away.</title>
         <subtitle></subtitle>
-        <icon>https://daisiesloves.github.io/images/favicon.ico</icon>
-        <link>https://daisiesloves.github.io</link>
+        <icon>http://yoursite.com/images/favicon.ico</icon>
+        <link>http://yoursite.com</link>
         <author>
           <name>凣汐微凉</name>
         </author>
         <description></description>
         <language></language>
-        <pubDate>Mon, 10 Oct 2022 16:03:51 +0800</pubDate>
-        <lastBuildDate>Mon, 10 Oct 2022 16:03:51 +0800</lastBuildDate>
+        <pubDate>Tue, 11 Oct 2022 09:03:51 +0800</pubDate>
+        <lastBuildDate>Tue, 11 Oct 2022 09:03:51 +0800</lastBuildDate>
         <item>
-            <guid isPermalink="true">https://daisiesloves.github.io/2022/10/10/test%20post/</guid>
+            <guid isPermalink="true">http://yoursite.com/2022/10/11/test3/</guid>
+            <title>Test3</title>
+            <link>http://yoursite.com/2022/10/11/test3/</link>
+            <category term="2002" scheme="http://yoursite.com/categories/2002/" />
+            <category term="10" scheme="http://yoursite.com/categories/2002/10/" />
+            <category term="11" scheme="http://yoursite.com/categories/2002/10/11/" />
+            <category term="Test3" scheme="http://yoursite.com/tags/Test3/" />
+            <pubDate>Tue, 11 Oct 2022 09:03:51 +0800</pubDate>
+            <description><![CDATA[ &lt;link rel=&#34;stylesheet&#34; class=&#34;aplayer-secondary-style-marker&#34; href=&#34;\assets\css\APlayer.min.css&#34;&gt;&lt;script src=&#34;\assets\js\APlayer.min.js&#34; class=&#34;aplayer-secondary-script-marker&#34;&gt;&lt;/script&gt;&lt;p&gt;Test post 2.&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">http://yoursite.com/2022/10/10/test%20post/</guid>
             <title>Test2</title>
-            <link>https://daisiesloves.github.io/2022/10/10/test%20post/</link>
-            <category term="Test2" scheme="https://daisiesloves.github.io/tags/Test2/" />
+            <link>http://yoursite.com/2022/10/10/test%20post/</link>
+            <category term="Test2" scheme="http://yoursite.com/tags/Test2/" />
             <pubDate>Mon, 10 Oct 2022 16:03:51 +0800</pubDate>
             <description><![CDATA[ &lt;link rel=&#34;stylesheet&#34; class=&#34;aplayer-secondary-style-marker&#34; href=&#34;\assets\css\APlayer.min.css&#34;&gt;&lt;script src=&#34;\assets\js\APlayer.min.js&#34; class=&#34;aplayer-secondary-script-marker&#34;&gt;&lt;/script&gt;&lt;p&gt;Test post 2.&lt;/p&gt;
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://daisiesloves.github.io/2022/10/09/Hdfs%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/</guid>
+            <guid isPermalink="true">http://yoursite.com/2022/10/09/Hdfs%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/</guid>
             <title>Hadoop fs命令</title>
-            <link>https://daisiesloves.github.io/2022/10/09/Hdfs%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/</link>
-            <category term="hdfs" scheme="https://daisiesloves.github.io/tags/hdfs/" />
-            <category term="hadoop" scheme="https://daisiesloves.github.io/tags/hadoop/" />
+            <link>http://yoursite.com/2022/10/09/Hdfs%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/</link>
+            <category term="hdfs" scheme="http://yoursite.com/tags/hdfs/" />
+            <category term="hadoop" scheme="http://yoursite.com/tags/hadoop/" />
             <pubDate>Sun, 09 Oct 2022 11:30:06 +0800</pubDate>
             <description><![CDATA[ &lt;link rel=&#34;stylesheet&#34; class=&#34;aplayer-secondary-style-marker&#34; href=&#34;\assets\css\APlayer.min.css&#34;&gt;&lt;script src=&#34;\assets\js\APlayer.min.js&#34; class=&#34;aplayer-secondary-script-marker&#34;&gt;&lt;/script&gt;&lt;h2 id=&#34;hdfs-shell命令&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#hdfs-shell命令&#34;&gt;#&lt;/a&gt; HDFS SHELL 命令&lt;/h2&gt;
 &lt;ol&gt;
@@ -97,11 +109,11 @@ PATHNAME（指定路径）&lt;br&gt;
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://daisiesloves.github.io/2022/10/08/HDFS%E7%9B%AE%E5%BD%95%E9%85%8D%E9%A2%9D%E7%A9%BA%E9%97%B4%E4%B8%8D%E5%A4%9F%E5%AF%BC%E8%87%B4Spark%E4%BB%BB%E5%8A%A1%E5%BC%82%E5%B8%B8/</guid>
+            <guid isPermalink="true">http://yoursite.com/2022/10/08/HDFS%E7%9B%AE%E5%BD%95%E9%85%8D%E9%A2%9D%E7%A9%BA%E9%97%B4%E4%B8%8D%E5%A4%9F%E5%AF%BC%E8%87%B4Spark%E4%BB%BB%E5%8A%A1%E5%BC%82%E5%B8%B8/</guid>
             <title>HDFS目录配额空间不够导致Spark任务异常</title>
-            <link>https://daisiesloves.github.io/2022/10/08/HDFS%E7%9B%AE%E5%BD%95%E9%85%8D%E9%A2%9D%E7%A9%BA%E9%97%B4%E4%B8%8D%E5%A4%9F%E5%AF%BC%E8%87%B4Spark%E4%BB%BB%E5%8A%A1%E5%BC%82%E5%B8%B8/</link>
-            <category term="spark" scheme="https://daisiesloves.github.io/tags/spark/" />
-            <category term="hdfs" scheme="https://daisiesloves.github.io/tags/hdfs/" />
+            <link>http://yoursite.com/2022/10/08/HDFS%E7%9B%AE%E5%BD%95%E9%85%8D%E9%A2%9D%E7%A9%BA%E9%97%B4%E4%B8%8D%E5%A4%9F%E5%AF%BC%E8%87%B4Spark%E4%BB%BB%E5%8A%A1%E5%BC%82%E5%B8%B8/</link>
+            <category term="spark" scheme="http://yoursite.com/tags/spark/" />
+            <category term="hdfs" scheme="http://yoursite.com/tags/hdfs/" />
             <pubDate>Sat, 08 Oct 2022 15:30:06 +0800</pubDate>
             <description><![CDATA[ &lt;link rel=&#34;stylesheet&#34; class=&#34;aplayer-secondary-style-marker&#34; href=&#34;\assets\css\APlayer.min.css&#34;&gt;&lt;script src=&#34;\assets\js\APlayer.min.js&#34; class=&#34;aplayer-secondary-script-marker&#34;&gt;&lt;/script&gt;&lt;h2 id=&#34;hdfs目录配额空间不够导致spark任务异常&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#hdfs目录配额空间不够导致spark任务异常&#34;&gt;#&lt;/a&gt; HDFS 目录配额空间不够导致 Spark 任务异常&lt;/h2&gt;
 &lt;h3 id=&#34;错误日志如下&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#错误日志如下&#34;&gt;#&lt;/a&gt; 错误日志如下：&lt;/h3&gt;
@@ -109,29 +121,29 @@ PATHNAME（指定路径）&lt;br&gt;
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://daisiesloves.github.io/2022/09/23/Test/</guid>
+            <guid isPermalink="true">http://yoursite.com/2022/09/23/Test/</guid>
             <title>Test</title>
-            <link>https://daisiesloves.github.io/2022/09/23/Test/</link>
-            <category term="Test" scheme="https://daisiesloves.github.io/tags/Test/" />
+            <link>http://yoursite.com/2022/09/23/Test/</link>
+            <category term="Test" scheme="http://yoursite.com/tags/Test/" />
             <pubDate>Fri, 23 Sep 2022 12:03:51 +0800</pubDate>
             <description><![CDATA[ &lt;link rel=&#34;stylesheet&#34; class=&#34;aplayer-secondary-style-marker&#34; href=&#34;\assets\css\APlayer.min.css&#34;&gt;&lt;script src=&#34;\assets\js\APlayer.min.js&#34; class=&#34;aplayer-secondary-script-marker&#34;&gt;&lt;/script&gt;&lt;p&gt;Test post.&lt;/p&gt;
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://daisiesloves.github.io/2022/09/16/Spark%E5%90%AF%E5%8A%A8%E6%97%B6%E6%97%A5%E5%BF%97Kafka%E6%B6%88%E8%B4%B9%E6%8A%A5%E9%94%99/</guid>
+            <guid isPermalink="true">http://yoursite.com/2022/09/16/Spark%E5%90%AF%E5%8A%A8%E6%97%B6%E6%97%A5%E5%BF%97Kafka%E6%B6%88%E8%B4%B9%E6%8A%A5%E9%94%99/</guid>
             <title>Spark启动时日志Kafka消费报错</title>
-            <link>https://daisiesloves.github.io/2022/09/16/Spark%E5%90%AF%E5%8A%A8%E6%97%B6%E6%97%A5%E5%BF%97Kafka%E6%B6%88%E8%B4%B9%E6%8A%A5%E9%94%99/</link>
-            <category term="kafka" scheme="https://daisiesloves.github.io/tags/kafka/" />
+            <link>http://yoursite.com/2022/09/16/Spark%E5%90%AF%E5%8A%A8%E6%97%B6%E6%97%A5%E5%BF%97Kafka%E6%B6%88%E8%B4%B9%E6%8A%A5%E9%94%99/</link>
+            <category term="kafka" scheme="http://yoursite.com/tags/kafka/" />
             <pubDate>Fri, 16 Sep 2022 15:30:06 +0800</pubDate>
             <description><![CDATA[ &lt;link rel=&#34;stylesheet&#34; class=&#34;aplayer-secondary-style-marker&#34; href=&#34;\assets\css\APlayer.min.css&#34;&gt;&lt;script src=&#34;\assets\js\APlayer.min.js&#34; class=&#34;aplayer-secondary-script-marker&#34;&gt;&lt;/script&gt;&lt;h3 id=&#34;spark启动报错日志&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#spark启动报错日志&#34;&gt;#&lt;/a&gt; Spark 启动报错日志&lt;/h3&gt;
 &lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;38&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;22/09/16 06:00:29 INFO CachedKafkaConsumer: Initial fetch for spark-executor-own_combine2022082406 jyupay_py_1 7 28846987218&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22/09/16 06:00:29 INFO KerberosLogin: [Principal=jyupay@ZHKDC]: TGT valid starting at: Fri Sep 16 06:00:29 CST 2022&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22/09/16 06:00:29 INFO KerberosLogin: [Principal=jyupay@ZHKDC]: TGT expires: Sat Sep 17 06:00:29 CST 2022&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22/09/16 06:00:29 INFO KerberosLogin: [Principal=jyupay@ZHKDC]: TGT refresh sleeping until: Sat Sep 17 02:19:28 CST 2022&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22/09/16 06:00:29 INFO AppInfoParser: Kafka version : 2.0.0&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22/09/16 06:00:29 INFO AppInfoParser: Kafka commitId : 3402a8361b734732&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22/09/16 06:00:29 INFO CachedKafkaConsumer: Initial fetch for spark-executor-own_combine2022082406 jyupay_py_1 0 29119882113&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22/09/16 06:00:29 INFO Metadata: Cluster ID: o-pvNtyoQ-eqxIKUVdjRRA&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22/09/16 06:00:29 INFO Metadata: Cluster ID: o-pvNtyoQ-eqxIKUVdjRRA&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22/09/16 06:00:29 ERROR Executor: Exception in task 4.1 in stage 0.0 (TID 14)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;org.apache.kafka.clients.consumer.OffsetOutOfRangeException: Offsets out of range with no configured reset policy for partitions: &amp;#123;jyupay_py_1-7=28846987218&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at org.apache.kafka.clients.consumer.internals.Fetcher.parseCompletedFetch(Fetcher.java:970)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at org.apache.kafka.clients.consumer.internals.Fetcher.fetchedRecords(Fetcher.java:490)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at org.apache.kafka.clients.consumer.KafkaConsumer.pollForFetches(KafkaConsumer.java:1259)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at org.apache.kafka.clients.consumer.KafkaConsumer.poll(KafkaConsumer.java:1187)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at org.apache.kafka.clients.consumer.KafkaConsumer.poll(KafkaConsumer.java:1115)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at org.apache.spark.streaming.kafka010.CachedKafkaConsumer.poll(CachedKafkaConsumer.scala:99)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at org.apache.spark.streaming.kafka010.CachedKafkaConsumer.get(CachedKafkaConsumer.scala:70)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at org.apache.spark.streaming.kafka010.KafkaRDD$KafkaRDDIterator.next(KafkaRDD.scala:223)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at org.apache.spark.streaming.kafka010.KafkaRDD$KafkaRDDIterator.next(KafkaRDD.scala:189)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at scala.collection.Iterator$$anon$13.hasNext(Iterator.scala:463)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at com.cmsz.join.PayChargeMain$.formatMessageCharge(PayChargeMain.scala:126)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at com.cmsz.join.PayChargeMain$$anonfun$3.apply(PayChargeMain.scala:66)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at com.cmsz.join.PayChargeMain$$anonfun$3.apply(PayChargeMain.scala:66)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at org.apache.spark.rdd.RDD$$anonfun$mapPartitions$1$$anonfun$apply$23.apply(RDD.scala:801)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at org.apache.spark.rdd.RDD$$anonfun$mapPartitions$1$$anonfun$apply$23.apply(RDD.scala:801)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:324)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at org.apache.spark.rdd.RDD.iterator(RDD.scala:288)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at org.apache.spark.scheduler.ShuffleMapTask.runTask(ShuffleMapTask.scala:99)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at org.apache.spark.scheduler.ShuffleMapTask.runTask(ShuffleMapTask.scala:55)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at org.apache.spark.scheduler.Task.run(Task.scala:121)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at org.apache.spark.executor.Executor$TaskRunner$$anonfun$10.apply(Executor.scala:408)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:1367)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:414)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at java.lang.Thread.run(Thread.java:745)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt; ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://daisiesloves.github.io/2022/08/26/Flume-1.10%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99/</guid>
+            <guid isPermalink="true">http://yoursite.com/2022/08/26/Flume-1.10%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99/</guid>
             <title>Flume-1.10启动异常</title>
-            <link>https://daisiesloves.github.io/2022/08/26/Flume-1.10%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99/</link>
-            <category term="Flume" scheme="https://daisiesloves.github.io/tags/Flume/" />
-            <category term="JDK" scheme="https://daisiesloves.github.io/tags/JDK/" />
+            <link>http://yoursite.com/2022/08/26/Flume-1.10%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99/</link>
+            <category term="Flume" scheme="http://yoursite.com/tags/Flume/" />
+            <category term="JDK" scheme="http://yoursite.com/tags/JDK/" />
             <pubDate>Fri, 26 Aug 2022 09:30:32 +0800</pubDate>
             <description><![CDATA[ &lt;link rel=&#34;stylesheet&#34; class=&#34;aplayer-secondary-style-marker&#34; href=&#34;\assets\css\APlayer.min.css&#34;&gt;&lt;script src=&#34;\assets\js\APlayer.min.js&#34; class=&#34;aplayer-secondary-script-marker&#34;&gt;&lt;/script&gt;&lt;h3 id=&#34;flume-110unsupported-majorminor-version-520启动异常&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#flume-110unsupported-majorminor-version-520启动异常&#34;&gt;#&lt;/a&gt; Flume-1.10,Unsupported major.minor version 52.0 启动异常&lt;/h3&gt;
 &lt;pre&gt;&lt;code&gt;执行报错：Exception in thread &amp;quot;main&amp;quot; java.lang.UnsupportedClassVersionError: com/heima/socket/Demo2_Receive : Unsupported major.minor version 52.0
@@ -148,10 +160,10 @@ export JAVA_HOME=&amp;quot;/home/upays/jdk1.8.0_211/&lt;/code&gt;&lt;/pre&gt;
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://daisiesloves.github.io/2018/12/23/Hello%20Word/</guid>
+            <guid isPermalink="true">http://yoursite.com/2018/12/23/Hello%20Word/</guid>
             <title>Hello Word</title>
-            <link>https://daisiesloves.github.io/2018/12/23/Hello%20Word/</link>
-            <category term="Test" scheme="https://daisiesloves.github.io/tags/Test/" />
+            <link>http://yoursite.com/2018/12/23/Hello%20Word/</link>
+            <category term="Test" scheme="http://yoursite.com/tags/Test/" />
             <pubDate>Sun, 23 Dec 2018 12:03:51 +0800</pubDate>
             <description><![CDATA[ &lt;link rel=&#34;stylesheet&#34; class=&#34;aplayer-secondary-style-marker&#34; href=&#34;\assets\css\APlayer.min.css&#34;&gt;&lt;script src=&#34;\assets\js\APlayer.min.js&#34; class=&#34;aplayer-secondary-script-marker&#34;&gt;&lt;/script&gt;&lt;h1 id=&#34;前言&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#前言&#34;&gt;#&lt;/a&gt; 前言&lt;/h1&gt;
 &lt;p&gt;微凉&lt;br&gt;

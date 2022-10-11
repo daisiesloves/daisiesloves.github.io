@@ -1,27 +1,39 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://daisiesloves.github.io</id>
+    <id>http://yoursite.com</id>
     <title>It&#39;s better to burn out than to fade away.</title>
     <subtitle></subtitle>
-    <icon>https://daisiesloves.github.io/images/favicon.ico</icon>
-    <link href="https://daisiesloves.github.io" />
+    <icon>http://yoursite.com/images/favicon.ico</icon>
+    <link href="http://yoursite.com" />
     <author>
       <name>凣汐微凉</name>
     </author>
-    <updated>2022-10-10T08:03:51.000Z</updated>
+    <updated>2022-10-11T01:03:51.000Z</updated>
     <entry>
-        <id>https://daisiesloves.github.io/2022/10/10/test%20post/</id>
-        <title>Test2</title>
-        <link rel="alternate" href="https://daisiesloves.github.io/2022/10/10/test%20post/"/>
+        <id>http://yoursite.com/2022/10/11/test3/</id>
+        <title>Test3</title>
+        <link rel="alternate" href="http://yoursite.com/2022/10/11/test3/"/>
         <content type="html">&lt;link rel=&#34;stylesheet&#34; class=&#34;aplayer-secondary-style-marker&#34; href=&#34;\assets\css\APlayer.min.css&#34;&gt;&lt;script src=&#34;\assets\js\APlayer.min.js&#34; class=&#34;aplayer-secondary-script-marker&#34;&gt;&lt;/script&gt;&lt;p&gt;Test post 2.&lt;/p&gt;
 </content>
-        <category term="Test2" scheme="https://daisiesloves.github.io/tags/Test2/" />
+        <category term="2002" scheme="http://yoursite.com/categories/2002/" />
+        <category term="10" scheme="http://yoursite.com/categories/2002/10/" />
+        <category term="11" scheme="http://yoursite.com/categories/2002/10/11/" />
+        <category term="Test3" scheme="http://yoursite.com/tags/Test3/" />
+        <updated>2022-10-11T01:03:51.000Z</updated>
+    </entry>
+    <entry>
+        <id>http://yoursite.com/2022/10/10/test%20post/</id>
+        <title>Test2</title>
+        <link rel="alternate" href="http://yoursite.com/2022/10/10/test%20post/"/>
+        <content type="html">&lt;link rel=&#34;stylesheet&#34; class=&#34;aplayer-secondary-style-marker&#34; href=&#34;\assets\css\APlayer.min.css&#34;&gt;&lt;script src=&#34;\assets\js\APlayer.min.js&#34; class=&#34;aplayer-secondary-script-marker&#34;&gt;&lt;/script&gt;&lt;p&gt;Test post 2.&lt;/p&gt;
+</content>
+        <category term="Test2" scheme="http://yoursite.com/tags/Test2/" />
         <updated>2022-10-10T08:03:51.000Z</updated>
     </entry>
     <entry>
-        <id>https://daisiesloves.github.io/2022/10/09/Hdfs%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/</id>
+        <id>http://yoursite.com/2022/10/09/Hdfs%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/</id>
         <title>Hadoop fs命令</title>
-        <link rel="alternate" href="https://daisiesloves.github.io/2022/10/09/Hdfs%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/"/>
+        <link rel="alternate" href="http://yoursite.com/2022/10/09/Hdfs%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/"/>
         <content type="html">&lt;link rel=&#34;stylesheet&#34; class=&#34;aplayer-secondary-style-marker&#34; href=&#34;\assets\css\APlayer.min.css&#34;&gt;&lt;script src=&#34;\assets\js\APlayer.min.js&#34; class=&#34;aplayer-secondary-script-marker&#34;&gt;&lt;/script&gt;&lt;h2 id=&#34;hdfs-shell命令&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#hdfs-shell命令&#34;&gt;#&lt;/a&gt; HDFS SHELL 命令&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;
@@ -89,44 +101,44 @@ PATHNAME（指定路径）&lt;br&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 </content>
-        <category term="hdfs" scheme="https://daisiesloves.github.io/tags/hdfs/" />
-        <category term="hadoop" scheme="https://daisiesloves.github.io/tags/hadoop/" />
+        <category term="hdfs" scheme="http://yoursite.com/tags/hdfs/" />
+        <category term="hadoop" scheme="http://yoursite.com/tags/hadoop/" />
         <updated>2022-10-09T03:30:06.000Z</updated>
     </entry>
     <entry>
-        <id>https://daisiesloves.github.io/2022/10/08/HDFS%E7%9B%AE%E5%BD%95%E9%85%8D%E9%A2%9D%E7%A9%BA%E9%97%B4%E4%B8%8D%E5%A4%9F%E5%AF%BC%E8%87%B4Spark%E4%BB%BB%E5%8A%A1%E5%BC%82%E5%B8%B8/</id>
+        <id>http://yoursite.com/2022/10/08/HDFS%E7%9B%AE%E5%BD%95%E9%85%8D%E9%A2%9D%E7%A9%BA%E9%97%B4%E4%B8%8D%E5%A4%9F%E5%AF%BC%E8%87%B4Spark%E4%BB%BB%E5%8A%A1%E5%BC%82%E5%B8%B8/</id>
         <title>HDFS目录配额空间不够导致Spark任务异常</title>
-        <link rel="alternate" href="https://daisiesloves.github.io/2022/10/08/HDFS%E7%9B%AE%E5%BD%95%E9%85%8D%E9%A2%9D%E7%A9%BA%E9%97%B4%E4%B8%8D%E5%A4%9F%E5%AF%BC%E8%87%B4Spark%E4%BB%BB%E5%8A%A1%E5%BC%82%E5%B8%B8/"/>
+        <link rel="alternate" href="http://yoursite.com/2022/10/08/HDFS%E7%9B%AE%E5%BD%95%E9%85%8D%E9%A2%9D%E7%A9%BA%E9%97%B4%E4%B8%8D%E5%A4%9F%E5%AF%BC%E8%87%B4Spark%E4%BB%BB%E5%8A%A1%E5%BC%82%E5%B8%B8/"/>
         <content type="html">&lt;link rel=&#34;stylesheet&#34; class=&#34;aplayer-secondary-style-marker&#34; href=&#34;\assets\css\APlayer.min.css&#34;&gt;&lt;script src=&#34;\assets\js\APlayer.min.js&#34; class=&#34;aplayer-secondary-script-marker&#34;&gt;&lt;/script&gt;&lt;h2 id=&#34;hdfs目录配额空间不够导致spark任务异常&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#hdfs目录配额空间不够导致spark任务异常&#34;&gt;#&lt;/a&gt; HDFS 目录配额空间不够导致 Spark 任务异常&lt;/h2&gt;
 &lt;h3 id=&#34;错误日志如下&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#错误日志如下&#34;&gt;#&lt;/a&gt; 错误日志如下：&lt;/h3&gt;
 &lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;24&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;22/10/07 03:45:18 INFO Client: Preparing resources for our AM container&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22/10/07 03:45:18 WARN Client: Neither spark.yarn.jars nor spark.yarn.archive is set, falling back to uploading libraries under SPARK_HOME.&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22/10/07 03:45:21 INFO Client: Uploading resource file:/tmp/spark-a23912f6-850d-45a5-88d2-a2a4376c03d9/__spark_libs__5308838579049091591.zip -&amp;gt; hdfs://router-fed/user/jyupay/.sparkStaging/application_1663262516437_821787/__spark_libs__5308838579049091591.zip&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22/10/07 03:45:22 INFO Client: Uploading resource file:/app01/upays/data-center/pay/combine/data_combine.jar -&amp;gt; hdfs://router-fed/user/jyupay/.sparkStaging/application_1663262516437_821787/data_combine.jar&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22/10/07 03:45:22 INFO Client: Deleted staging directory hdfs://router-fed/user/jyupay/.sparkStaging/application_1663262516437_821787&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;Exception in thread &amp;quot;main&amp;quot; org.apache.hadoop.hdfs.protocol.DSQuotaExceededException: The DiskSpace quota of /user/jyupay is exceeded: quota = 27487790694400 B = 25 TB but diskspace consumed = 27488154349032 B = 25.00 TB&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at org.apache.hadoop.hdfs.server.namenode.DirectoryWithQuotaFeature.verifyStoragespaceQuota(DirectoryWithQuotaFeature.java:195)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at org.apache.hadoop.hdfs.server.namenode.DirectoryWithQuotaFeature.verifyQuota(DirectoryWithQuotaFeature.java:222)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at org.apache.hadoop.hdfs.server.namenode.FSDirectory.verifyQuota(FSDirectory.java:1159)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at org.apache.hadoop.hdfs.server.namenode.FSDirectory.updateCount(FSDirectory.java:991)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at org.apache.hadoop.hdfs.server.namenode.FSDirectory.updateCount(FSDirectory.java:950)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at org.apache.hadoop.hdfs.server.namenode.FSDirWriteFileOp.addBlock(FSDirWriteFileOp.java:505)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at org.apache.hadoop.hdfs.server.namenode.FSDirWriteFileOp.saveAllocatedBlock(FSDirWriteFileOp.java:777)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at org.apache.hadoop.hdfs.server.namenode.FSDirWriteFileOp.storeAllocatedBlock(FSDirWriteFileOp.java:260)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.getAdditionalBlock(FSNamesystem.java:2728)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.addBlock(NameNodeRpcServer.java:894)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.addBlock(ClientNamenodeProtocolServerSideTranslatorPB.java:581)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:529)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:1036)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:917)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at org.apache.hadoop.ipc.Server$RpcCall.run(Server.java:854)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at javax.security.auth.Subject.doAs(Subject.java:422)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1699)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2779)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 </content>
-        <category term="spark" scheme="https://daisiesloves.github.io/tags/spark/" />
-        <category term="hdfs" scheme="https://daisiesloves.github.io/tags/hdfs/" />
+        <category term="spark" scheme="http://yoursite.com/tags/spark/" />
+        <category term="hdfs" scheme="http://yoursite.com/tags/hdfs/" />
         <updated>2022-10-08T07:30:06.000Z</updated>
     </entry>
     <entry>
-        <id>https://daisiesloves.github.io/2022/09/23/Test/</id>
+        <id>http://yoursite.com/2022/09/23/Test/</id>
         <title>Test</title>
-        <link rel="alternate" href="https://daisiesloves.github.io/2022/09/23/Test/"/>
+        <link rel="alternate" href="http://yoursite.com/2022/09/23/Test/"/>
         <content type="html">&lt;link rel=&#34;stylesheet&#34; class=&#34;aplayer-secondary-style-marker&#34; href=&#34;\assets\css\APlayer.min.css&#34;&gt;&lt;script src=&#34;\assets\js\APlayer.min.js&#34; class=&#34;aplayer-secondary-script-marker&#34;&gt;&lt;/script&gt;&lt;p&gt;Test post.&lt;/p&gt;
 </content>
-        <category term="Test" scheme="https://daisiesloves.github.io/tags/Test/" />
+        <category term="Test" scheme="http://yoursite.com/tags/Test/" />
         <updated>2022-09-23T04:03:51.000Z</updated>
     </entry>
     <entry>
-        <id>https://daisiesloves.github.io/2022/09/16/Spark%E5%90%AF%E5%8A%A8%E6%97%B6%E6%97%A5%E5%BF%97Kafka%E6%B6%88%E8%B4%B9%E6%8A%A5%E9%94%99/</id>
+        <id>http://yoursite.com/2022/09/16/Spark%E5%90%AF%E5%8A%A8%E6%97%B6%E6%97%A5%E5%BF%97Kafka%E6%B6%88%E8%B4%B9%E6%8A%A5%E9%94%99/</id>
         <title>Spark启动时日志Kafka消费报错</title>
-        <link rel="alternate" href="https://daisiesloves.github.io/2022/09/16/Spark%E5%90%AF%E5%8A%A8%E6%97%B6%E6%97%A5%E5%BF%97Kafka%E6%B6%88%E8%B4%B9%E6%8A%A5%E9%94%99/"/>
+        <link rel="alternate" href="http://yoursite.com/2022/09/16/Spark%E5%90%AF%E5%8A%A8%E6%97%B6%E6%97%A5%E5%BF%97Kafka%E6%B6%88%E8%B4%B9%E6%8A%A5%E9%94%99/"/>
         <content type="html">&lt;link rel=&#34;stylesheet&#34; class=&#34;aplayer-secondary-style-marker&#34; href=&#34;\assets\css\APlayer.min.css&#34;&gt;&lt;script src=&#34;\assets\js\APlayer.min.js&#34; class=&#34;aplayer-secondary-script-marker&#34;&gt;&lt;/script&gt;&lt;h3 id=&#34;spark启动报错日志&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#spark启动报错日志&#34;&gt;#&lt;/a&gt; Spark 启动报错日志&lt;/h3&gt;
 &lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;38&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;22/09/16 06:00:29 INFO CachedKafkaConsumer: Initial fetch for spark-executor-own_combine2022082406 jyupay_py_1 7 28846987218&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22/09/16 06:00:29 INFO KerberosLogin: [Principal=jyupay@ZHKDC]: TGT valid starting at: Fri Sep 16 06:00:29 CST 2022&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22/09/16 06:00:29 INFO KerberosLogin: [Principal=jyupay@ZHKDC]: TGT expires: Sat Sep 17 06:00:29 CST 2022&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22/09/16 06:00:29 INFO KerberosLogin: [Principal=jyupay@ZHKDC]: TGT refresh sleeping until: Sat Sep 17 02:19:28 CST 2022&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22/09/16 06:00:29 INFO AppInfoParser: Kafka version : 2.0.0&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22/09/16 06:00:29 INFO AppInfoParser: Kafka commitId : 3402a8361b734732&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22/09/16 06:00:29 INFO CachedKafkaConsumer: Initial fetch for spark-executor-own_combine2022082406 jyupay_py_1 0 29119882113&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22/09/16 06:00:29 INFO Metadata: Cluster ID: o-pvNtyoQ-eqxIKUVdjRRA&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22/09/16 06:00:29 INFO Metadata: Cluster ID: o-pvNtyoQ-eqxIKUVdjRRA&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22/09/16 06:00:29 ERROR Executor: Exception in task 4.1 in stage 0.0 (TID 14)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;org.apache.kafka.clients.consumer.OffsetOutOfRangeException: Offsets out of range with no configured reset policy for partitions: &amp;#123;jyupay_py_1-7=28846987218&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at org.apache.kafka.clients.consumer.internals.Fetcher.parseCompletedFetch(Fetcher.java:970)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at org.apache.kafka.clients.consumer.internals.Fetcher.fetchedRecords(Fetcher.java:490)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at org.apache.kafka.clients.consumer.KafkaConsumer.pollForFetches(KafkaConsumer.java:1259)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at org.apache.kafka.clients.consumer.KafkaConsumer.poll(KafkaConsumer.java:1187)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at org.apache.kafka.clients.consumer.KafkaConsumer.poll(KafkaConsumer.java:1115)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at org.apache.spark.streaming.kafka010.CachedKafkaConsumer.poll(CachedKafkaConsumer.scala:99)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at org.apache.spark.streaming.kafka010.CachedKafkaConsumer.get(CachedKafkaConsumer.scala:70)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at org.apache.spark.streaming.kafka010.KafkaRDD$KafkaRDDIterator.next(KafkaRDD.scala:223)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at org.apache.spark.streaming.kafka010.KafkaRDD$KafkaRDDIterator.next(KafkaRDD.scala:189)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at scala.collection.Iterator$$anon$13.hasNext(Iterator.scala:463)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at com.cmsz.join.PayChargeMain$.formatMessageCharge(PayChargeMain.scala:126)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at com.cmsz.join.PayChargeMain$$anonfun$3.apply(PayChargeMain.scala:66)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at com.cmsz.join.PayChargeMain$$anonfun$3.apply(PayChargeMain.scala:66)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at org.apache.spark.rdd.RDD$$anonfun$mapPartitions$1$$anonfun$apply$23.apply(RDD.scala:801)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at org.apache.spark.rdd.RDD$$anonfun$mapPartitions$1$$anonfun$apply$23.apply(RDD.scala:801)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:324)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at org.apache.spark.rdd.RDD.iterator(RDD.scala:288)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at org.apache.spark.scheduler.ShuffleMapTask.runTask(ShuffleMapTask.scala:99)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at org.apache.spark.scheduler.ShuffleMapTask.runTask(ShuffleMapTask.scala:55)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at org.apache.spark.scheduler.Task.run(Task.scala:121)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at org.apache.spark.executor.Executor$TaskRunner$$anonfun$10.apply(Executor.scala:408)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:1367)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:414)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        at java.lang.Thread.run(Thread.java:745)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</content>
-        <category term="kafka" scheme="https://daisiesloves.github.io/tags/kafka/" />
+        <category term="kafka" scheme="http://yoursite.com/tags/kafka/" />
         <updated>2022-09-16T07:30:06.000Z</updated>
     </entry>
     <entry>
-        <id>https://daisiesloves.github.io/2022/08/26/Flume-1.10%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99/</id>
+        <id>http://yoursite.com/2022/08/26/Flume-1.10%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99/</id>
         <title>Flume-1.10启动异常</title>
-        <link rel="alternate" href="https://daisiesloves.github.io/2022/08/26/Flume-1.10%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99/"/>
+        <link rel="alternate" href="http://yoursite.com/2022/08/26/Flume-1.10%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99/"/>
         <content type="html">&lt;link rel=&#34;stylesheet&#34; class=&#34;aplayer-secondary-style-marker&#34; href=&#34;\assets\css\APlayer.min.css&#34;&gt;&lt;script src=&#34;\assets\js\APlayer.min.js&#34; class=&#34;aplayer-secondary-script-marker&#34;&gt;&lt;/script&gt;&lt;h3 id=&#34;flume-110unsupported-majorminor-version-520启动异常&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#flume-110unsupported-majorminor-version-520启动异常&#34;&gt;#&lt;/a&gt; Flume-1.10,Unsupported major.minor version 52.0 启动异常&lt;/h3&gt;
 &lt;pre&gt;&lt;code&gt;执行报错：Exception in thread &amp;quot;main&amp;quot; java.lang.UnsupportedClassVersionError: com/heima/socket/Demo2_Receive : Unsupported major.minor version 52.0
 
@@ -140,20 +152,20 @@ OpenJDK 64-Bit Server VM (build 24.91-b01, mixed mode)
 在flume-env.sh配置文件，指定jdk路径
 export JAVA_HOME=&amp;quot;/home/upays/jdk1.8.0_211/&lt;/code&gt;&lt;/pre&gt;
 </content>
-        <category term="Flume" scheme="https://daisiesloves.github.io/tags/Flume/" />
-        <category term="JDK" scheme="https://daisiesloves.github.io/tags/JDK/" />
+        <category term="Flume" scheme="http://yoursite.com/tags/Flume/" />
+        <category term="JDK" scheme="http://yoursite.com/tags/JDK/" />
         <updated>2022-08-26T01:30:32.000Z</updated>
     </entry>
     <entry>
-        <id>https://daisiesloves.github.io/2018/12/23/Hello%20Word/</id>
+        <id>http://yoursite.com/2018/12/23/Hello%20Word/</id>
         <title>Hello Word</title>
-        <link rel="alternate" href="https://daisiesloves.github.io/2018/12/23/Hello%20Word/"/>
+        <link rel="alternate" href="http://yoursite.com/2018/12/23/Hello%20Word/"/>
         <content type="html">&lt;link rel=&#34;stylesheet&#34; class=&#34;aplayer-secondary-style-marker&#34; href=&#34;\assets\css\APlayer.min.css&#34;&gt;&lt;script src=&#34;\assets\js\APlayer.min.js&#34; class=&#34;aplayer-secondary-script-marker&#34;&gt;&lt;/script&gt;&lt;h1 id=&#34;前言&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#前言&#34;&gt;#&lt;/a&gt; 前言&lt;/h1&gt;
 &lt;p&gt;微凉&lt;br&gt;
 高桐深密间幽篁，乳燕声希夏日长。&lt;br&gt;
 独坐水亭风满袖，世间清景是微凉。&lt;/p&gt;
 </content>
-        <category term="Test" scheme="https://daisiesloves.github.io/tags/Test/" />
+        <category term="Test" scheme="http://yoursite.com/tags/Test/" />
         <updated>2018-12-23T04:03:51.000Z</updated>
     </entry>
 </feed>
