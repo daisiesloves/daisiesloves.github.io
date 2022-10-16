@@ -89,8 +89,8 @@ OpenJDK 64-Bit Server VM (build 24.91-b01, mixed mode)
 export JAVA_HOME=&quot;/home/upays/jdk1.8.0_211/</code></pre>
 ]]></content>
       <tags>
-        <tag>Flume</tag>
-        <tag>JDK</tag>
+        <tag>flume</tag>
+        <tag>jdk</tag>
       </tags>
   </entry>
   <entry>

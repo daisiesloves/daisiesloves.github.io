@@ -118,8 +118,8 @@ OpenJDK 64-Bit Server VM (build 24.91-b01, mixed mode)
 在flume-env.sh配置文件，指定jdk路径
 export JAVA_HOME=&amp;quot;/home/upays/jdk1.8.0_211/&lt;/code&gt;&lt;/pre&gt;
 </content>
-        <category term="Flume" scheme="https://daisiesloves.github.io/tags/Flume/" />
-        <category term="JDK" scheme="https://daisiesloves.github.io/tags/JDK/" />
+        <category term="flume" scheme="https://daisiesloves.github.io/tags/flume/" />
+        <category term="jdk" scheme="https://daisiesloves.github.io/tags/jdk/" />
         <updated>2022-08-26T01:30:32.000Z</updated>
     </entry>
 </feed>
