@@ -1,27 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Flume-1.10启动异常</title>
-    <url>/Flume-1.10%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="flume-110unsupported-majorminor-version-520启动异常"><a class="anchor" href="#flume-110unsupported-majorminor-version-520启动异常">#</a> Flume-1.10,Unsupported major.minor version 52.0 启动异常</h3>
-<pre><code>执行报错：Exception in thread &quot;main&quot; java.lang.UnsupportedClassVersionError: com/heima/socket/Demo2_Receive : Unsupported major.minor version 52.0
-
-]$ java -version
-java version &quot;1.7.0_91&quot;
-OpenJDK Runtime Environment (rhel-2.6.2.3.el7-x86_64 u91-b00)
-OpenJDK 64-Bit Server VM (build 24.91-b01, mixed mode)
-
-经分排查，是生产环境jdk版本过低导致，将jdk版本升级到1.8，即可解决此报错问题。使用jd-gui工具，查看META-INF\MANIFEST.MF中的内容，Build-Jdk属性就是jar包，JDK的版本。
-
-在flume-env.sh配置文件，指定jdk路径
-export JAVA_HOME=&quot;/home/upays/jdk1.8.0_211/</code></pre>
-]]></content>
-      <tags>
-        <tag>flume</tag>
-        <tag>jdk</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hadoop fs命令</title>
     <url>/Hadoop%20fs%E5%91%BD%E4%BB%A4/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="hdfs-fs命令"><a class="anchor" href="#hdfs-fs命令">#</a> HDFS fs 命令</h1>
@@ -82,6 +61,16 @@ PATHNAME（指定路径）<br />
       </tags>
   </entry>
   <entry>
+    <title>Kafka topic配置错误报错信息</title>
+    <url>/Kafka-topic%E9%85%8D%E7%BD%AE%E9%94%99%E8%AF%AF%E6%8A%A5%E9%94%99%E4%BF%A1%E6%81%AF/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="kafka错误日志如下原因是kafka-topic信息配置错误"><a class="anchor" href="#kafka错误日志如下原因是kafka-topic信息配置错误">#</a> Kafka 错误日志如下，原因是 kafka topic 信息配置错误</h1>
+<p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">16 Jun 2022 14:32:12,697 INFO  [New I/O server boss #11] (org.apache.avro.ipc.NettyServer$NettyServerAvroHandler.handleUpstream:171)  - [id: 0x8a66e568, /10.209.9.3:49176 =&gt; /10.209.36.55:6572] OPEN</span><br><span class="line">16 Jun 2022 14:32:12,698 INFO  [New I/O worker #1] (org.apache.avro.ipc.NettyServer$NettyServerAvroHandler.handleUpstream:171)  - [id: 0x8a66e568, /10.209.9.3:49176 =&gt; /10.209.36.55:6572] BOUND: /10.209.36.55:6572</span><br><span class="line">16 Jun 2022 14:32:12,698 INFO  [New I/O worker #1] (org.apache.avro.ipc.NettyServer$NettyServerAvroHandler.handleUpstream:171)  - [id: 0x8a66e568, /10.209.9.3:49176 =&gt; /10.209.36.55:6572] CONNECTED: /10.209.9.3:49176</span><br><span class="line">16 Jun 2022 14:33:14,494 WARN  [kafka-producer-network-thread | producer-1] (org.apache.kafka.clients.NetworkClient$DefaultMetadataUpdater.handleCompletedMetadataResponse:968)  - [Producer clientId=producer-1] Error while fetching metadata with correlation id 9 : &#123;jyucmall_info_sc_3=UNKNOWN_TOPIC_OR_PARTITION&#125;</span><br><span class="line">16 Jun 2022 14:33:14,494 INFO  [kafka-producer-network-thread | producer-1] (org.apache.kafka.clients.Metadata.update:285)  - Cluster ID: o-pvNtyoQ-eqxIKUVdjRRA</span><br><span class="line">16 Jun 2022 14:33:15,115 WARN  [kafka-producer-network-thread | producer-1] (org.apache.kafka.clients.NetworkClient$DefaultMetadataUpdater.handleCompletedMetadataResponse:968)  - [Producer clientId=producer-1] Error while fetching metadata with correlation id 15 : &#123;jyucmall_info_sc_3=UNKNOWN_TOPIC_OR_PARTITION&#125;</span><br><span class="line">16 Jun 2022 14:33:15,905 WARN  [kafka-producer-network-thread | producer-1] (org.apache.kafka.clients.NetworkClient$DefaultMetadataUpdater.handleCompletedMetadataResponse:968)  - [Producer clientId=producer-1] Error while fetching metadata with correlation id 23 : &#123;jyucmall_info_sc_3=UNKNOWN_TOPIC_OR_PARTITION&#125;</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <tags>
+        <tag>kafka</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>HDFS目录配额空间不够导致Spark任务异常</title>
     <url>/Hdfs%E7%9B%AE%E5%BD%95%E9%85%8D%E9%A2%9D%E7%A9%BA%E9%97%B4%E4%B8%8D%E5%A4%9F%E5%AF%BC%E8%87%B4Spark%E4%BB%BB%E5%8A%A1%E5%BC%82%E5%B8%B8/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="hdfs目录配额空间不够导致spark任务异常"><a class="anchor" href="#hdfs目录配额空间不够导致spark任务异常">#</a> HDFS 目录配额空间不够导致 Spark 任务异常</h2>
@@ -94,13 +83,24 @@ PATHNAME（指定路径）<br />
       </tags>
   </entry>
   <entry>
-    <title>Kafka topic配置错误报错信息</title>
-    <url>/Kafka-topic%E9%85%8D%E7%BD%AE%E9%94%99%E8%AF%AF%E6%8A%A5%E9%94%99%E4%BF%A1%E6%81%AF/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="kafka错误日志如下原因是kafka-topic信息配置错误"><a class="anchor" href="#kafka错误日志如下原因是kafka-topic信息配置错误">#</a> Kafka 错误日志如下，原因是 kafka topic 信息配置错误</h1>
-<p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">16 Jun 2022 14:32:12,697 INFO  [New I/O server boss #11] (org.apache.avro.ipc.NettyServer$NettyServerAvroHandler.handleUpstream:171)  - [id: 0x8a66e568, /10.209.9.3:49176 =&gt; /10.209.36.55:6572] OPEN</span><br><span class="line">16 Jun 2022 14:32:12,698 INFO  [New I/O worker #1] (org.apache.avro.ipc.NettyServer$NettyServerAvroHandler.handleUpstream:171)  - [id: 0x8a66e568, /10.209.9.3:49176 =&gt; /10.209.36.55:6572] BOUND: /10.209.36.55:6572</span><br><span class="line">16 Jun 2022 14:32:12,698 INFO  [New I/O worker #1] (org.apache.avro.ipc.NettyServer$NettyServerAvroHandler.handleUpstream:171)  - [id: 0x8a66e568, /10.209.9.3:49176 =&gt; /10.209.36.55:6572] CONNECTED: /10.209.9.3:49176</span><br><span class="line">16 Jun 2022 14:33:14,494 WARN  [kafka-producer-network-thread | producer-1] (org.apache.kafka.clients.NetworkClient$DefaultMetadataUpdater.handleCompletedMetadataResponse:968)  - [Producer clientId=producer-1] Error while fetching metadata with correlation id 9 : &#123;jyucmall_info_sc_3=UNKNOWN_TOPIC_OR_PARTITION&#125;</span><br><span class="line">16 Jun 2022 14:33:14,494 INFO  [kafka-producer-network-thread | producer-1] (org.apache.kafka.clients.Metadata.update:285)  - Cluster ID: o-pvNtyoQ-eqxIKUVdjRRA</span><br><span class="line">16 Jun 2022 14:33:15,115 WARN  [kafka-producer-network-thread | producer-1] (org.apache.kafka.clients.NetworkClient$DefaultMetadataUpdater.handleCompletedMetadataResponse:968)  - [Producer clientId=producer-1] Error while fetching metadata with correlation id 15 : &#123;jyucmall_info_sc_3=UNKNOWN_TOPIC_OR_PARTITION&#125;</span><br><span class="line">16 Jun 2022 14:33:15,905 WARN  [kafka-producer-network-thread | producer-1] (org.apache.kafka.clients.NetworkClient$DefaultMetadataUpdater.handleCompletedMetadataResponse:968)  - [Producer clientId=producer-1] Error while fetching metadata with correlation id 23 : &#123;jyucmall_info_sc_3=UNKNOWN_TOPIC_OR_PARTITION&#125;</span><br></pre></td></tr></table></figure></p>
+    <title>Flume-1.10启动异常</title>
+    <url>/Flume-1.10%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="flume-110unsupported-majorminor-version-520启动异常"><a class="anchor" href="#flume-110unsupported-majorminor-version-520启动异常">#</a> Flume-1.10,Unsupported major.minor version 52.0 启动异常</h3>
+<pre><code>执行报错：Exception in thread &quot;main&quot; java.lang.UnsupportedClassVersionError: com/heima/socket/Demo2_Receive : Unsupported major.minor version 52.0
+
+]$ java -version
+java version &quot;1.7.0_91&quot;
+OpenJDK Runtime Environment (rhel-2.6.2.3.el7-x86_64 u91-b00)
+OpenJDK 64-Bit Server VM (build 24.91-b01, mixed mode)
+
+经分排查，是生产环境jdk版本过低导致，将jdk版本升级到1.8，即可解决此报错问题。使用jd-gui工具，查看META-INF\MANIFEST.MF中的内容，Build-Jdk属性就是jar包，JDK的版本。
+
+在flume-env.sh配置文件，指定jdk路径
+export JAVA_HOME=&quot;/home/upays/jdk1.8.0_211/</code></pre>
 ]]></content>
       <tags>
-        <tag>kafka</tag>
+        <tag>flume</tag>
+        <tag>jdk</tag>
       </tags>
   </entry>
   <entry>
